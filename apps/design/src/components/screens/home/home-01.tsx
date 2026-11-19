@@ -67,18 +67,18 @@ function MetricCard({
 }) {
   return (
     <AppCard className={cn("absolute left-1/2 -translate-x-1/2 gap-0 text-white", className)}>
-      <div className="flex items-start justify-between">
-        <div className="flex flex-col gap-1.5">
-          <p className="h-5 font-display text-sm leading-6">{title}</p>
-          <p className="h-2.5 text-[10px] leading-2">{subtitle}</p>
+      <div className="flex items-start  justify-between">
+        <div className="flex flex-col  gap-1.5">
+          <p className="h-5 font-display text-sm  text-white leading-6">{title}</p>
+          <p className="h-2.5 text-[10px]  text-white leading-2">{subtitle}</p>
         </div>
         <ArrowUpRightIcon className="size-6" strokeWidth={1} />
       </div>
       <div className="flex items-end gap-1.5">
         <div className="flex w-[90px] shrink-0 flex-col">
-          <p className="text-sm leading-5">{label}</p>
-          <p className="text-2xl leading-7 font-medium whitespace-nowrap">{value}</p>
-          <p className="text-xs leading-4">{footnote}</p>
+          <p className="text-sm leading-5  text-white">{label}</p>
+          <p className="text-2xl leading-7  text-white font-medium whitespace-nowrap">{value}</p>
+          <p className="text-xs leading-4  text-white">{footnote}</p>
         </div>
         <MiniChart className={chartClassName} />
       </div>

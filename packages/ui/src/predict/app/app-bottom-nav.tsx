@@ -38,7 +38,7 @@ function AppBottomNav({
     <nav
       data-slot="app-bottom-nav"
       className={cn(
-        "absolute bottom-5 left-1/2 z-10 flex w-[311px] -translate-x-1/2 items-center justify-between",
+        "absolute bottom-5 gap-1 left-1/2 z-10 flex w-[311px] -translate-x-1/2 items-center justify-between",
         className
       )}
       {...props}
@@ -47,31 +47,47 @@ function AppBottomNav({
         <GripIcon className="size-6" strokeWidth={2} />
       </button>
 
-      <div className="flex h-[60px] w-[181px] items-center justify-center gap-[5px] rounded-[30px] bg-app-field py-2.5 pr-3.5 pl-3">
-        <Button
-          variant={active === "today" ? "app" : "ghost"}
-          onClick={() => select("today")}
-          className="h-12 gap-1 px-[18px] text-base"
-        >
-          Today
-          <ClockIcon
-            className={cn("size-5", active === "today" && "fill-app-brand-foreground stroke-app-brand")}
-            strokeWidth={2}
-          />
-        </Button>
-        <Button
-          variant={active === "explore" ? "app" : "ghost"}
-          size="icon"
-          aria-label="Explore"
-          onClick={() => select("explore")}
-          className="px-4"
-        >
-          <CircleDashedIcon className="size-5" />
-        </Button>
+
+      <div className="flex h-[60px] w-full items-center justify-center rounded-full bg-app-field p-1.5">
+        <div className="inline-flex h-full items-center justify-center gap-1">
+          <Button
+            variant={active === "today" ? "app" : "ghost"}
+            onClick={() => select("today")}
+            aria-label="Today"
+            className={cn(
+              "h-12 w-30 rounded-full transition-all duration-200",
+              active === "today" ? "px-5 gap-2" : "w-12 px-0"
+            )}
+          >
+            {active === "today" && "Today"}
+            <ClockIcon
+              className={cn(
+                "size-5 shrink-0",
+                active === "today" &&
+                "fill-app-brand-foreground stroke-app-brand"
+              )}
+              strokeWidth={2}
+            />
+          </Button>
+
+          <Button
+            variant={active === "explore" ? "app" : "ghost"}
+            onClick={() => select("explore")}
+            aria-label="Twin"
+            className={cn(
+              "h-12  w-30 rounded-full transition-all duration-200",
+              active === "explore" ? "px-5 gap-2" : "w-12 px-0"
+            )}
+          >
+            {active === "explore" && "Twin"}
+            <CircleDashedIcon className="size-5 shrink-0" />
+          </Button>
+        </div>
       </div>
 
+
       <button type="button" aria-label="PREDICT assistant" className={circle}>
-        <PredictMark className="h-[20px] w-[18px]" />
+        <PredictMark className="h-[20px]" />
       </button>
     </nav>
   )

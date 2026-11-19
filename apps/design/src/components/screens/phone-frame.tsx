@@ -2,7 +2,7 @@ import * as React from "react"
 import { ArrowUpRightIcon } from "lucide-react"
 import { cn } from "@workspace/ui/lib/utils"
 
-import { figmaNodeUrl, type ScreenEntry } from "./types"
+import { figmaNodeUrl, screenSizes, type ScreenEntry } from "./types"
 
 /** `system` follows the site theme; `light` / `dark` force the app theme. */
 export type ScreenTheme = "system" | "light" | "dark"
@@ -15,14 +15,14 @@ export function appThemeClass(theme: ScreenTheme | undefined) {
 
 interface PhoneFrameProps extends React.ComponentProps<"figure"> {
   screen: ScreenEntry
-  /** Visual scale of the 402 × 874 device. */
+  /** Visual scale of the device (402 × 874 app, 1920 × 1080 desktop). */
   scale?: number
   theme?: ScreenTheme
   /** Shown after the title, e.g. "Dark" in the side-by-side view. */
   label?: string
 }
 
-/** A device-shaped frame that renders one screen at a given scale. */
+/** A device-shaped frame (phone or desktop window) that renders one screen at a given scale. */
 export function PhoneFrame({
   screen,
   scale = 0.6,
@@ -32,16 +32,19 @@ export function PhoneFrame({
   ...props
 }: PhoneFrameProps) {
   const Component = screen.component
+  const desktop = screen.platform === "desktop"
+  const { width, height } = screenSizes[screen.platform ?? "app"]
   const viewHref = `/view/screens/${screen.slug}${theme === "system" ? "" : `?theme=${theme}`}`
 
   return (
     <figure className={cn("flex shrink-0 flex-col gap-3", className)} {...props}>
       <div
         className={cn(
-          "overflow-hidden rounded-[34px] bg-app-background shadow-xl ring-1 ring-foreground/10",
+          "overflow-hidden bg-app-background shadow-xl ring-1 ring-foreground/10",
+          desktop ? "rounded-xl" : "rounded-[34px]",
           appThemeClass(theme)
         )}
-        style={{ width: 402 * scale, height: 874 * scale }}
+        style={{ width: width * scale, height: height * scale }}
       >
         <div style={{ zoom: scale }}>
           <Component />

@@ -2,9 +2,10 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import { appThemeClass } from "@/src/components/screens/phone-frame"
+import { desktopScreenGroups } from "@/src/components/screens/desktop/registry"
 import { screenGroups } from "@/src/components/screens/registry"
 
-const allScreens = screenGroups.flatMap((group) => group.screens)
+const allScreens = [...screenGroups, ...desktopScreenGroups].flatMap((group) => group.screens)
 
 export const dynamicParams = false
 
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: ScreenViewPageProps): Promise
   return { title: screen?.title ?? slug, robots: { index: false } }
 }
 
-// A single app screen at 100%, without site chrome. `?theme=light|dark`
+// A single app or desktop screen at 100%, without site chrome. `?theme=light|dark`
 // forces the app theme; otherwise it follows the site theme.
 export default async function ScreenViewPage({ params, searchParams }: ScreenViewPageProps) {
   const { slug } = await params
