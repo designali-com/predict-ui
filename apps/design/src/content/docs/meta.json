@@ -1,9 +1,10 @@
 {
   "root": true,
   "pages": [
-    "(root)",
+    "index",
     "design",
     "ui",
+    "glass",
     "tools",
     "components"
   ]

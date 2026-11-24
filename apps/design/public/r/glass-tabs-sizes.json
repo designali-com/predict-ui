@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-tabs-sizes",
+  "type": "registry:block",
+  "description": "Sizes",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-tabs/glass-tabs-sizes.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { GlassTabs } from \"@workspace/ui/components/liquid-glass/glass-tabs\"\n\nconst sizes = [\"sm\", \"md\", \"lg\"] as const\nconst options = [\n  { value: \"overview\", label: \"Overview\" },\n  { value: \"history\", label: \"History\" },\n  { value: \"notes\", label: \"Notes\" },\n]\n\nexport function GlassTabsSizes() {\n  const [value, setValue] = useState(\"overview\")\n\n  return (\n    <div className=\"flex flex-col items-center gap-6\">\n      {sizes.map((size) => (\n        <GlassTabs\n          key={size}\n          size={size}\n          aria-label={`Report section, ${size}`}\n          value={value}\n          onValueChange={setValue}\n          options={options}\n        />\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

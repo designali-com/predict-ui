@@ -43,36 +43,18 @@ export const Index: Record<string, any> = {
     categories: undefined,
     meta: undefined,
   },
-  "bio-clock-domains": {
-    name: "bio-clock-domains",
-    description: "Custom domains",
+  "bio-clock-older": {
+    name: "bio-clock-older",
+    description: "Older than calendar age",
     type: "registry:block",
     registryDependencies: undefined,
     files: [{
-      path: "registry/predict/ui/bio-clock/bio-clock-domains.tsx",
+      path: "registry/predict/ui/bio-clock/bio-clock-older.tsx",
       type: "registry:block",
       target: ""
     }],
     component: React.lazy(async () => {
-      const mod = await import("@/registry/predict/ui/bio-clock/bio-clock-domains.tsx")
-      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
-      return { default: mod.default || mod[exportName] }
-    }),
-    categories: undefined,
-    meta: undefined,
-  },
-  "bio-clock-severity": {
-    name: "bio-clock-severity",
-    description: "Custom severity scale",
-    type: "registry:block",
-    registryDependencies: undefined,
-    files: [{
-      path: "registry/predict/ui/bio-clock/bio-clock-severity.tsx",
-      type: "registry:block",
-      target: ""
-    }],
-    component: React.lazy(async () => {
-      const mod = await import("@/registry/predict/ui/bio-clock/bio-clock-severity.tsx")
+      const mod = await import("@/registry/predict/ui/bio-clock/bio-clock-older.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),
@@ -3061,6 +3043,726 @@ export const Index: Record<string, any> = {
     }],
     component: React.lazy(async () => {
       const mod = await import("@/registry/predict/components/marquee/marquee-reverse.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-action-button-demo": {
+    name: "glass-action-button-demo",
+    description: "Basic",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-action-button/glass-action-button-demo.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-action-button/glass-action-button-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-action-button-sizes": {
+    name: "glass-action-button-sizes",
+    description: "Sizes",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-action-button/glass-action-button-sizes.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-action-button/glass-action-button-sizes.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-action-button-icon": {
+    name: "glass-action-button-icon",
+    description: "Icon",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-action-button/glass-action-button-icon.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-action-button/glass-action-button-icon.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-action-button-error": {
+    name: "glass-action-button-error",
+    description: "Error",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-action-button/glass-action-button-error.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-action-button/glass-action-button-error.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-badge-demo": {
+    name: "glass-badge-demo",
+    description: "Basic",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-badge/glass-badge-demo.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-badge/glass-badge-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-badge-colors": {
+    name: "glass-badge-colors",
+    description: "Colours",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-badge/glass-badge-colors.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-badge/glass-badge-colors.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-badge-speed": {
+    name: "glass-badge-speed",
+    description: "Speed",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-badge/glass-badge-speed.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-badge/glass-badge-speed.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-button-demo": {
+    name: "glass-button-demo",
+    description: "Basic",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-button/glass-button-demo.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-button/glass-button-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-button-tinted": {
+    name: "glass-button-tinted",
+    description: "Tinted",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-button/glass-button-tinted.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-button/glass-button-tinted.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-button-sizes": {
+    name: "glass-button-sizes",
+    description: "Sizes",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-button/glass-button-sizes.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-button/glass-button-sizes.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-button-icon": {
+    name: "glass-button-icon",
+    description: "Icon",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-button/glass-button-icon.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-button/glass-button-icon.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-button-link": {
+    name: "glass-button-link",
+    description: "Link",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-button/glass-button-link.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-button/glass-button-link.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-button-pending": {
+    name: "glass-button-pending",
+    description: "Pending",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-button/glass-button-pending.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-button/glass-button-pending.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-button-disabled": {
+    name: "glass-button-disabled",
+    description: "Disabled",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-button/glass-button-disabled.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-button/glass-button-disabled.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-button-group-demo": {
+    name: "glass-button-group-demo",
+    description: "Basic",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-button-group/glass-button-group-demo.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-button-group/glass-button-group-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-button-group-nested": {
+    name: "glass-button-group-nested",
+    description: "Nested",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-button-group/glass-button-group-nested.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-button-group/glass-button-group-nested.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-button-group-vertical": {
+    name: "glass-button-group-vertical",
+    description: "Vertical",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-button-group/glass-button-group-vertical.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-button-group/glass-button-group-vertical.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-button-group-text": {
+    name: "glass-button-group-text",
+    description: "With text",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-button-group/glass-button-group-text.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-button-group/glass-button-group-text.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-card-demo": {
+    name: "glass-card-demo",
+    description: "Basic",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-card/glass-card-demo.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-card/glass-card-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-card-clear": {
+    name: "glass-card-clear",
+    description: "Clear",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-card/glass-card-clear.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-card/glass-card-clear.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-card-tinted": {
+    name: "glass-card-tinted",
+    description: "Tinted",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-card/glass-card-tinted.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-card/glass-card-tinted.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-card-live": {
+    name: "glass-card-live",
+    description: "Live",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-card/glass-card-live.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-card/glass-card-live.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-dropdown-menu-demo": {
+    name: "glass-dropdown-menu-demo",
+    description: "Basic",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-dropdown-menu/glass-dropdown-menu-demo.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-dropdown-menu/glass-dropdown-menu-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-dropdown-menu-group": {
+    name: "glass-dropdown-menu-group",
+    description: "Button group",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-dropdown-menu/glass-dropdown-menu-group.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-dropdown-menu/glass-dropdown-menu-group.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-dropdown-menu-align": {
+    name: "glass-dropdown-menu-align",
+    description: "Alignment",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-dropdown-menu/glass-dropdown-menu-align.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-dropdown-menu/glass-dropdown-menu-align.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-layer-demo": {
+    name: "glass-layer-demo",
+    description: "Basic",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-layer/glass-layer-demo.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-layer/glass-layer-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-layer-optics": {
+    name: "glass-layer-optics",
+    description: "Optics",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-layer/glass-layer-optics.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-layer/glass-layer-optics.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-lens-demo": {
+    name: "glass-lens-demo",
+    description: "Basic",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-lens/glass-lens-demo.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-lens/glass-lens-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-popup-demo": {
+    name: "glass-popup-demo",
+    description: "Basic",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-popup/glass-popup-demo.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-popup/glass-popup-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-select-demo": {
+    name: "glass-select-demo",
+    description: "Basic",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-select/glass-select-demo.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-select/glass-select-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-select-controlled": {
+    name: "glass-select-controlled",
+    description: "Controlled",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-select/glass-select-controlled.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-select/glass-select-controlled.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-select-disabled": {
+    name: "glass-select-disabled",
+    description: "Disabled",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-select/glass-select-disabled.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-select/glass-select-disabled.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-slide-to-confirm-demo": {
+    name: "glass-slide-to-confirm-demo",
+    description: "Basic",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-slide-to-confirm/glass-slide-to-confirm-demo.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-slide-to-confirm/glass-slide-to-confirm-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-slide-to-confirm-sizes": {
+    name: "glass-slide-to-confirm-sizes",
+    description: "Sizes",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-slide-to-confirm/glass-slide-to-confirm-sizes.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-slide-to-confirm/glass-slide-to-confirm-sizes.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-slide-to-confirm-error": {
+    name: "glass-slide-to-confirm-error",
+    description: "Error",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-slide-to-confirm/glass-slide-to-confirm-error.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-slide-to-confirm/glass-slide-to-confirm-error.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-slide-to-confirm-bare": {
+    name: "glass-slide-to-confirm-bare",
+    description: "Bare track",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-slide-to-confirm/glass-slide-to-confirm-bare.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-slide-to-confirm/glass-slide-to-confirm-bare.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-tabs-demo": {
+    name: "glass-tabs-demo",
+    description: "Basic",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-tabs/glass-tabs-demo.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-tabs/glass-tabs-demo.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-tabs-icons": {
+    name: "glass-tabs-icons",
+    description: "Icons",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-tabs/glass-tabs-icons.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-tabs/glass-tabs-icons.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-tabs-sizes": {
+    name: "glass-tabs-sizes",
+    description: "Sizes",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-tabs/glass-tabs-sizes.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-tabs/glass-tabs-sizes.tsx")
+      const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
+      return { default: mod.default || mod[exportName] }
+    }),
+    categories: undefined,
+    meta: undefined,
+  },
+  "glass-tabs-color": {
+    name: "glass-tabs-color",
+    description: "Colour",
+    type: "registry:block",
+    registryDependencies: undefined,
+    files: [{
+      path: "registry/predict/components/glass-tabs/glass-tabs-color.tsx",
+      type: "registry:block",
+      target: ""
+    }],
+    component: React.lazy(async () => {
+      const mod = await import("@/registry/predict/components/glass-tabs/glass-tabs-color.tsx")
       const exportName = Object.keys(mod).find(key => typeof mod[key] === 'function' || typeof mod[key] === 'object') || item.name
       return { default: mod.default || mod[exportName] }
     }),

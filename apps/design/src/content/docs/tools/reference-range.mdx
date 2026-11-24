@@ -23,7 +23,7 @@ import { ReferenceRange } from "@workspace/ui/tools/reference-range"
 <ReferenceRange
   name="Glucose, fasting"
   value={92}
-  unit="mg/dL"
+  unit="mg·dL⁻¹"
   range={{ low: 70, high: 99 }}
 />
 ```
@@ -32,7 +32,7 @@ import { ReferenceRange } from "@workspace/ui/tools/reference-range"
 
 - **Header** — The test name, an optional longer name, and a flag badge.
 - **Value** — The result and its unit, in the status colour.
-- **Range** — The reference range as printed on a report, such as `Ref 70–99 mg/dL`.
+- **Range** — The reference range as printed on a report, such as `Ref 70–99 mg·dL⁻¹`.
 - **Bar** — Coloured zones with a marker at the value: normal inside the range, mild outside it, and extreme past a critical limit. Only shown for numbers with a low or high limit. The harmless side of a directional range is grey.
 - **Footer** — The Z-score and the direction, when there are any.
 
@@ -63,7 +63,7 @@ With both limits, the range is read as the middle 95% of healthy values. The mea
 
 ### Colours
 
-The colour uses the five-step severity scale from `globals.css`, in the same order as the Bio Clock. Change `--status-*` in your theme to recolour it.
+The colour uses the five-step severity scale from `globals.css`. Change `--status-*` in your theme to recolour it.
 
 | Result | Colour |
 | --- | --- |
@@ -121,7 +121,7 @@ Low, high, critical, a lower limit only, a text result, and a result with no ran
 
 ### Interactive
 
-Change the value to see the flag and the marker move. Potassium has critical limits at 2.8 and 6.2 mmol/L.
+Change the value to see the flag and the marker move. Potassium has critical limits at 2.8 and 6.2 mmol·L⁻¹.
 
 <ComponentPreview name="reference-range-interactive" />
 

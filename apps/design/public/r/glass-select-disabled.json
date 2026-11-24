@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-select-disabled",
+  "type": "registry:block",
+  "description": "Disabled",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-select/glass-select-disabled.tsx",
+      "content": "\"use client\"\n\nimport { GlassSelect } from \"@workspace/ui/components/liquid-glass/glass-select\"\n\nconst options = [\n  { value: \"home\", label: \"Home collection\" },\n  { value: \"lab\", label: \"Lab visit\" },\n  { value: \"clinic\", label: \"Clinic visit (full)\", disabled: true },\n]\n\nexport function GlassSelectDisabled() {\n  return (\n    <div className=\"flex flex-wrap justify-center gap-6\">\n      <GlassSelect label=\"Collection\" defaultValue=\"home\" options={options} />\n      <GlassSelect\n        disabled\n        label=\"Phlebotomist\"\n        placeholder=\"Assigned later\"\n        options={[]}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

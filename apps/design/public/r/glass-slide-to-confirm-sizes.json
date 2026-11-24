@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-slide-to-confirm-sizes",
+  "type": "registry:block",
+  "description": "Sizes",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-slide-to-confirm/glass-slide-to-confirm-sizes.tsx",
+      "content": "\"use client\"\n\nimport { GlassSlideToConfirm } from \"@workspace/ui/components/liquid-glass/glass-slide-to-confirm\"\n\nconst sizes = [\"sm\", \"md\", \"lg\", \"xl\"] as const\nconst wait = () => new Promise((resolve) => setTimeout(resolve, 1200))\n\nexport function GlassSlideToConfirmSizes() {\n  return (\n    <div className=\"flex w-full max-w-sm flex-col items-center gap-6\">\n      {sizes.map((size) => (\n        <GlassSlideToConfirm\n          key={size}\n          size={size}\n          hint={false}\n          fillClassName=\"bg-primary text-primary-foreground\"\n          resetAfter={2000}\n          onConfirm={wait}\n        >\n          Slide to confirm\n        </GlassSlideToConfirm>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

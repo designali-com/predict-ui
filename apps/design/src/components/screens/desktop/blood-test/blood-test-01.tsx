@@ -1,6 +1,6 @@
 import { BadgeCheckIcon, ChevronRightIcon, FileTextIcon } from "lucide-react"
 
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import {
   Select,
   SelectContent,
@@ -26,7 +26,7 @@ const profiles = [
 ]
 
 const selectTrigger =
-  "h-12 w-[321px] rounded-full border-app-border bg-app-field/50 px-6 text-sm leading-5 text-app-foreground data-[size=default]:h-12 [&>svg]:size-6! [&>svg]:text-app-foreground!"
+  "h-12 w-[321px] rounded-full border-border bg-card/50 px-6 text-sm leading-5 text-foreground data-[size=default]:h-12 [&>svg]:size-6! [&>svg]:text-foreground!"
 
 function CardHeading({ title, description }: { title: string; description: string }) {
   return (
@@ -43,7 +43,7 @@ export default function BloodTestDesktop01() {
     <BloodTestDesktopLayout>
       <AppCard className="absolute top-[272px] left-[47px] h-[509px] w-[693px] items-center">
         <CardHeading
-          title="Book Your Blood Test"
+          title="Book your blood test"
           description="Get a clearer picture of your health with accurate blood testing and regular health monitoring."
         />
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -56,7 +56,7 @@ export default function BloodTestDesktop01() {
 
       <AppCard className="absolute top-[272px] left-[767px] h-[509px] w-[381px] items-center gap-3">
         <div className="h-[66px] w-full">
-          <AppCardTitle>Your Blood Test</AppCardTitle>
+          <AppCardTitle>Your blood test</AppCardTitle>
           <AppCardDescription className="max-w-none">
             Get a clearer picture of your health with accurate blood testing and regular health
             monitoring.
@@ -77,7 +77,7 @@ export default function BloodTestDesktop01() {
         </Select>
 
         <Select defaultValue={centers[0]}>
-          <SelectTrigger aria-label="Center" className={selectTrigger}>
+          <SelectTrigger aria-label="Centre" className={selectTrigger}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -94,18 +94,18 @@ export default function BloodTestDesktop01() {
             <span className="text-[36px] whitespace-nowrap">₹10,599</span>
             <span className="h-[18px] text-sm line-through">₹18,899</span>
           </div>
-          <span className="flex h-[23px] w-[66px] items-center justify-center self-end rounded-[40px] bg-app-pill text-xs leading-6 text-app-pill-foreground">
+          <span className="flex h-[23px] w-[66px] items-center justify-center self-end rounded-[40px] bg-secondary text-xs leading-6 text-secondary-foreground">
             50% OFF
           </span>
         </div>
 
         <p className="h-8 w-[321px] text-[10px] leading-[14px]">
-          Take control of your health with a comprehensive Full Body Check-Up designed for early
+          Take control of your health with a comprehensive full body check-up designed for early
           detection and complete peace of mind.
         </p>
 
         <Button variant="app" size="lg" className="w-[321px] text-base">
-          Book Now
+          Book a test
         </Button>
         <Button variant="app-secondary" size="lg" className="w-[321px] text-sm">
           Request a callback
@@ -114,8 +114,8 @@ export default function BloodTestDesktop01() {
 
       <AppCard className="absolute top-[272px] left-[1179px] h-[509px] w-[695px]">
         <CardHeading
-          title="What’s included in your checkup?"
-          description="Explore the 72 parameters grouped by health profile."
+          title="What’s included in your check-up?"
+          description="Explore the 40 biomarkers grouped by health profile."
         />
 
         <ul className="flex flex-col gap-1.5">

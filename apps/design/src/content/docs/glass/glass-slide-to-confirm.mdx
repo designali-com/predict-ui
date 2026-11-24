@@ -1,0 +1,84 @@
+---
+title: Glass Slide to Confirm
+description: "A track with a glass thumb. Drag it to the end to run one deliberate action."
+---
+
+## Demos
+
+Drag the thumb to the end, or focus it and press End.
+
+<ComponentPreview name="glass-slide-to-confirm-demo" />
+
+## Usage
+
+Use it for an action that should not happen by accident, such as a payment or a deletion. For an everyday confirmation, use an [Alert Dialog](/docs/components/alert-dialog).
+
+Import it from `@workspace/ui/components/liquid-glass/glass-slide-to-confirm`.
+
+```tsx
+import { GlassSlideToConfirm } from "@workspace/ui/components/liquid-glass/glass-slide-to-confirm"
+```
+
+```tsx
+<GlassSlideToConfirm
+  pendingLabel="Booking"
+  successLabel="Booked"
+  onConfirm={bookTest}
+>
+  Slide to book test
+</GlassSlideToConfirm>
+```
+
+### Anatomy
+
+- **GlassSlideToConfirm** — The track, the thumb, and the status text.
+
+### Notes
+
+- Write the instruction as "Slide to…". It is also the name of the slider.
+- Arrow keys move the thumb, End confirms, Home returns, and holding Space or Enter glides it to the end.
+- If `onConfirm` throws, the thumb springs back and `errorLabel` replaces the instruction.
+
+## Examples
+
+### Sizes
+
+`sm`, `md`, `lg`, and `xl`.
+
+<ComponentPreview name="glass-slide-to-confirm-sizes" />
+
+### Error
+
+A failed action, with its own message.
+
+<ComponentPreview name="glass-slide-to-confirm-error" />
+
+### Bare track
+
+No fill, a custom icon, and a destructive success colour.
+
+<ComponentPreview name="glass-slide-to-confirm-bare" />
+
+## Props
+
+These are the props you set most often.
+
+### GlassSlideToConfirm
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `string` | — | The instruction. |
+| `onConfirm` | `() => unknown` | — | Runs at the end of the track. Return a promise to stay pending. |
+| `onConfirmError` | `(error) => void` | — | Called when it throws or rejects. |
+| `pendingLabel` | `string` | — | Text while it runs. |
+| `successLabel` | `string` | — | Text after it succeeds. |
+| `errorLabel` | `string` | — | Replaces the instruction after a failure. |
+| `threshold` | `number` | `0.9` | Share of the track that confirms on release. |
+| `resetAfter` | `number` | `0` | Milliseconds before a success opens again. `0` stays confirmed. |
+| `hint` | `boolean` | `true` | Nudge the thumb until it has been touched. |
+| `icon` | `ReactNode` | a chevron | Idle icon in the thumb. |
+| `size` | `"sm", "md", "lg", or "xl"` | `md` | Size of the track. |
+| `fill` | `boolean` | `true` | Pull a coloured fill behind the thumb. |
+| `fillClassName` | `string` | `bg-[#3291FF] text-white` | Colours of the fill. |
+| `mirror` | `boolean` | `false` | The held thumb mirrors the page around the track. |
+| `disabled` | `boolean` | `false` | Blocks input and dims the track. |

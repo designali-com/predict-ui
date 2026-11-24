@@ -52,7 +52,7 @@ export function Header() {
                             ))}
                         </nav>
 
-                        <Button nativeButton={false} render={<Link target="_blank" href="https://predict.fit">Join Now</Link>} />
+                        <Button nativeButton={false} render={<Link target="_blank" href="https://predict.fit">Join now</Link>} />
                     </div>
                 </div>
             </nav>

@@ -25,7 +25,7 @@ export function CardWithAction() {
       </CardHeader>
       <CardContent>
         <p className="text-2xl font-medium tabular-nums">
-          78 <span className="text-sm text-muted-foreground">mg/dL</span>
+          78 <span className="text-sm text-muted-foreground">mg·dL⁻¹</span>
         </p>
       </CardContent>
       <CardFooter className="gap-2 border-t">

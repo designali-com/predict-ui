@@ -23,7 +23,7 @@ const platforms: {
   {
     value: "app",
     label: "App",
-    heading: "App Screens",
+    heading: "App screens",
     description: "Every phone screen from the PREDICT app design",
     groups: screenGroups,
     scales: [
@@ -36,7 +36,7 @@ const platforms: {
   {
     value: "desktop",
     label: "Desktop",
-    heading: "Desktop Screens",
+    heading: "Desktop screens",
     description: "Every desktop screen from the PREDICT web design",
     groups: desktopScreenGroups,
     scales: [
@@ -103,7 +103,7 @@ export function ScreensGallery() {
             {platforms.map((item) => (
               <TabsTrigger key={item.value} value={item.value} className="px-6 py-2 text-sm">
                 {item.label}
-                <span className="text-muted-foreground">
+                <span className="opacity-60 tabular-nums">
                   {item.groups.reduce((sum, group) => sum + group.screens.length, 0)}
                 </span>
               </TabsTrigger>
@@ -132,16 +132,7 @@ export function ScreensGallery() {
                   </TabsTrigger>
                 ))}
               </TabsList>
-            </Tabs>
-            <Tabs value={scale} onValueChange={(value) => setScale(String(value))}>
-              <TabsList aria-label="Screen scale">
-                {platform.scales.map((item) => (
-                  <TabsTrigger key={item.value} value={item.value} className="px-4 py-2 text-xs">
-                    {item.label}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
+            </Tabs> 
           </div>
         </div>
       </section>
@@ -155,7 +146,7 @@ export function ScreensGallery() {
       {groups.map((group) => (
         <section key={group.slug} id={group.slug} className="scroll-mt-20 border-b">
           <header className="flex items-center gap-3 px-4 pt-10 md:px-8">
-            <span className="h-6 w-1 rounded-full bg-app-accent" />
+            <span className="h-6 w-1 rounded-full bg-primary" />
             <h2 className="text-heading-20 font-medium">{group.title}</h2>
             <span className="text-xs text-muted-foreground">
               {group.screens.length} {group.screens.length === 1 ? "screen" : "screens"}

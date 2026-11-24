@@ -14,7 +14,7 @@ export default function OnboardingDesktop02() {
 
   return (
     <OnboardingDesktopShell step={1} className="items-center pt-[165px]">
-      <h1 className="font-display text-2xl leading-[29px] font-normal text-app-foreground">
+      <h1 className="text-2xl leading-[29px] font-medium tracking-tight text-foreground">
         Gender
       </h1>
 

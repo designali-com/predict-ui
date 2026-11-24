@@ -2,7 +2,7 @@ import * as React from "react"
 import { ChevronLeftIcon } from "lucide-react"
 import { cn } from "@workspace/ui/lib/utils"
 
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import { Input } from "@workspace/ui/components/input"
 import { Tabs, TabsList, TabsTrigger } from "@workspace/ui/components/tabs"
 import { AppCard, AppCardDescription, AppCardTitle } from "@workspace/ui/predict/app/app-card"
@@ -20,7 +20,7 @@ export function BloodTestHeader() {
       <button type="button" aria-label="Back" className="flex size-6 items-center justify-center">
         <ChevronLeftIcon className="size-6" strokeWidth={1.5} />
       </button>
-      <div className="size-[60px] shrink-0 overflow-hidden rounded-full border border-app-foreground bg-app-pill">
+      <div className="size-[60px] shrink-0 overflow-hidden rounded-full border border-foreground bg-secondary">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/screens/shared/avatar.png"
@@ -33,21 +33,21 @@ export function BloodTestHeader() {
 }
 
 const tabTrigger =
-  "h-[31px] flex-none px-5 text-sm leading-5 text-app-foreground/60 data-active:bg-app-brand data-active:text-app-brand-foreground"
+  "h-[31px] flex-none px-5 text-sm leading-5 text-foreground/60 data-active:bg-primary data-active:text-primary-foreground"
 
-/** Visit Center | Home Collection segmented control. */
+/** Visit centre | Home collection segmented control. */
 export function BloodTestTabs({ defaultValue = "home" }: { defaultValue?: "center" | "home" }) {
   return (
     <Tabs defaultValue={defaultValue} className="mt-[38px] items-center gap-0">
       <TabsList
         variant="line"
-        className="h-auto gap-1 border-app-border bg-app-field px-1 py-[5px] group-data-horizontal/tabs:h-auto"
+        className="h-auto gap-1 border-border bg-card px-1 py-[5px] group-data-horizontal/tabs:h-auto"
       >
         <TabsTrigger value="center" className={tabTrigger}>
-          Visit Center
+          Visit centre
         </TabsTrigger>
         <TabsTrigger value="home" className={tabTrigger}>
-          Home Collection
+          Home collection
         </TabsTrigger>
       </TabsList>
     </Tabs>
@@ -57,14 +57,14 @@ export function BloodTestTabs({ defaultValue = "home" }: { defaultValue?: "cente
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex w-[321px] flex-col gap-[9px]">
-      <p className="text-xs leading-[14px] text-app-foreground/60">{label}</p>
+      <p className="text-xs leading-[14px] text-foreground/60">{label}</p>
       {children}
     </div>
   )
 }
 
 /**
- * "Your Blood Test" home-collection summary: pincode check, earliest pickup,
+ * "Your blood test" home-collection summary: pincode check, earliest pickup,
  * address, bill and grand total. `actions` renders below the total.
  */
 export function HomeCollectionCard({
@@ -77,7 +77,7 @@ export function HomeCollectionCard({
   return (
     <AppCard className={cn("shrink-0 items-center gap-3", className)}>
       <div className="h-[66px] w-full">
-        <AppCardTitle>Your Blood Test</AppCardTitle>
+        <AppCardTitle>Your blood test</AppCardTitle>
         <AppCardDescription className="max-w-none">
           Get a clearer picture of your health with accurate blood testing and regular health
           monitoring.
@@ -91,7 +91,7 @@ export function HomeCollectionCard({
           inputMode="numeric"
           maxLength={6}
           defaultValue="110001"
-          className="w-[161px] border-app-border bg-transparent! text-sm leading-5 text-app-foreground placeholder:text-app-foreground/40 focus-visible:border-app-accent focus-visible:ring-app-accent/30"
+          className="w-[161px] border-border bg-transparent! text-sm leading-5 text-foreground placeholder:text-foreground/40 focus-visible:border-primary focus-visible:ring-primary/30"
         />
         <Button variant="app-secondary" size="lg" className="px-6 text-sm leading-5">
           Check availability
@@ -99,19 +99,19 @@ export function HomeCollectionCard({
       </div>
 
       <div className="flex h-[49px] w-[321px] flex-col justify-center">
-        <Field label="Earliest Home Pickup">
-          <p className="text-base leading-[14px]">18 November, 2026 - 08:00 AM</p>
+        <Field label="Earliest home pickup">
+          <p className="text-base leading-[14px]">18 November 2026, 08:00</p>
         </Field>
       </div>
 
       <Field label="Deliver to">
         <p className="text-base leading-[22px]">
-          F,38, opp. to McDonald, inside the market, South Extension I, Block F, New Delhi, Delhi
+          F-38, opposite McDonald's, inside the market, South Extension I, Block F, New Delhi, Delhi
           110049
         </p>
       </Field>
 
-      <Field label="Bill Details">
+      <Field label="Bill details">
         <dl className="grid grid-cols-[1fr_auto] text-base leading-[22px]">
           <dt>Blood test</dt>
           <dd className="text-right">₹10,599</dd>
@@ -121,7 +121,7 @@ export function HomeCollectionCard({
       </Field>
 
       <div className="flex h-[62px] w-[321px] items-center justify-between">
-        <span className="text-base leading-[22px]">Grand Total</span>
+        <span className="text-base leading-[22px]">Grand total</span>
         <span className="flex h-8 items-end text-2xl leading-6">₹10,599</span>
       </div>
 
@@ -142,10 +142,10 @@ export default function BloodTest04() {
           actions={
             <div className="flex items-center gap-1.5">
               <Button variant="app-secondary" size="lg" className="w-40 px-0 text-sm leading-5">
-                Pay using Cred UPI
+                Pay using CRED UPI
               </Button>
               <Button variant="app" size="lg" className="w-40 px-0 text-base">
-                Book Now
+                Book a test
               </Button>
             </div>
           }
@@ -153,7 +153,7 @@ export default function BloodTest04() {
         <HomeCollectionCard
           actions={
             <Button variant="app" size="lg" className="w-[321px] text-base">
-              Book Now
+              Book a test
             </Button>
           }
         />

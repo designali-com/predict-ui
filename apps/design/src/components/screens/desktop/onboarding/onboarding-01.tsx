@@ -1,9 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { CalendarIcon } from "lucide-react"
 
-import { OnboardingDesktopShell } from "./shared"
+import { ASSETS, MaskIcon, OnboardingDesktopShell } from "./shared"
 
 export const title = "Date of birth"
 
@@ -21,13 +20,13 @@ export default function OnboardingDesktop01() {
 
   return (
     <OnboardingDesktopShell step={0} showBack={false} className="items-center pt-[165px]">
-      <h1 className="font-display text-2xl leading-[29px] font-normal text-app-foreground">
-        Date of Birth
+      <h1 className="text-2xl leading-[29px] font-medium tracking-tight text-foreground">
+        Date of birth
       </h1>
 
-      <label className="relative mt-[18px] flex h-12 w-full cursor-pointer items-center justify-between rounded-full border border-app-border px-6 text-sm leading-5 text-app-foreground">
+      <label className="relative mt-[18px] flex h-12 w-full cursor-pointer items-center justify-between rounded-full border border-border px-6 text-sm leading-5 text-foreground">
         <span className={dob ? undefined : "opacity-40"}>{dob ? formatDate(dob) : "Pick a date"}</span>
-        <CalendarIcon className="size-[21px] opacity-40" strokeWidth={1.5} />
+        <MaskIcon src={`${ASSETS}/onboarding-calendar.svg`} className="size-[21px]" />
         <input
           ref={inputRef}
           type="date"

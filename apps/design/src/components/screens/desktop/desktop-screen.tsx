@@ -11,7 +11,7 @@ export function DesktopScreen({ className, ...props }: React.ComponentProps<"div
     <div
       data-slot="desktop-screen"
       className={cn(
-        "relative flex h-[1080px] w-[1920px] flex-col overflow-hidden bg-app-background font-sans text-app-foreground",
+        "relative flex h-[1080px] w-[1920px] flex-col overflow-hidden bg-background font-sans text-foreground",
         className
       )}
       {...props}

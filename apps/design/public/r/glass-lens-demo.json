@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-lens-demo",
+  "type": "registry:block",
+  "description": "Basic",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-lens/glass-lens-demo.tsx",
+      "content": "\"use client\"\n\nimport { Tabs, TabsList, TabsPanel, TabsTab } from \"@ui-sdk/react/tabs\"\nimport { useState } from \"react\"\n\nimport { GlassLens } from \"@workspace/ui/components/liquid-glass/glass-lens\"\n\nconst tabs = [\n  { value: \"overview\", label: \"Overview\", text: \"Latest reading is in range.\" },\n  { value: \"history\", label: \"History\", text: \"Three panels this year.\" },\n  { value: \"notes\", label: \"Notes\", text: \"Collected after a 10 hour fast.\" },\n]\n\nexport function GlassLensDemo() {\n  const [value, setValue] = useState(\"overview\")\n\n  return (\n    <Tabs\n      value={value}\n      onValueChange={(next) => setValue(String(next))}\n      className=\"flex flex-col items-center gap-4\"\n    >\n      <TabsList\n        aria-label=\"Report\"\n        data-glass-host=\"\"\n        className=\"relative isolate inline-flex gap-1 rounded-xl bg-foreground/5 p-1\"\n      >\n        <GlassLens value={value} />\n        {tabs.map((tab) => (\n          <TabsTab\n            key={tab.value}\n            value={tab.value}\n            className=\"relative h-9 cursor-pointer rounded-lg px-4 text-sm font-medium text-muted-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring data-selected:text-secondary-foreground\"\n          >\n            {tab.value === value && (\n              <span\n                aria-hidden\n                data-glass-highlight=\"\"\n                className=\"absolute inset-0 rounded-lg bg-secondary [[data-glass-moving]_&]:opacity-0\"\n              />\n            )}\n            <span className=\"relative z-20\">{tab.label}</span>\n          </TabsTab>\n        ))}\n      </TabsList>\n      {tabs.map((tab) => (\n        <TabsPanel\n          key={tab.value}\n          value={tab.value}\n          className=\"text-sm text-muted-foreground\"\n        >\n          {tab.text}\n        </TabsPanel>\n      ))}\n    </Tabs>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

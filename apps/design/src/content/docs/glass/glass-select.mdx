@@ -1,0 +1,68 @@
+---
+title: Glass Select
+description: "A select whose list swells out of its trigger."
+---
+
+## Demos
+
+Choose a test panel.
+
+<ComponentPreview name="glass-select-demo" />
+
+## Usage
+
+Use it to pick one value from a short list. For actions, use a [Glass Dropdown Menu](/docs/components/glass-dropdown-menu). For groups, icons, or several values, use a [Select](/docs/components/select).
+
+Import it from `@workspace/ui/components/liquid-glass/glass-select`.
+
+```tsx
+import { GlassSelect } from "@workspace/ui/components/liquid-glass/glass-select"
+```
+
+```tsx
+<GlassSelect
+  label="Test panel"
+  placeholder="Choose a panel"
+  options={[{ value: "cardiac", label: "Cardiac" }]}
+/>
+```
+
+### Anatomy
+
+- **GlassSelect** — The label, the trigger, and the list.
+
+### Notes
+
+- The label is always visible and names the control.
+- Typing jumps to an option. Escape closes the list.
+
+## Examples
+
+### Controlled
+
+Hold the value with `value` and `onValueChange`.
+
+<ComponentPreview name="glass-select-controlled" />
+
+### Disabled
+
+One option, or the whole control.
+
+<ComponentPreview name="glass-select-disabled" />
+
+## Props
+
+These are the props you set most often.
+
+### GlassSelect
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `ReactNode` | — | Visible label. |
+| `options` | `GlassSelectOption[]` | — | Each has `value`, `label`, and an optional `disabled`. |
+| `value` | `string or null` | — | Value when controlled. |
+| `defaultValue` | `string or null` | — | Initial value. |
+| `onValueChange` | `(value) => void` | — | Called when the value changes. |
+| `placeholder` | `string` | — | Shown while nothing is selected. |
+| `disabled` | `boolean` | `false` | Blocks input and dims the control. |
+| `name` | `string` | — | Field name for form submission. |

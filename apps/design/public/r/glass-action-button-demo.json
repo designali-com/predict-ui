@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-action-button-demo",
+  "type": "registry:block",
+  "description": "Basic",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-action-button/glass-action-button-demo.tsx",
+      "content": "\"use client\"\n\nimport { GlassActionButton } from \"@workspace/ui/components/liquid-glass/glass-action-button\"\n\nconst wait = () => new Promise((resolve) => setTimeout(resolve, 1800))\n\nexport function GlassActionButtonDemo() {\n  return (\n    <GlassActionButton\n      material=\"tinted\"\n      className=\"bg-primary text-primary-foreground\"\n      pendingLabel=\"Booking\"\n      successLabel=\"Booked\"\n      resetAfter={2500}\n      onAction={wait}\n    >\n      Book test\n    </GlassActionButton>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

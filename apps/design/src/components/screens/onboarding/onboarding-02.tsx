@@ -1,13 +1,19 @@
 "use client"
 
 import * as React from "react"
-import { ChevronLeftIcon } from "lucide-react"
 
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import { cn } from "@workspace/ui/lib/utils"
 import { AppGlow } from "@workspace/ui/predict/app/app-glow"
 
 import { Screen } from "../screen"
+import {
+  choiceClass,
+  headingClass,
+  OnboardingActions,
+  OnboardingBack,
+  OnboardingProgress,
+} from "./parts"
 
 export const title = "Gender"
 
@@ -21,48 +27,34 @@ export default function Onboarding02() {
     <Screen>
       <AppGlow variant="blob" />
 
-      <button type="button" aria-label="Back" className="absolute top-[69px] left-10">
-        <ChevronLeftIcon className="size-6" strokeWidth={1.5} />
-      </button>
+      <OnboardingBack />
+      {/* Step progress, step 1 of 3 */}
+      <OnboardingProgress done={1} />
 
-      {/* Step progress — step 1 of 3 */}
-      <div className="absolute top-[78px] left-1/2 flex w-[215px] -translate-x-[calc(50%+0.5px)] gap-[7px]">
-        <span className="h-1.5 w-[67px] rounded-[3px] bg-app-brand" />
-        <span className="h-1.5 w-[67px] rounded-[3px] bg-app-pill" />
-        <span className="h-1.5 w-[66px] rounded-[3px] bg-app-pill" />
+      <h1 className={cn("absolute top-[174px] left-1/2 -translate-x-1/2 whitespace-nowrap", headingClass)}>
+        Gender
+      </h1>
+
+      <div
+        role="radiogroup"
+        aria-label="Gender"
+        className="absolute top-[221px] left-14 flex w-[290px] flex-col gap-2.5"
+      >
+        {options.map((option) => (
+          <Button
+            key={option}
+            role="radio"
+            aria-checked={gender === option}
+            variant="outline"
+            onClick={() => setGender(option)}
+            className={cn("w-full", choiceClass(gender === option))}
+          >
+            {option}
+          </Button>
+        ))}
       </div>
 
-      <div className="relative flex flex-col items-center pt-[174px]">
-        <h1 className="font-display text-2xl leading-[29px] font-normal">Gender</h1>
-
-        <div role="radiogroup" aria-label="Gender" className="mt-[18px] flex flex-col gap-2.5">
-          {options.map((option) => (
-            <Button
-              key={option}
-              role="radio"
-              aria-checked={gender === option}
-              variant="outline"
-              size="lg"
-              onClick={() => setGender(option)}
-              className={cn(
-                "w-[290px] text-sm text-app-foreground",
-                gender === option && "border-app-accent bg-app-pill hover:bg-app-pill"
-              )}
-            >
-              {option}
-            </Button>
-          ))}
-        </div>
-      </div>
-
-      <div className="relative mt-auto flex flex-col items-center gap-2 pb-[77px]">
-        <Button variant="app" size="lg" className="w-[290px] text-base">
-          Continue
-        </Button>
-        <Button variant="app-secondary" size="lg" className="w-[290px] text-sm">
-          Skip
-        </Button>
-      </div>
+      <OnboardingActions />
     </Screen>
   )
 }

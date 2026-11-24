@@ -66,48 +66,18 @@ export default function Page() {
               <CardHeader>
                 <CardTitle className="text-sm">Bio clock</CardTitle>
                 <CardDescription>
-                  Biological age, severity, and the domain that stands out.
+                  Your biological age next to your calendar age.
                 </CardDescription>
               </CardHeader>
 
-              <CardContent>
-                <BioClock
-                  bioAge={45}
-                  yearsValue="+7 Years"
-                  currentValue={2.6}
-                  className="mx-auto w-full"
-                  size={"default"}
-                />
-                <div className="grid grid-cols-1 gap-4 border-t p-4 sm:grid-cols-3">
-                  <div className="flex gap-2">
-                    <div className="w-2 shrink-0 self-stretch rounded-full bg-foreground" />
-                    <div className="space-y-1">
-                      <p className="text-sm font-semibold">Hour Hand</p>
-                      <p className="text-muted-foreground text-xs">
-                        How sick or unwell you are
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-2">
-                    <div className="w-0.5 shrink-0 self-stretch rounded-full bg-foreground" />
-                    <div className="space-y-1">
-                      <p className="text-sm font-semibold">Minute Hand</p>
-                      <p className="text-muted-foreground text-xs">
-                        How fast your body is aging
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-2">
-                    <div className="shrink-0 self-stretch border-l-2 border-dashed border-foreground" />                    <div className="space-y-1">
-                      <p className="text-sm font-semibold">Second Hand</p>
-                      <p className="text-muted-foreground text-xs">
-                        What's causing the problem
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              <CardContent className="flex flex-col items-center gap-4">
+                <BioClock bioAge={40.4} chronologicalAge={44} />
+                <p className="max-w-xs text-center text-base text-foreground">
+                  3.6 years younger than your calendar age
+                </p>
+                <span className="rounded-full bg-secondary px-3.5 py-1.5 text-xs text-secondary-foreground tabular-nums">
+                  0.87× ageing pace
+                </span>
               </CardContent>
             </Card>
 

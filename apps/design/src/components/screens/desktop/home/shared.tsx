@@ -12,7 +12,11 @@ import {
 } from "lucide-react"
 
 import { cn } from "@workspace/ui/lib/utils"
-import { Button } from "@workspace/ui/components/button"
+import {
+  AppButton as Button,
+  AppGlassBar,
+  AppGlassCircle,
+} from "@workspace/ui/predict/app/app-glass"
 import { AppCard, AppCardTitle } from "@workspace/ui/predict/app/app-card"
 import { AppGlow } from "@workspace/ui/predict/app/app-glow"
 import { PredictMark } from "@workspace/ui/predict/logo"
@@ -26,15 +30,15 @@ const ASSETS = "/screens/desktop/home"
 export function HomeHeader({ name = "Arjun Vaidya" }: { name?: string }) {
   return (
     <>
-      <button
-        type="button"
+      <AppGlassCircle
+        tone="primary"
         aria-label="PREDICT"
-        className="absolute top-[43px] left-[47px] flex size-[60px] items-center justify-center rounded-full bg-app-brand text-app-brand-foreground"
+        className="absolute top-[43px] left-[47px]"
       >
         <PredictMark className="h-[20.166px] w-[18px]" />
-      </button>
+      </AppGlassCircle>
 
-      <div className="absolute top-[43px] left-[1811px] size-[60px] overflow-hidden rounded-full border border-app-foreground bg-app-pill">
+      <div className="absolute top-[43px] left-[1811px] size-[60px] overflow-hidden rounded-full border border-foreground bg-secondary">
         <div className="absolute top-[-2px] left-[-2px] h-[64px] w-[65px] overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -46,7 +50,7 @@ export function HomeHeader({ name = "Arjun Vaidya" }: { name?: string }) {
       </div>
 
       <p className="absolute top-[51px] left-[calc(50%-52px)] font-display text-base whitespace-nowrap">
-        Good Morning,
+        Good morning,
       </p>
       <h1 className="absolute top-[77px] left-[calc(50%-0.5px)] -translate-x-1/2 text-center font-display text-4xl font-normal whitespace-nowrap">
         {name}
@@ -60,7 +64,7 @@ export function HomeHeader({ name = "Arjun Vaidya" }: { name?: string }) {
 /* ------------------------------------------------------------------ */
 
 const datePill =
-  "absolute top-[183px] flex h-8 -translate-x-1/2 items-center justify-center rounded-full bg-app-pill text-[10.5px] leading-[21px] whitespace-nowrap text-app-pill-foreground"
+  "absolute top-[183px] flex h-8 -translate-x-1/2 items-center justify-center rounded-full bg-secondary text-[10.5px] leading-[21px] whitespace-nowrap text-secondary-foreground"
 
 const days = [
   { label: "S", offset: -683 },
@@ -71,7 +75,7 @@ const days = [
 export function DateStrip() {
   return (
     <>
-      <div aria-hidden className="absolute top-[199px] left-0 h-0.5 w-[959px] bg-app-accent" />
+      <div aria-hidden className="absolute top-[199px] left-0 h-0.5 w-[959px] bg-primary" />
       <div
         aria-hidden
         className="absolute top-[224px] left-0 h-[50px] w-full bg-repeat-x"
@@ -95,7 +99,7 @@ export function DateStrip() {
           {d.label}
         </button>
       ))}
-      <div className={cn(datePill, "left-[calc(50%+1px)] px-5")}>Wednesday, 27 December, 2026</div>
+      <div className={cn(datePill, "left-[calc(50%+1px)] px-5")}>Sunday, 27 December 2026</div>
     </>
   )
 }
@@ -105,9 +109,6 @@ export function DateStrip() {
 /* ------------------------------------------------------------------ */
 
 export type HomeTab = "today" | "twin" | "people"
-
-const circle =
-  "flex size-[60px] shrink-0 items-center justify-center rounded-full bg-app-field text-app-foreground"
 
 const tabs: { id: HomeTab; label: string; icon: typeof ClockIcon }[] = [
   { id: "today", label: "Today", icon: ClockIcon },
@@ -120,11 +121,11 @@ export function DesktopNav({ defaultTab = "today" }: { defaultTab?: HomeTab }) {
 
   return (
     <nav className="absolute top-[979px] left-[calc(50%-0.5px)] z-10 flex -translate-x-1/2 items-center gap-1 px-px">
-      <button type="button" aria-label="Menu" className={circle}>
+      <AppGlassCircle aria-label="Menu">
         <GripIcon className="size-6" strokeWidth={2} />
-      </button>
+      </AppGlassCircle>
 
-      <div className="flex h-[60px] w-[237px] items-center justify-center gap-[5px] rounded-[30px] bg-app-field py-2.5 pr-3.5 pl-3">
+      <AppGlassBar className="flex h-[60px] w-[237px] items-center justify-center gap-[5px] rounded-[30px] py-2.5 pr-3.5 pl-3">
         {tabs.map(({ id, label, icon: Icon }) => {
           const on = active === id
           return (
@@ -143,18 +144,18 @@ export function DesktopNav({ defaultTab = "today" }: { defaultTab?: HomeTab }) {
               <Icon
                 className={cn(
                   "size-5 shrink-0",
-                  on && id === "today" && "fill-app-brand-foreground stroke-app-brand"
+                  on && id === "today" && "fill-primary-foreground stroke-primary"
                 )}
                 strokeWidth={on ? 2 : 1}
               />
             </Button>
           )
         })}
-      </div>
+      </AppGlassBar>
 
-      <button type="button" aria-label="PREDICT assistant" className={circle}>
+      <AppGlassCircle aria-label="PREDICT assistant">
         <PredictMark className="h-[20.166px] w-[18px]" />
-      </button>
+      </AppGlassCircle>
     </nav>
   )
 }

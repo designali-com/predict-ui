@@ -14,8 +14,8 @@ import {
 } from "@workspace/ui/components/dropdown-menu"
 
 const units = {
-  conventional: "mg/dL",
-  si: "mmol/L",
+  conventional: "mg·dL⁻¹",
+  si: "mmol·L⁻¹",
 }
 
 export function DropdownMenuRadio() {
@@ -34,9 +34,9 @@ export function DropdownMenuRadio() {
             onValueChange={(value) => setUnit(value as keyof typeof units)}
           >
             <DropdownMenuRadioItem value="conventional">
-              Conventional (mg/dL)
+              Conventional (mg·dL⁻¹)
             </DropdownMenuRadioItem>
-            <DropdownMenuRadioItem value="si">SI (mmol/L)</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="si">SI (mmol·L⁻¹)</DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
         </DropdownMenuGroup>
       </DropdownMenuContent>

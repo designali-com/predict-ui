@@ -1,4 +1,4 @@
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import { AppCard } from "@workspace/ui/predict/app/app-card"
 import { AppGlow } from "@workspace/ui/predict/app/app-glow"
 import { PredictMark } from "@workspace/ui/predict/logo"
@@ -13,7 +13,7 @@ export default function Registered01() {
     <Screen className="items-center">
       <AppGlow variant="blob" />
 
-      <PredictMark className="relative mt-[82px] h-[72px] w-16 text-app-accent" />
+      <PredictMark className="relative mt-[82px] h-[72px] w-16 text-primary" />
 
       <h1 className="relative mt-[78px] w-[248px] text-center font-display text-[40px] leading-[1.1] font-normal">
         Is this you?
@@ -21,7 +21,7 @@ export default function Registered01() {
       <p className="relative mt-[11px] text-base leading-[19px]">From your lab booking.</p>
 
       <AppCard className="mt-[43px] h-[274px] w-[247px] items-center">
-        <div className="relative size-[133px] shrink-0 overflow-hidden rounded-full bg-app-pill">
+        <div className="relative size-[133px] shrink-0 overflow-hidden rounded-full bg-secondary">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/screens/shared/avatar.png"

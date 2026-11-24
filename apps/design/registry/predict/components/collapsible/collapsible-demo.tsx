@@ -20,10 +20,10 @@ export function CollapsibleDemo() {
           <ChevronsUpDownIcon />
         </CollapsibleTrigger>
       </div>
-      <div className="rounded-md border px-3 py-2 text-xs">LDL-C · 142 mg/dL</div>
+      <div className="rounded-md border px-3 py-2 text-xs">LDL-C · 142 mg·dL⁻¹</div>
       <CollapsibleContent className="flex flex-col gap-2">
         <div className="rounded-md border px-3 py-2 text-xs">HbA1c · 5.9 %</div>
-        <div className="rounded-md border px-3 py-2 text-xs">Vitamin D · 22 ng/mL</div>
+        <div className="rounded-md border px-3 py-2 text-xs">Vitamin D · 22 ng·mL⁻¹</div>
       </CollapsibleContent>
     </Collapsible>
   )

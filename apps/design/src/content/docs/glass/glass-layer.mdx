@@ -1,0 +1,63 @@
+---
+title: Glass Layer
+description: "The glass itself, for your own elements."
+---
+
+## Demos
+
+Glass on a link.
+
+<ComponentPreview name="glass-layer-demo" />
+
+## Usage
+
+Use it to build something the other glass components do not cover. For a button, a card, or a link, start with [Glass Button](/docs/components/glass-button) or [Glass Card](/docs/components/glass-card).
+
+Import it from `@workspace/ui/components/liquid-glass/glass-layer`.
+
+```tsx
+import { GlassLayer } from "@workspace/ui/components/liquid-glass/glass-layer"
+```
+
+```tsx
+<a data-glass-host="" href="/start" className="rounded-full px-6">
+  <GlassLayer tint={0.15} />
+  Get started
+</a>
+```
+
+### Anatomy
+
+- **GlassLayer** — The canvas. It must be the first child of an element marked `data-glass-host`.
+
+### Notes
+
+- The host keeps its CSS look until the glass draws, and for good without WebGL2. Give it a background that keeps its text readable.
+- Clear glass sets `data-glass-tone` to `light` or `dark` on the host. Use it to pick the text colour.
+- It bends colours, gradients, images, text, and icons. It does not draw shadows, masks, or conic gradients behind it.
+
+## Examples
+
+### Optics
+
+Change the refraction and the blur.
+
+<ComponentPreview name="glass-layer-optics" />
+
+## Props
+
+These are the props you set most often.
+
+### GlassLayer
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `material` | `"clear" or "tinted"` | `clear` | Clear glass, or the colour of the host. |
+| `tint` | `number` | `1` | Clear glass: how much tint covers the backdrop, 0 to 1. |
+| `blur` | `number` | `1` | Clear glass: frost in px. |
+| `live` | `boolean` | `false` | Repaint the backdrop every frame. |
+| `swell` | `boolean` | `true` | React to hover and press. |
+| `backdrop` | `string` | the page | Selector of the ancestor whose content is bent. |
+| `trigger` | `string` | the host | Selector of the ancestor that reacts to the pointer. |
+| `disabled` | `boolean` | `false` | Turn the glass off and keep the CSS look. |
+| `optics` | `GlassOptics` | — | Tint colour, rim, bend, light, and shadow. |

@@ -12,7 +12,11 @@ import {
 } from "lucide-react"
 import { cn } from "cn"
 
-import { Button } from "@workspace/ui/components/button"
+import {
+  AppButton as Button,
+  AppGlassBar,
+  AppGlassCircle,
+} from "@workspace/ui/predict/app/app-glass"
 import { AppCard, AppCardHeader, AppCardTitle } from "@workspace/ui/predict/app/app-card"
 import { PredictMark } from "@workspace/ui/predict/logo"
 
@@ -40,7 +44,7 @@ export function Avatar({ photo, alt, className }: { photo: Photo; alt: string; c
   return (
     <div
       className={cn(
-        "relative size-[60px] shrink-0 overflow-hidden rounded-full border border-app-foreground bg-app-pill",
+        "relative size-[60px] shrink-0 overflow-hidden rounded-full border border-foreground bg-secondary",
         className
       )}
     >
@@ -134,7 +138,7 @@ const statusWidth: Record<string, number> = { active: 66, Medicine: 77, complete
 /** Patient table; columns spread with justify-between so it fits any card width. */
 export function PatientsCard({ className }: { className?: string }) {
   return (
-    <DashCard title="My Patients" className={className}>
+    <DashCard title="My patients" className={className}>
       {patients.map((p) => (
         <div key={p.name} className="flex h-[60px] items-center justify-between">
           <Avatar photo={p.photo} alt={p.name} />
@@ -142,7 +146,7 @@ export function PatientsCard({ className }: { className?: string }) {
           <p className="w-[88px] text-sm leading-6 whitespace-nowrap">{p.age}</p>
           <div className="w-[89px]">
             <span
-              className="inline-flex h-[23px] items-center justify-center rounded-[40px] bg-app-pill text-xs leading-6 whitespace-nowrap text-app-pill-foreground"
+              className="inline-flex h-[23px] items-center justify-center rounded-[40px] bg-secondary text-xs leading-6 whitespace-nowrap text-secondary-foreground"
               style={{ width: statusWidth[p.status] ?? 66 }}
             >
               {p.status}
@@ -167,16 +171,16 @@ export function PatientsCard({ className }: { className?: string }) {
 /* -------------------------------------------------------------------------- */
 
 const dayPill =
-  "absolute top-[183px] flex h-8 min-w-8 -translate-x-1/2 items-center justify-center rounded-full bg-app-pill text-[10.5px] leading-[21px] text-app-pill-foreground"
+  "absolute top-[183px] flex h-8 min-w-8 -translate-x-1/2 items-center justify-center rounded-full bg-secondary text-[10.5px] leading-[21px] text-secondary-foreground"
 
 function WeekStrip() {
   return (
     <>
       {/* Timeline rule + tick marks fading downwards */}
-      <div aria-hidden className="absolute top-[198px] left-0 h-[2px] w-[959px] bg-app-brand" />
+      <div aria-hidden className="absolute top-[198px] left-0 h-[2px] w-[959px] bg-primary" />
       <div
         aria-hidden
-        className="absolute top-[224px] left-0 h-[50px] w-full bg-app-foreground"
+        className="absolute top-[224px] left-0 h-[50px] w-full bg-foreground"
         style={{
           maskImage: `url(${ASSETS}/doctor-01-ticks.svg)`,
           maskSize: "959px 50px",
@@ -197,16 +201,13 @@ function WeekStrip() {
         </button>
       ))}
       <div className={cn(dayPill, "left-[961px] px-5 whitespace-nowrap")}>
-        Wednesday, 27 December, 2026
+        Sunday, 27 December 2026
       </div>
     </>
   )
 }
 
 type DoctorTab = "today" | "twin" | "patients"
-
-const navCircle =
-  "flex size-[60px] shrink-0 items-center justify-center rounded-full bg-app-field text-app-foreground"
 
 /** Desktop bottom nav: menu · [Today | twin | patients] · PREDICT assistant. */
 function DoctorNav() {
@@ -217,7 +218,7 @@ function DoctorNav() {
       label: "Today",
       icon: (
         <ClockIcon
-          className={cn("size-5 shrink-0", active === "today" && "fill-app-brand-foreground stroke-app-brand")}
+          className={cn("size-5 shrink-0", active === "today" && "fill-primary-foreground stroke-primary")}
           strokeWidth={2}
         />
       ),
@@ -228,10 +229,10 @@ function DoctorNav() {
 
   return (
     <nav className="absolute top-[979px] left-1/2 z-10 flex -translate-x-1/2 items-center gap-1 px-px">
-      <button type="button" aria-label="Menu" className={navCircle}>
+      <AppGlassCircle aria-label="Menu">
         <GripIcon className="size-6" strokeWidth={2} />
-      </button>
-      <div className="flex h-[60px] items-center justify-center gap-[5px] rounded-full bg-app-field py-2.5 pr-3.5 pl-3">
+      </AppGlassCircle>
+      <AppGlassBar className="flex h-[60px] items-center justify-center gap-[5px] py-2.5 pr-3.5 pl-3">
         {tabs.map((t) => {
           const on = active === t.id
           return (
@@ -251,10 +252,10 @@ function DoctorNav() {
             </Button>
           )
         })}
-      </div>
-      <button type="button" aria-label="PREDICT assistant" className={navCircle}>
+      </AppGlassBar>
+      <AppGlassCircle aria-label="PREDICT assistant">
         <PredictMark className="h-[20.166px] w-[18px]" />
-      </button>
+      </AppGlassCircle>
     </nav>
   )
 }
@@ -266,7 +267,7 @@ export function DoctorShell({ children }: { children: React.ReactNode }) {
       {/* Brand wash along the bottom edge */}
       <div
         aria-hidden
-        className="pointer-events-none absolute bottom-0 left-0 h-[289px] w-[1920px] bg-gradient-to-t from-app-brand to-transparent mix-blend-multiply blur-[0.5px] dark:mix-blend-normal"
+        className="pointer-events-none absolute bottom-0 left-0 h-[289px] w-[1920px] bg-gradient-to-t from-primary to-transparent mix-blend-multiply blur-[0.5px] dark:mix-blend-normal"
       />
 
       <WeekStrip />
@@ -274,23 +275,23 @@ export function DoctorShell({ children }: { children: React.ReactNode }) {
       {children}
 
       {/* PREDICT button */}
-      <button
-        type="button"
+      <AppGlassCircle
+        tone="primary"
         aria-label="PREDICT"
-        className="absolute top-[43px] left-[47px] flex size-[60px] items-center justify-center rounded-full bg-app-brand text-app-brand-foreground"
+        className="absolute top-[43px] left-[47px]"
       >
         <PredictMark className="h-[20.166px] w-[18px]" />
-      </button>
+      </AppGlassCircle>
 
       {/* Greeting */}
       <p className="absolute top-[51px] left-[908px] font-display text-base whitespace-nowrap">
-        Good Morning,
+        Good morning,
       </p>
       <h1 className="absolute top-[77px] left-[calc(50%-0.5px)] -translate-x-1/2 font-display text-4xl leading-normal font-normal whitespace-nowrap">
-        Dr. Arjun Vaidya
+        Dr. Meera Iyer
       </h1>
 
-      <Avatar photo={doctorPhoto} alt="Dr. Arjun Vaidya" className="absolute top-[43px] left-[1811px]" />
+      <Avatar photo={doctorPhoto} alt="Dr. Meera Iyer" className="absolute top-[43px] left-[1811px]" />
 
       <DoctorNav />
     </DesktopScreen>

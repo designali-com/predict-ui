@@ -3,21 +3,21 @@ title: Typography
 description: "Typefaces, the type scale, semantic defaults, and the text styles used across PREDICT."
 ---
 
-PREDICT uses two typefaces and one size scale. Good type does most of the work in a health interface: it makes the result, the range, and what to do next easy to find.
+PREDICT uses one typeface, Inter, and one size scale. Good type does most of the work in a health interface: it makes the result, the range, and what to do next easy to find.
 
 ## Typefaces
 
-**Inter** is the brand typeface, used for everything from headlines to buttons. **Geist Mono** is for codes, IDs, tokens, and numbers that need to line up.
+**Inter** is the only typeface, used for everything: headlines, body, buttons, numbers, and codes. Don't add a second font. For codes, IDs, and numbers that need to line up, use Inter with tabular figures (`tabular-nums`).
 
 <FontFamilies />
 
 | Font | Class | Weights | Loaded in |
 | --- | --- | --- | --- |
 | Inter | `font-sans` (the default) | Variable | `apps/design/src/lib/fonts.ts`, from Google Fonts, as `--font-inter` |
-| Geist Mono | `font-mono` | Variable | `app/layout.tsx`, from Google Fonts, as `--font-mono` |
 
 - Inter is a variable font, so every weight from 100 to 900 renders as written.
 - `font-sans` is set on `html`, so you rarely need to write it.
+- `font-mono`, `font-display`, and `font-serif` also resolve to Inter, so older classes can't bring in another face. `font-mono` adds tabular figures.
 
 ## Type scale
 
@@ -80,8 +80,8 @@ The combinations used across PREDICT. Reuse them instead of inventing new ones.
 | Overline | `text-xs font-medium tracking-[0.18em] uppercase text-muted-foreground` | "DESIGN SYSTEM" |
 | Body | `text-sm` or `text-base`, `text-muted-foreground` for descriptions | Card descriptions |
 | Caption | `text-xs text-muted-foreground` | "Healthy range 0.2–3.0" |
-| Result | `font-mono tabular-nums` with a large size | "3.5" |
-| Code and tokens | `font-mono text-xs` | `--primary` |
+| Result | `tabular-nums` with a large size | "3.5" |
+| Code and tokens | `text-xs tabular-nums` | `--primary` |
 
 ## Details
 
@@ -118,14 +118,37 @@ Use `tabular-nums` wherever numbers sit in columns or update live, so digits lin
 - Use uppercase only for short overlines.
 - Avoid exclamation marks. Results can be worrying; keep the tone calm.
 
+## Data, links and precise details
+
+Three reusable styles cover what headings don't: metrics and links.
+
+<DataStyles />
+
+| Style | Classes | Use for |
+| --- | --- | --- |
+| Data/Large | `text-heading-32 leading-10 font-semibold tabular-nums` | Prominent metrics and price values |
+| Data/Medium | `text-heading-24 leading-8 font-semibold tabular-nums` | Compact metric summaries |
+| Body/Link | `text-heading-16 leading-6 underline underline-offset-4` | Inline links, written as meaningful words |
+
+- Use tabular figures (`tabular-nums`) for values that change or are compared vertically.
+- Keep decimal precision, separators, units and date formats consistent. Keep a value and its unit together where you can.
+- Don't use colour alone to show a positive or negative change. Add a sign, a word, or an icon.
+- Link text should say where it goes: "Read the methodology", not "Click here".
+
+## Do this. Avoid that.
+
+One typeface means hierarchy comes from size, weight, and spacing. A few constraints keep it calm.
+
+<TypeDoAvoid />
+
 ## Implementation
 
 | File | What it holds |
 | --- | --- |
 | `packages/ui/src/styles/typo.css` | The `text-heading-*` scale and the semantic HTML defaults. |
-| `packages/ui/src/styles/globals.css` | Imports `typo.css` and maps `font-sans` to Inter. |
+| `packages/ui/src/styles/globals.css` | Imports `typo.css` and maps every font utility (`font-sans`, `font-mono`, `font-display`, `font-serif`) to Inter. |
 | `apps/design/src/lib/fonts.ts` | Loads Inter from Google Fonts. |
-| `apps/design/src/app/layout.tsx` | Loads Geist Mono and adds both font variables to `html`. |
+| `apps/design/src/app/layout.tsx` | Adds the Inter variable and `font-sans` to `html`. |
 
 To add a size, add it to the `@theme` block in `typo.css`:
 

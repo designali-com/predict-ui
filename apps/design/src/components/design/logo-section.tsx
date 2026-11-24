@@ -14,7 +14,7 @@ import { Button } from "@workspace/ui/components/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@workspace/ui/components/card"
 import { Tabs, TabsList, TabsTrigger } from "@workspace/ui/components/tabs"
 import { cn } from "@workspace/ui/lib/utils"
-import { Logo, LogoIcon, PredictLogo, PredictMascut } from "@workspace/ui/predict/logo"
+import { Logo, LogoIcon, PredictLogo, PredictMascotMark } from "@workspace/ui/predict/logo"
 import { PredictMascot } from "@workspace/ui/predict/predict-mascot"
 
 /* =========================================================
@@ -23,7 +23,7 @@ import { PredictMascot } from "@workspace/ui/predict/predict-mascot"
 
 const INK = "#000000"
 const PAPER = "#FFFFFF"
-const PURPLE = "#8504FE"
+const PURPLE = "#420080" // brand primary, oklch(0.3247 0.1762 297.04)
 
 type Tone = "light" | "dark"
 
@@ -134,7 +134,7 @@ function Surface({
         "flex items-center justify-center overflow-hidden rounded-lg border",
         tone === "light" && "bg-white text-black",
         tone === "dark" && "border-neutral-800 bg-black text-white",
-        tone === "brand" && "border-transparent bg-[#8504FE] text-white",
+        tone === "brand" && "border-transparent bg-[#420080] text-white",
         tone === "muted" && "bg-muted/40",
         className
       )}
@@ -193,7 +193,7 @@ const assets: Asset[] = [
     id: "predict-mascot",
     name: "Mascot",
     description: "The still mascot. For print, email, and anywhere motion isn't possible.",
-    render: () => <PredictMascut className="h-36 w-auto" />,
+    render: () => <PredictMascotMark className="h-36 w-auto" />,
   },
 ]
 
@@ -309,7 +309,7 @@ export function ClearSpace() {
       <Surface className="p-8 md:p-20">
         {/* The logo is 48px tall, so x (the height of the P, 17.1 of 23 units) is about 36px. */}
         <div
-          className="relative border border-dashed border-[#8504FE]/60 bg-[repeating-linear-gradient(45deg,rgba(133,4,254,0.08)_0_6px,transparent_6px_12px)]"
+          className="relative border border-dashed border-[#420080]/60 bg-[repeating-linear-gradient(45deg,rgba(66,0,128,0.08)_0_6px,transparent_6px_12px)]"
           style={{ padding: 36 }}
         >
           <div className="bg-white">
@@ -319,7 +319,7 @@ export function ClearSpace() {
             <span
               key={side}
               className={cn(
-                "absolute font-mono text-[11px] text-[#8504FE]",
+                "absolute font-mono text-[11px] text-[#420080]",
                 side === "top" && "top-2 left-1/2 -translate-x-1/2",
                 side === "bottom" && "bottom-2 left-1/2 -translate-x-1/2",
                 side === "left" && "top-1/2 left-3 -translate-y-1/2",
@@ -371,7 +371,7 @@ const versions: { name: string; tone: "light" | "dark" | "brand"; logoClass: str
   { name: "Black", tone: "light", logoClass: "text-black", note: "The default, on white and light photos." },
   { name: "White", tone: "dark", logoClass: "text-white", note: "On black and dark photos." },
   { name: "White on purple", tone: "brand", logoClass: "text-white", note: "On Predict Purple only." },
-  { name: "Purple", tone: "light", logoClass: "text-[#8504FE]", note: "On white, for brand moments." },
+  { name: "Purple", tone: "light", logoClass: "text-[#420080]", note: "On white, for brand moments." },
 ]
 
 export function LogoColorVersions() {
@@ -401,19 +401,19 @@ const misuse: { rule: string; render: React.ReactNode; tone?: "light" | "muted" 
   },
   {
     rule: "Don't add shadows, glows, or outlines.",
-    render: <Logo className="h-10 size-30 drop-shadow-[0_6px_6px_rgba(133,4,254,0.7)]" />,
+    render: <Logo className="h-10 size-30 drop-shadow-[0_6px_6px_rgba(66,0,128,0.7)]" />,
   },
   {
     rule: "Don't place it on low-contrast or busy backgrounds.",
     render: (
-      <div className="flex size-full items-center justify-center bg-[repeating-linear-gradient(135deg,#C8AAFF_0_14px,#8504FE_14px_28px)]">
-        <Logo className="h-10 size-30 text-[#8504FE]" />
+      <div className="flex size-full items-center justify-center bg-[repeating-linear-gradient(135deg,#CAAAFF_0_14px,#420080_14px_28px)]">
+        <Logo className="h-10 size-30 text-[#420080]" />
       </div>
     ),
   },
   {
-    rule: "Don't retype it in another font.",
-    render: <span className="font-serif text-3xl tracking-widest">PREDICT</span>,
+    rule: "Don't retype it as text, even in Inter.",
+    render: <span className="text-3xl font-light italic tracking-widest">PREDICT</span>,
   },
 ]
 
@@ -437,18 +437,18 @@ export function LogoMisuse() {
 type Swatch = { name: string; hex: string; token: string; oklch: string; dark?: boolean }
 
 const coreColors: Swatch[] = [
-  { name: "Predict Purple", hex: "#8504FE", token: "--primary", oklch: "0.536 0.2917 295.68", dark: true },
+  { name: "Predict Purple", hex: "#420080", token: "--primary", oklch: "0.3247 0.1762 297.04", dark: true },
   { name: "Black", hex: "#000000", token: "--foreground", oklch: "0 0 0", dark: true },
   { name: "White", hex: "#FFFFFF", token: "--background", oklch: "1 0 0" },
-  { name: "Lilac", hex: "#F4EEFF", token: "--secondary", oklch: "0.961 0.0343 295.7" },
+  { name: "Lavender", hex: "#EBE6FE", token: "--secondary", oklch: "0.936 0.0326 295.31" },
 ]
 
 const purpleScale: Swatch[] = [
-  { name: "50", hex: "#FDFCFF", token: "--chart-1", oklch: "0.992 0.0052 295.7" },
-  { name: "100", hex: "#F4EEFF", token: "--chart-2", oklch: "0.961 0.0343 295.7" },
-  { name: "200", hex: "#E3D3FF", token: "--chart-3", oklch: "0.902 0.0897 295.7" },
-  { name: "400", hex: "#C8AAFF", token: "--chart-4", oklch: "0.805 0.1475 295.7" },
-  { name: "600", hex: "#8504FE", token: "--chart-5", oklch: "0.536 0.2917 295.7", dark: true },
+  { name: "50", hex: "#FDFCFF", token: "--chart-1", oklch: "0.992 0.0052 297.04" },
+  { name: "100", hex: "#EBE6FE", token: "--chart-2", oklch: "0.936 0.0326 295.31" },
+  { name: "200", hex: "#E4D3FF", token: "--chart-3", oklch: "0.902 0.0897 297.04" },
+  { name: "400", hex: "#CAAAFF", token: "--chart-4", oklch: "0.805 0.1475 297.04" },
+  { name: "Primary", hex: "#420080", token: "--chart-5", oklch: "0.3247 0.1762 297.04", dark: true },
 ]
 
 function SwatchCard({ swatch, size = "lg" }: { swatch: Swatch; size?: "lg" | "sm" }) {
@@ -512,8 +512,8 @@ export function ColorProportions() {
   const parts = [
     { name: "White", share: 60, className: "bg-white text-black" },
     { name: "Black", share: 25, className: "bg-black text-white" },
-    { name: "Lilac", share: 10, className: "bg-[#F4EEFF] text-black" },
-    { name: "Purple", share: 5, className: "bg-[#8504FE] text-white" },
+    { name: "Lavender", share: 10, className: "bg-[#EBE6FE] text-black" },
+    { name: "Purple", share: 5, className: "bg-[#420080] text-white" },
   ]
 
   return (
@@ -530,7 +530,7 @@ export function ColorProportions() {
         ))}
       </div>
       <figcaption className="pt-3 text-xs text-muted-foreground">
-        Mostly white and black, a little lilac, and purple only where it matters.
+        Mostly white and black, a little lavender, and purple only where it matters.
       </figcaption>
     </figure>
   )
@@ -577,10 +577,10 @@ export function BrandTypography() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-sm">Geist Mono</CardTitle>
-          <CardDescription>Codes, IDs, and numbers that need to line up. `font-mono`</CardDescription>
+          <CardTitle className="text-sm">Inter, tabular figures</CardTitle>
+          <CardDescription>Codes, IDs, and numbers that need to line up. `tabular-nums`</CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-col gap-4 font-mono">
+        <CardContent className="flex flex-col gap-4 font-sans tabular-nums">
           <p className="text-7xl tracking-tight">Aa</p>
           <p className="text-sm break-all text-muted-foreground">0123456789 +−×÷ = % ·</p>
           <dl className="flex flex-col gap-2 border-t pt-4 text-sm">
@@ -619,7 +619,7 @@ export function MascotShowcase() {
       </figure>
       <figure>
         <Surface tone="muted" className="h-56">
-          <PredictMascut className="h-32 w-auto" />
+          <PredictMascotMark className="h-32 w-auto" />
         </Surface>
         <figcaption className="pt-3 text-xs text-muted-foreground">
           Still, for print, email, and social posts.
@@ -634,7 +634,7 @@ export function MascotUsage() {
     <div className="not-prose mt-6 grid gap-4 sm:grid-cols-2">
       <figure>
         <Surface className="h-44 flex-col gap-3 p-6 text-center">
-          <PredictMascut className="h-16 w-auto" />
+          <PredictMascotMark className="h-16 w-auto" />
           <p className="text-sm font-medium text-black">No results yet</p>
           <p className="text-xs text-neutral-500">Book your first test to see them here.</p>
         </Surface>
@@ -643,7 +643,7 @@ export function MascotUsage() {
       <figure>
         <Surface className="h-44 flex-col gap-3 p-6 text-center">
           <div className="flex items-center gap-3">
-            <PredictMascut className="h-14 w-auto" />
+            <PredictMascotMark className="h-14 w-auto" />
             <div className="rounded-md border border-[#FB2C36]/40 bg-[#FB2C36]/10 px-3 py-2 text-left text-xs text-[#B4141C]">
               LDL-C is far above
               <br />

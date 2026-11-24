@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-button-group-text",
+  "type": "registry:block",
+  "description": "With text",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-button-group/glass-button-group-text.tsx",
+      "content": "\"use client\"\n\nimport { MinusIcon, PlusIcon } from \"lucide-react\"\nimport { useState } from \"react\"\n\nimport {\n  GlassButtonGroup,\n  GlassButtonGroupItem,\n  GlassButtonGroupText,\n} from \"@workspace/ui/components/liquid-glass/glass-button-group\"\n\nexport function GlassButtonGroupWithText() {\n  const [glasses, setGlasses] = useState(4)\n\n  return (\n    <div className=\"relative flex w-full max-w-md flex-wrap items-center justify-center gap-4 overflow-hidden rounded-2xl bg-chart-2 p-12\">\n      <div\n        aria-hidden\n        className=\"absolute -top-8 left-1/4 size-32 rounded-full bg-chart-4 dark:bg-chart-3\"\n      />\n      <div\n        aria-hidden\n        className=\"absolute right-1/4 -bottom-10 size-32 rounded-full bg-chart-4 dark:bg-chart-3\"\n      />\n      <GlassButtonGroup aria-label=\"Water intake\" material=\"clear\" tint={0.35}>\n        <GlassButtonGroupItem\n          aria-label=\"Remove a glass\"\n          disabled={glasses === 0}\n          onClick={() => setGlasses((count) => count - 1)}\n        >\n          <MinusIcon />\n        </GlassButtonGroupItem>\n        <GlassButtonGroupText className=\"min-w-24 tabular-nums\">\n          {glasses} glasses\n        </GlassButtonGroupText>\n        <GlassButtonGroupItem\n          aria-label=\"Add a glass\"\n          onClick={() => setGlasses((count) => count + 1)}\n        >\n          <PlusIcon />\n        </GlassButtonGroupItem>\n      </GlassButtonGroup>\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

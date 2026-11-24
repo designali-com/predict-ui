@@ -20,7 +20,7 @@ const data = [
 
 const chartConfig = {
   ldl: {
-    label: "LDL-C (mg/dL)",
+    label: "LDL-C (mg·dL⁻¹)",
     color: "var(--chart-5)",
   },
 } satisfies ChartConfig

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-button-tinted",
+  "type": "registry:block",
+  "description": "Tinted",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-button/glass-button-tinted.tsx",
+      "content": "\"use client\"\n\nimport { GlassButton } from \"@workspace/ui/components/liquid-glass/glass-button\"\n\nexport function GlassButtonTinted() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4\">\n      <GlassButton\n        material=\"tinted\"\n        className=\"bg-primary text-primary-foreground\"\n      >\n        Book test\n      </GlassButton>\n      <GlassButton\n        material=\"tinted\"\n        className=\"bg-secondary text-secondary-foreground\"\n      >\n        Save draft\n      </GlassButton>\n      <GlassButton material=\"tinted\" className=\"bg-destructive text-white\">\n        Delete report\n      </GlassButton>\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

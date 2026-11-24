@@ -88,10 +88,10 @@ const tokenGroups: { title: string; tokens: Token[] }[] = [
   {
     title: "Brand",
     tokens: [
-      { name: "primary", light: [0.536, 0.2917, 295.68], dark: [0.536, 0.2917, 295.68], usage: "Predict Purple. The main action and brand moments." },
-      { name: "primary-foreground", light: [1, 0, 0], dark: [1, 0, 0], usage: "Text and icons on primary." },
-      { name: "secondary", light: [0.961, 0.0343, 295.7], dark: [0.253, 0.1037, 295.7], usage: "Lilac. Secondary buttons and soft highlights." },
-      { name: "secondary-foreground", light: [0.1, 0, 0], dark: [0.9, 0, 0], usage: "Text on secondary." },
+      { name: "primary", light: [0.3247, 0.1762, 297.04], dark: [0.936, 0.0326, 295.31], usage: "Predict Purple (#420080); lavender (#EBE6FE) in dark mode. The main action and brand moments." },
+      { name: "primary-foreground", light: [1, 0, 0], dark: [0.3247, 0.1762, 297.04], usage: "Text and icons on primary: white, or Predict Purple on dark-mode lavender." },
+      { name: "secondary", light: [0.936, 0.0326, 295.31], dark: [0.253, 0.1037, 297.04], usage: "Lavender (#EBE6FE). Secondary buttons, chips, and soft highlights." },
+      { name: "secondary-foreground", light: [0.2002, 0, 0], dark: [0.9, 0, 0], usage: "Text on secondary." },
     ],
   },
   {
@@ -107,7 +107,7 @@ const tokenGroups: { title: string; tokens: Token[] }[] = [
     tokens: [
       { name: "border", light: [0.9, 0, 0], dark: [0.3, 0, 0], usage: "Dividers and card edges. The default border colour." },
       { name: "input", light: [0.9, 0, 0], dark: [0.3, 0, 0], usage: "Input borders and fills." },
-      { name: "ring", light: [0.7, 0, 0], dark: [0.4, 0, 0], usage: "Focus rings." },
+      { name: "ring", light: [0.3247, 0.1762, 297.04], dark: [0.936, 0.0326, 295.31], usage: "Focus rings, in the primary." },
     ],
   },
   {
@@ -132,11 +132,11 @@ const tokenGroups: { title: string; tokens: Token[] }[] = [
 ]
 
 const charts: Token[] = [
-  { name: "chart-1", light: [0.992, 0.0052, 295.7], dark: [0, 0.0389, 295.7], usage: "Lowest values and backgrounds." },
-  { name: "chart-2", light: [0.961, 0.0343, 295.7], dark: [0.253, 0.1037, 295.7], usage: "" },
-  { name: "chart-3", light: [0.902, 0.0897, 295.7], dark: [0.342, 0.154, 295.7], usage: "" },
-  { name: "chart-4", light: [0.805, 0.1475, 295.7], dark: [0.446, 0.1771, 295.7], usage: "" },
-  { name: "chart-5", light: [0.536, 0.2917, 295.7], dark: [0.536, 0.2917, 295.7], usage: "Highest values and the main series." },
+  { name: "chart-1", light: [0.992, 0.0052, 297.04], dark: [0, 0.0389, 297.04], usage: "Lowest values and backgrounds." },
+  { name: "chart-2", light: [0.936, 0.0326, 295.31], dark: [0.253, 0.1037, 297.04], usage: "" },
+  { name: "chart-3", light: [0.902, 0.0897, 297.04], dark: [0.446, 0.1771, 297.04], usage: "" },
+  { name: "chart-4", light: [0.805, 0.1475, 297.04], dark: [0.7, 0.11, 297.04], usage: "" },
+  { name: "chart-5", light: [0.3247, 0.1762, 297.04], dark: [0.936, 0.0326, 295.31], usage: "Highest values and the main series." },
 ]
 
 const statuses: (Token & { label: string; when: string })[] = [
@@ -342,9 +342,9 @@ type Pair = { label: string; fg: [Oklch, Oklch]; bg: [Oklch, Oklch]; large?: boo
 const pairs: Pair[] = [
   { label: "foreground on background", fg: [[0, 0, 0], [1, 0, 0]], bg: [[1, 0, 0], [0, 0, 0]] },
   { label: "muted-foreground on background", fg: [[0.2, 0, 0], [0.8, 0, 0]], bg: [[1, 0, 0], [0, 0, 0]] },
-  { label: "primary-foreground on primary", fg: [[1, 0, 0], [1, 0, 0]], bg: [[0.536, 0.2917, 295.68], [0.536, 0.2917, 295.68]] },
-  { label: "primary on background", fg: [[0.536, 0.2917, 295.68], [0.536, 0.2917, 295.68]], bg: [[1, 0, 0], [0, 0, 0]] },
-  { label: "secondary-foreground on secondary", fg: [[0.1, 0, 0], [0.9, 0, 0]], bg: [[0.961, 0.0343, 295.7], [0.253, 0.1037, 295.7]] },
+  { label: "primary-foreground on primary", fg: [[1, 0, 0], [0.3247, 0.1762, 297.04]], bg: [[0.3247, 0.1762, 297.04], [0.936, 0.0326, 295.31]] },
+  { label: "primary on background", fg: [[0.3247, 0.1762, 297.04], [0.936, 0.0326, 295.31]], bg: [[1, 0, 0], [0, 0, 0]] },
+  { label: "secondary-foreground on secondary", fg: [[0.2002, 0, 0], [0.9, 0, 0]], bg: [[0.936, 0.0326, 295.31], [0.253, 0.1037, 297.04]] },
   { label: "foreground on muted", fg: [[0, 0, 0], [1, 0, 0]], bg: [[0.8, 0, 0], [0.2, 0, 0]] },
   { label: "accent-foreground on accent", fg: [[0.3, 0, 0], [0.7, 0, 0]], bg: [[0.7, 0, 0], [0.3, 0, 0]] },
   { label: "destructive on background", fg: [[0.58, 0.22, 27], [0.58, 0.22, 27]], bg: [[1, 0, 0], [0, 0, 0]] },
@@ -504,18 +504,18 @@ export function FontFamilies() {
 
       <div className="flex flex-col gap-4 rounded-lg border p-5">
         <div className="flex items-baseline justify-between">
-          <span className="text-sm font-medium">Geist Mono</span>
-          <span className="font-mono text-[11px] text-muted-foreground">font-mono</span>
+          <span className="text-sm font-medium">Inter, tabular figures</span>
+          <span className="font-mono text-[11px] text-muted-foreground">tabular-nums</span>
         </div>
-        <p className="font-mono text-7xl tracking-tight text-foreground">Aa</p>
-        <p className="font-mono text-sm break-all text-foreground">
+        <p className="text-7xl font-medium tracking-tight text-foreground tabular-nums">09</p>
+        <p className="text-sm break-all text-foreground tabular-nums">
           ABCDEFGHIJKLMNOPQRSTUVWXYZ
           <br />
           abcdefghijklmnopqrstuvwxyz
           <br />
           0123456789 ·−+=%
         </p>
-        <dl className="flex flex-col divide-y border-t font-mono text-sm">
+        <dl className="flex flex-col divide-y border-t text-sm tabular-nums">
           {[
             ["Sample ID", "PRD-20481"],
             ["Token", "--status-normal"],
@@ -581,6 +581,114 @@ export function NumberStyles() {
           <figcaption className="pt-3 font-mono text-[11px] text-muted-foreground">{style.label}</figcaption>
         </figure>
       ))}
+    </div>
+  )
+}
+
+const dataStyles = [
+  {
+    name: "Data/Large",
+    sample: "1,248",
+    className: "text-heading-32 leading-10 font-semibold tabular-nums",
+    spec: "Inter Semibold · 32/40 · 0%",
+    use: "Prominent metrics and price values.",
+  },
+  {
+    name: "Data/Medium",
+    sample: "36 saved",
+    className: "text-heading-24 leading-8 font-semibold tabular-nums",
+    spec: "Inter Semibold · 24/32 · 0%",
+    use: "Compact metric summaries.",
+  },
+  {
+    name: "Body/Link",
+    sample: "Read the methodology",
+    className: "text-heading-16 leading-6 underline underline-offset-4",
+    spec: "Inter Regular · 16/24 · 0%",
+    use: "Underline inline links; use meaningful words.",
+    link: true,
+  },
+]
+
+export function DataStyles() {
+  return (
+    <div className="not-prose mt-6 grid gap-4 md:grid-cols-3">
+      {dataStyles.map((style) => (
+        <div key={style.name} className="flex flex-col gap-4 rounded-lg border p-6">
+          <span className="text-sm font-medium text-foreground">{style.name}</span>
+          {style.link ? (
+            <a
+              href="#"
+              onClick={(event) => event.preventDefault()}
+              className={cn("text-foreground hover:text-muted-foreground", style.className)}
+            >
+              {style.sample}
+            </a>
+          ) : (
+            <span className={cn("text-foreground", style.className)}>{style.sample}</span>
+          )}
+          <div className="text-sm text-muted-foreground">
+            <p className="font-mono text-[11px]">{style.spec}</p>
+            <p className="text-sm">{style.use}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function GuidanceCard({
+  kind,
+  title,
+  children,
+}: {
+  kind: "Do" | "Avoid"
+  title: string
+  children: React.ReactNode
+}) {
+  return (
+    <div className="flex flex-col gap-4 rounded-lg border p-6">
+      <p className="text-2xl leading-9 font-medium tracking-tight text-foreground">
+        {kind} · {title}
+      </p>
+      <div className="flex flex-col gap-4 text-base leading-6 text-foreground">{children}</div>
+    </div>
+  )
+}
+
+export function TypeDoAvoid() {
+  return (
+    <div className="not-prose mt-6 grid gap-4 md:grid-cols-2">
+      <GuidanceCard kind="Do" title="separate expression from utility">
+        <p>Set the heading in Inter Medium at a heading size, then drop to Inter Regular for the explanation and action.</p>
+        <p className="text-heading-32 leading-10 font-medium tracking-tight">A clearer next step</p>
+        <p>Explore ideas worth considering.</p>
+        <p className="font-medium">View insights</p>
+      </GuidanceCard>
+      <GuidanceCard kind="Avoid" title="a second typeface">
+        <p>
+          Do not bring in a serif, script or monospace face for headings, numbers or codes. Hierarchy comes from
+          size, weight and spacing, not from switching fonts.
+        </p>
+        <p className="font-semibold">
+          Keep the rule simple: everything is Inter. Headings are Medium; information is Regular; actions are
+          Medium.
+        </p>
+      </GuidanceCard>
+      <GuidanceCard kind="Do" title="preserve a calm hierarchy">
+        <p>
+          Use sentence case. Keep paragraphs left-aligned. Use one main heading per page and a logical sequence of
+          subheadings. Use spacing as well as scale to group related information.
+        </p>
+        <p>Use 16/24 for default reading. Increase the container height when copy grows.</p>
+      </GuidanceCard>
+      <GuidanceCard kind="Avoid" title="solving layout with smaller text">
+        <p>
+          Do not justify paragraphs, stretch text, add negative tracking to body copy, or reduce type to make a
+          control fit. Avoid long all-caps strings and full paragraphs in semibold.
+        </p>
+        <p>Do not center long descriptions or force essential information into a single line.</p>
+      </GuidanceCard>
     </div>
   )
 }

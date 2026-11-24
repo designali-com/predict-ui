@@ -1,49 +1,56 @@
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import { Input } from "@workspace/ui/components/input"
 import { AppGlow } from "@workspace/ui/predict/app/app-glow"
-import { PredictMark } from "@workspace/ui/predict/logo"
 
 import { Screen } from "../screen"
+import { At, AuthHeading, AuthMark, primaryButtonClass, secondaryButtonClass } from "./auth-parts"
 
 export const title = "Enter phone number"
 
 // Figma: iPhone 18 Pro - 124 (1733:1984)
 export default function Auth03() {
   return (
-    <Screen className="items-center">
+    <Screen className="bg-card">
       <AppGlow variant="blob" />
+      <AuthMark />
 
-      <PredictMark aria-label="PREDICT" className="relative mt-[82px] h-[72px] w-16 text-app-accent" />
-
-      <div className="relative mt-[69px] flex flex-col items-center text-center">
-        <h1 className="w-[248px] font-display text-[40px] leading-[1.1] font-normal">
+      <At top={223}>
+        <AuthHeading className="w-[248px] leading-[1.1] whitespace-normal">
           What&apos;s your number?
-        </h1>
-        <p className="mt-1.5 text-base">The one you gave at your blood test.</p>
-      </div>
+        </AuthHeading>
+      </At>
+      <At top={317} className="text-base leading-[19px] whitespace-nowrap">
+        The one you gave at your blood test.
+      </At>
 
-      <Input
-        type="tel"
-        inputMode="tel"
-        autoComplete="tel"
-        size="lg"
-        placeholder="Phone number"
-        aria-label="Phone number"
-        className="relative mt-[77px] w-[290px] border-app-border bg-app-field text-sm text-app-foreground placeholder:text-app-foreground/40"
-      />
+      <At top={413}>
+        <Input
+          type="tel"
+          inputMode="tel"
+          autoComplete="tel"
+          size="lg"
+          placeholder="Phone number"
+          aria-label="Phone number"
+          className="w-[290px] border-border bg-card leading-5 text-foreground placeholder:text-foreground/40"
+        />
+      </At>
 
-      <div className="relative mt-[118px] flex flex-col gap-3">
-        <Button variant="app" size="lg" className="w-[290px] px-7 text-base">
+      <At top={579}>
+        <Button variant="app" className={primaryButtonClass}>
           Submit
         </Button>
-        <Button variant="app-secondary" size="lg" className="w-[290px] px-6 text-sm">
-          Use different number
+      </At>
+      <At top={639}>
+        <Button variant="app-secondary" className={secondaryButtonClass}>
+          Use a different number
         </Button>
-      </div>
+      </At>
 
-      <a href="#" className="relative mt-[35px] text-base text-white underline">
-        resend otp?
-      </a>
+      <At top={722} className="text-base leading-[19px] whitespace-nowrap text-white">
+        <a href="#" className="underline">
+          Resend code
+        </a>
+      </At>
     </Screen>
   )
 }

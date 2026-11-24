@@ -24,16 +24,16 @@ import {
 import { Logo } from "@workspace/ui/predict/logo"
 
 const tests = [
-  { title: "Full panel", href: "#", description: "40 biomarkers across every body system." },
-  { title: "Heart health", href: "#", description: "Lipids, inflammation and blood pressure." },
-  { title: "Hormones", href: "#", description: "Thyroid, cortisol and sex hormones." },
-  { title: "Metabolic", href: "#", description: "Glucose, insulin and HbA1c." },
+  { title: "Full panel", href: "/tests/full-panel", description: "40 biomarkers across every body system." },
+  { title: "Heart health", href: "/tests/heart-health", description: "Lipids, inflammation and blood pressure." },
+  { title: "Hormones", href: "/tests/hormones", description: "Thyroid, cortisol and sex hormones." },
+  { title: "Metabolic", href: "/tests/metabolic", description: "Glucose, insulin and HbA1c." },
 ]
 
 const links = [
-  { title: "How it works", href: "#" },
-  { title: "Pricing", href: "#" },
-  { title: "Clinics", href: "#" },
+  { title: "How it works", href: "/how-it-works" },
+  { title: "Pricing", href: "/pricing" },
+  { title: "Clinics", href: "/clinics" },
 ]
 
 export default function Page() {
@@ -41,7 +41,7 @@ export default function Page() {
     <div className="min-h-svh">
       <header className="sticky top-2 z-40 max-w-6xl mx-auto rounded-full border bg-background/40 backdrop-blur-md">
         <div className="mx-auto flex h-12 max-w-6xl items-center gap-6 px-2">
-          <a href="#" className="shrink-0 pl-4">
+          <a href="/" className="shrink-0 pl-4">
             <Logo role="img" aria-label="PREDICT" className="h-5 size-24" />
           </a>
 
@@ -81,10 +81,10 @@ export default function Page() {
           </NavigationMenu>
 
           <div className="ms-auto hidden items-center gap-1 md:flex">
-            <Button variant="ghost" size="sm" render={<a href="#" />}>
+            <Button variant="ghost" size="sm" render={<a href="/login" />}>
               Sign in
             </Button>
-            <Button size="sm" render={<a href="#" />}>
+            <Button size="sm" render={<a href="/book" />}>
               Book a test
             </Button>
           </div>
@@ -117,8 +117,8 @@ export default function Page() {
                 ))}
               </nav>
               <SheetFooter>
-                <Button render={<a href="#" />}>Book a test</Button>
-                <Button variant="outline" render={<a href="#" />}>
+                <Button render={<a href="/book" />}>Book a test</Button>
+                <Button variant="outline" render={<a href="/login" />}>
                   Sign in
                 </Button>
               </SheetFooter>

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-select-controlled",
+  "type": "registry:block",
+  "description": "Controlled",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-select/glass-select-controlled.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { GlassSelect } from \"@workspace/ui/components/liquid-glass/glass-select\"\n\nconst options = [\n  { value: \"mg/dL\", label: \"mg/dL\" },\n  { value: \"mmol/L\", label: \"mmol/L\" },\n]\n\nexport function GlassSelectControlled() {\n  const [unit, setUnit] = useState<string | null>(\"mg/dL\")\n\n  return (\n    <div className=\"flex flex-col gap-4\">\n      <GlassSelect\n        label=\"Glucose unit\"\n        value={unit}\n        onValueChange={setUnit}\n        options={options}\n      />\n      <p className=\"text-sm text-muted-foreground\">\n        Results are shown in {unit}.\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

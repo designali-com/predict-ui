@@ -20,7 +20,7 @@ export function CalendarRange() {
       selected={range}
       onSelect={setRange}
       numberOfMonths={2}
-      className="rounded-lg border"
+      className="rounded-lg border p-3"
     />
   )
 }

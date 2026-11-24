@@ -1,4 +1,4 @@
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 
 import { Screen } from "../screen"
 import { WearablesDeviceCard, WearablesHeader, WearablesSheet } from "./wearables-02"

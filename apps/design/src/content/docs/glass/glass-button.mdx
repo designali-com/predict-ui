@@ -1,0 +1,91 @@
+---
+title: Glass Button
+description: "A button of liquid glass that reacts to the pointer and bends the page behind it."
+---
+
+## Demos
+
+Clear glass over a colourful background.
+
+<ComponentPreview name="glass-button-demo" />
+
+## Usage
+
+Use it for a main action over an image, a gradient, or a coloured surface. On plain surfaces and in dense layouts use a [Button](/docs/components/button).
+
+Import it from `@workspace/ui/components/liquid-glass/glass-button`.
+
+```tsx
+import { GlassButton } from "@workspace/ui/components/liquid-glass/glass-button"
+```
+
+```tsx
+<GlassButton tint={0.2} icon={<ArrowRightIcon />}>View report</GlassButton>
+```
+
+### Anatomy
+
+- **GlassButton** — The button and its glass. With `asChild` the glass goes on your own element.
+
+### Notes
+
+- Clear glass covers its backdrop with `tint`. Set it below 1 to see through it.
+- Tinted glass takes the colour of its own `bg-*` class. Set a `text-*` class with it.
+- Any `rounded-*` class of your own replaces the pill shape.
+- Icon-only buttons need an `aria-label`.
+- Return a promise from `onClick` and the button stays pending until it settles.
+
+## Examples
+
+### Tinted
+
+Glass in the theme colours.
+
+<ComponentPreview name="glass-button-tinted" />
+
+### Sizes
+
+`sm`, `md`, `lg`, and `xl`.
+
+<ComponentPreview name="glass-button-sizes" />
+
+### Icon
+
+An icon at either end, or on its own.
+
+<ComponentPreview name="glass-button-icon" />
+
+### Link
+
+Put the glass on a link with `asChild`.
+
+<ComponentPreview name="glass-button-link" />
+
+### Pending
+
+Stays pending while the promise runs.
+
+<ComponentPreview name="glass-button-pending" />
+
+### Disabled
+
+Dimmed, and cannot be pressed.
+
+<ComponentPreview name="glass-button-disabled" />
+
+## Props
+
+These are the props you set most often. Unlisted props pass through to the underlying element.
+
+### GlassButton
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `material` | `"clear" or "tinted"` | `clear` | Clear glass, or the colour of its own `bg-*` class. |
+| `size` | `"sm", "md", "lg", or "xl"` | `md` | Height: 32, 40, 48, or 64 px. |
+| `icon` | `ReactNode` | — | An icon element. |
+| `iconPosition` | `"start" or "end"` | `end` | Side the icon sits on. |
+| `tint` | `number` | `1` | Clear glass: how much tint covers the backdrop, 0 to 1. |
+| `asChild` | `boolean` | `false` | Put the glass on the single child element. |
+| `disabled` | `boolean` | `false` | Blocks input and dims the button. |
+| `onClick` | `(event) => unknown` | — | Called on press. Return a promise to stay pending. |

@@ -8,7 +8,7 @@ export const title = "Splash · light"
 export default function Splash02() {
   return (
     <Screen className="items-center">
-      <PredictMark aria-label="PREDICT" className="mt-[378px] h-[119px] w-[106px] text-app-accent" />
+      <PredictMark aria-label="PREDICT" className="mt-[378px] h-[119px] w-[106px] text-primary" />
     </Screen>
   )
 }

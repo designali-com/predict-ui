@@ -14,7 +14,7 @@ export function CalendarDropdown() {
       onSelect={setDate}
       defaultMonth={date}
       captionLayout="dropdown"
-      className="rounded-lg border"
+      className="rounded-lg border p-3"
     />
   )
 }

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-action-button-error",
+  "type": "registry:block",
+  "description": "Error",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-action-button/glass-action-button-error.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { GlassActionButton } from \"@workspace/ui/components/liquid-glass/glass-action-button\"\n\nasync function failingUpload() {\n  await new Promise((resolve) => setTimeout(resolve, 1500))\n  throw new Error(\"The file could not be read.\")\n}\n\nexport function GlassActionButtonError() {\n  const [message, setMessage] = useState(\"\")\n\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <GlassActionButton\n        material=\"tinted\"\n        className=\"bg-primary text-primary-foreground\"\n        pendingLabel=\"Uploading\"\n        successLabel=\"Uploaded\"\n        onAction={() => {\n          setMessage(\"\")\n          return failingUpload()\n        }}\n        onActionError={(error) =>\n          setMessage(error instanceof Error ? error.message : \"Upload failed.\")\n        }\n      >\n        Upload report\n      </GlassActionButton>\n      <p role=\"alert\" className=\"min-h-5 text-sm text-destructive\">\n        {message}\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

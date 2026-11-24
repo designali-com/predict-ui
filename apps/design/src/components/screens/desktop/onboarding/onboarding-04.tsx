@@ -8,44 +8,44 @@ export const title = "Select conditions"
 
 /**
  * Condition chips in four staggered rows, positioned as in Figma inside a
- * 575px band centred on the column. `x` is the left offset in px. Labels
- * repeat across rows, so selection is keyed by label.
+ * 575px band centred on the column. `x` is the left offset in px. Each
+ * label appears once, so selection is keyed by label.
  */
 const rows: { top: number; chips: { label: string; x: number }[] }[] = [
   {
     top: 0,
     chips: [
-      { label: "Thyroid Disorder", x: 0 },
+      { label: "Thyroid disorder", x: 0 },
       { label: "Diabetes", x: 139 },
       { label: "Prediabetes", x: 237 },
       { label: "Obesity", x: 352 },
-      { label: "High Cholesterol", x: 444 },
+      { label: "High cholesterol", x: 444 },
     ],
   },
   {
     top: 41,
     chips: [
-      { label: "High Blood Pressure", x: 52 },
-      { label: "High Cholesterol", x: 212 },
-      { label: "Thyroid Disorder", x: 352 },
+      { label: "High blood pressure", x: 52 },
+      { label: "Kidney disease", x: 212 },
+      { label: "Fatty liver", x: 352 },
     ],
   },
   {
     top: 82,
     chips: [
-      { label: "Heart Disease", x: 9 },
-      { label: "Heart Disease", x: 136 },
-      { label: "Coronary Artery Disease", x: 265 },
+      { label: "Heart disease", x: 9 },
+      { label: "Osteoporosis", x: 136 },
+      { label: "Coronary artery disease", x: 265 },
       { label: "PCOS / PCOD", x: 446 },
     ],
   },
   {
     top: 123,
     chips: [
-      { label: "Thyroid Disorder", x: 56 },
-      { label: "Diabetes", x: 195 },
-      { label: "Prediabetes", x: 293 },
-      { label: "Obesity", x: 408 },
+      { label: "Sleep apnoea", x: 56 },
+      { label: "Asthma", x: 195 },
+      { label: "Depression", x: 293 },
+      { label: "Anxiety", x: 408 },
     ],
   },
 ]
@@ -64,15 +64,15 @@ export default function OnboardingDesktop04() {
     })
 
   return (
-    <OnboardingDesktopShell step={3} className="pt-[123px]">
+    <OnboardingDesktopShell step={3}>
       <ChronicConditionsQuestion answer={answer} onAnswer={setAnswer} />
 
-      <p className="mt-[43px] w-[289px] text-xs text-app-foreground">
+      <p className="absolute top-[390px] left-[-4px] w-[300px] text-xs text-foreground">
         Select all conditions you&apos;ve been diagnosed with:
       </p>
 
-      {/* 575px band, wider than the column; self-center overflows it evenly on both sides */}
-      <div role="group" aria-label="Conditions" className="relative mt-[21px] h-[155px] w-[575px] self-center">
+      {/* 575px band, wider than the column, centred on it (Figma y 425) */}
+      <div role="group" aria-label="Conditions" className="absolute top-[425px] left-1/2 h-[155px] w-[575px] -translate-x-1/2">
         {rows.map((row) =>
           row.chips.map((chip) => {
             const selected = conditions.has(chip.label)

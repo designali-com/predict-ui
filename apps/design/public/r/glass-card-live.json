@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-card-live",
+  "type": "registry:block",
+  "description": "Live",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-card/glass-card-live.tsx",
+      "content": "\"use client\"\n\nimport { GlassCard } from \"@workspace/ui/components/liquid-glass/glass-card\"\n\nexport function GlassCardLive() {\n  return (\n    <div className=\"relative flex h-64 w-full max-w-md items-center justify-center overflow-hidden rounded-2xl border bg-card\">\n      <div className=\"absolute top-10 left-10 size-24 animate-bounce rounded-full bg-status-severe motion-reduce:animate-none\" />\n      <div className=\"absolute right-10 bottom-6 size-28 animate-pulse rounded-full bg-status-moderate motion-reduce:animate-none\" />\n      <GlassCard live tint={0.4} className=\"w-64 p-5\">\n        <p className=\"text-sm text-inherit opacity-80\">Heart rate</p>\n        <p className=\"text-3xl font-medium text-inherit tabular-nums\">\n          62 <span className=\"text-sm\">bpm</span>\n        </p>\n      </GlassCard>\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

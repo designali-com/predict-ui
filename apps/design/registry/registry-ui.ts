@@ -24,23 +24,12 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "bio-clock-domains",
-    description: "Custom domains",
+    name: "bio-clock-older",
+    description: "Older than calendar age",
     type: "registry:block",
     files: [
       {
-        path: "ui/bio-clock/bio-clock-domains.tsx",
-        type: "registry:block",
-      },
-    ],
-  },
-  {
-    name: "bio-clock-severity",
-    description: "Custom severity scale",
-    type: "registry:block",
-    files: [
-      {
-        path: "ui/bio-clock/bio-clock-severity.tsx",
+        path: "ui/bio-clock/bio-clock-older.tsx",
         type: "registry:block",
       },
     ],

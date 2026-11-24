@@ -3,7 +3,7 @@
 import * as React from "react"
 import { ArrowUpRightIcon, ChevronLeftIcon, FileTextIcon, PlayIcon, UploadIcon } from "lucide-react"
 
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import {
   AppCard,
   AppCardDescription,
@@ -25,7 +25,7 @@ export default function UploadReport02() {
         <button type="button" aria-label="Back" className="flex size-6 items-center justify-center">
           <ChevronLeftIcon className="size-6" strokeWidth={1.5} />
         </button>
-        <div className="size-[60px] shrink-0 overflow-hidden rounded-full border border-app-foreground bg-app-pill">
+        <div className="size-[60px] shrink-0 overflow-hidden rounded-full border border-foreground bg-secondary">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/screens/shared/avatar.png"
@@ -62,19 +62,19 @@ export default function UploadReport02() {
       {/* Bottom sheet */}
       <AppCard
         role="dialog"
-        aria-label="Upload your Blood Report"
-        className="absolute top-[372px] left-px z-20 h-[616px] w-[401px] items-center bg-app-surface px-[30px] py-5 backdrop-blur-xl"
+        aria-label="Upload your blood report"
+        className="absolute top-[372px] left-px z-20 h-[616px] w-[401px] items-center bg-card px-[30px] py-5 backdrop-blur-xl"
       >
-        <div aria-hidden className="h-[7px] w-[149px] shrink-0 rounded-[3.5px] bg-app-accent/50" />
+        <div aria-hidden className="h-[7px] w-[149px] shrink-0 rounded-[3.5px] bg-primary/50" />
         <div className="flex flex-col items-center text-center">
-          <AppCardTitle>Upload your Blood Report</AppCardTitle>
+          <AppCardTitle>Upload your blood report</AppCardTitle>
           <AppCardDescription className="w-[243px]">
             Get a clearer picture of your health with accurate blood testing and regular health
             monitoring.
           </AppCardDescription>
         </div>
 
-        <label className="flex h-[242px] w-full shrink-0 cursor-pointer flex-col items-center justify-center gap-[17px] rounded-[30px] border border-dashed border-app-accent bg-app-field/50">
+        <label className="flex h-[242px] w-full shrink-0 cursor-pointer flex-col items-center justify-center gap-[17px] rounded-[30px] border border-dashed border-primary bg-card/50">
           <input
             type="file"
             accept="application/pdf"
@@ -87,7 +87,7 @@ export default function UploadReport02() {
             <UploadIcon className="size-[49px]" strokeWidth={1} />
           )}
           <span className="w-[243px] text-center text-[10px] leading-[14px]">
-            {fileName ?? "upload or drop here your pdf report"}
+            {fileName ?? "Upload or drop your PDF report here"}
           </span>
         </label>
 

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-dropdown-menu-demo",
+  "type": "registry:block",
+  "description": "Basic",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-dropdown-menu/glass-dropdown-menu-demo.tsx",
+      "content": "\"use client\"\n\nimport { DownloadIcon, PencilIcon, ShareIcon, Trash2Icon } from \"lucide-react\"\n\nimport {\n  GlassDropdownMenu,\n  GlassDropdownMenuContent,\n  GlassDropdownMenuItem,\n  GlassDropdownMenuSeparator,\n  GlassDropdownMenuTrigger,\n} from \"@workspace/ui/components/liquid-glass/glass-dropdown-menu\"\n\nexport function GlassDropdownMenuDemo() {\n  return (\n    <GlassDropdownMenu>\n      <GlassDropdownMenuTrigger>Report options</GlassDropdownMenuTrigger>\n      <GlassDropdownMenuContent>\n        <GlassDropdownMenuItem>\n          <PencilIcon />\n          Rename\n        </GlassDropdownMenuItem>\n        <GlassDropdownMenuItem>\n          <DownloadIcon />\n          Download PDF\n        </GlassDropdownMenuItem>\n        <GlassDropdownMenuItem>\n          <ShareIcon />\n          Share with doctor\n        </GlassDropdownMenuItem>\n        <GlassDropdownMenuSeparator />\n        <GlassDropdownMenuItem destructive>\n          <Trash2Icon />\n          Delete\n        </GlassDropdownMenuItem>\n      </GlassDropdownMenuContent>\n    </GlassDropdownMenu>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

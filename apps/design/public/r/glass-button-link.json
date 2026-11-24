@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-button-link",
+  "type": "registry:block",
+  "description": "Link",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-button/glass-button-link.tsx",
+      "content": "\"use client\"\n\nimport Link from \"next/link\"\n\nimport { GlassButton } from \"@workspace/ui/components/liquid-glass/glass-button\"\n\nexport function GlassButtonLink() {\n  return (\n    <GlassButton\n      asChild\n      material=\"tinted\"\n      className=\"bg-primary text-primary-foreground\"\n    >\n      <Link href=\"/biomarkers\">Browse biomarkers</Link>\n    </GlassButton>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

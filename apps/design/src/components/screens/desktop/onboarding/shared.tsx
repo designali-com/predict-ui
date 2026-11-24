@@ -1,7 +1,5 @@
 import * as React from "react"
-import { ChevronLeftIcon } from "lucide-react"
-
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import { cn } from "@workspace/ui/lib/utils"
 import { AppGlow } from "@workspace/ui/predict/app/app-glow"
 
@@ -12,6 +10,29 @@ import { DesktopScreen } from "../desktop-screen"
  * bottom violet fade, back chevron, 3-step progress, a 290px centred
  * content column and the Continue / Skip pair.
  */
+export const ASSETS = "/screens/desktop/onboarding"
+
+/**
+ * Renders a Figma SVG icon as a mask filled with the current text colour, so
+ * the black-stroked export follows the theme (the SVG's own opacity is kept).
+ */
+export function MaskIcon({ src, className }: { src: string; className?: string }) {
+  return (
+    <span
+      aria-hidden
+      className={cn("inline-block shrink-0 bg-current", className)}
+      style={{
+        maskImage: `url(${src})`,
+        WebkitMaskImage: `url(${src})`,
+        maskSize: "100% 100%",
+        WebkitMaskSize: "100% 100%",
+        maskRepeat: "no-repeat",
+        WebkitMaskRepeat: "no-repeat",
+      }}
+    />
+  )
+}
+
 export function OnboardingDesktopShell({
   step,
   showBack = true,
@@ -25,16 +46,17 @@ export function OnboardingDesktopShell({
   children: React.ReactNode
 }) {
   return (
-    <DesktopScreen>
+    <DesktopScreen className="bg-card">
       <AppGlow variant="fade" className="h-[289px] mix-blend-multiply dark:mix-blend-normal" />
 
       {showBack && (
         <button
           type="button"
           aria-label="Back"
-          className="absolute top-[60px] left-[calc(50%-161px)] text-app-foreground"
+          className="absolute top-[60px] left-[calc(50%-161px)] text-foreground"
         >
-          <ChevronLeftIcon className="size-6" strokeWidth={1.5} />
+          {/* Figma's chevron is drawn pointing up and rotated −90° */}
+          <MaskIcon src={`${ASSETS}/onboarding-back.svg`} className="size-6 -rotate-90" />
         </button>
       )}
 
@@ -50,12 +72,19 @@ export function OnboardingDesktopShell({
           <span
             key={i}
             style={{ width }}
-            className={cn("h-1.5 rounded-[3px]", i < step ? "bg-app-brand" : "bg-app-pill")}
+            className={cn("h-1.5 rounded-[3px]", i < step ? "bg-primary" : "bg-secondary")}
           />
         ))}
       </div>
 
-      <div className={cn("relative mx-auto flex w-[290px] flex-col", className)}>{children}</div>
+      <div
+        className={cn(
+          "absolute inset-y-0 left-1/2 flex w-[290px] -translate-x-1/2 flex-col",
+          className
+        )}
+      >
+        {children}
+      </div>
 
       <div className="absolute top-[684px] left-1/2 flex w-[290px] -translate-x-1/2 flex-col gap-2">
         <Button variant="app" size="lg" className="w-full text-base">
@@ -79,8 +108,8 @@ export function ChoiceButton({
     <Button
       variant="outline"
       className={cn(
-        "border-app-border text-app-foreground hover:bg-app-pill/40",
-        selected && "border-app-accent bg-app-pill hover:bg-app-pill",
+        "border-border text-foreground hover:bg-secondary/40",
+        selected && "border-primary bg-secondary hover:bg-secondary",
         className
       )}
       {...props}
@@ -98,14 +127,21 @@ export function ChronicConditionsQuestion({
 }) {
   return (
     <>
-      <h1 className="w-[318px] font-display text-2xl leading-[29px] font-normal text-app-foreground">
-        Have you been diagnosed with any chronic conditions?
+      {/* Figma: heading at y 123, body at y 200, answers at y 299 (frame top 60) */}
+      <h1 className="absolute top-[123px] left-[-4px] w-[330px] text-2xl leading-[29px] font-medium tracking-tight whitespace-nowrap text-foreground">
+        Have you been diagnosed
+        <br />
+        with any chronic conditions?
       </h1>
-      <p className="mt-[19px] w-[289px] text-base leading-[22px] text-app-foreground">
-        For example: Diabetes, Obesity, Anxiety, Depression, Hypertension, Asthma, etc.
+      <p className="absolute top-[200px] left-[-4px] w-[300px] text-base leading-[22px] text-foreground">
+        For example: diabetes, obesity, anxiety, depression, hypertension or asthma.
       </p>
 
-      <div role="radiogroup" aria-label="Diagnosed" className="mt-[55px] flex gap-[7px]">
+      <div
+        role="radiogroup"
+        aria-label="Diagnosed"
+        className="absolute top-[299px] left-0 flex w-full gap-[7px]"
+      >
         {(["yes", "no"] as const).map((value) => (
           <ChoiceButton
             key={value}

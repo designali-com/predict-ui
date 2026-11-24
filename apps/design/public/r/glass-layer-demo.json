@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-layer-demo",
+  "type": "registry:block",
+  "description": "Basic",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-layer/glass-layer-demo.tsx",
+      "content": "\"use client\"\n\nimport { ArrowUpRightIcon } from \"lucide-react\"\nimport Link from \"next/link\"\n\nimport { GlassLayer } from \"@workspace/ui/components/liquid-glass/glass-layer\"\n\nexport function GlassLayerDemo() {\n  return (\n    <div className=\"relative flex w-full max-w-md flex-wrap items-center justify-center gap-4 overflow-hidden rounded-2xl bg-chart-2 p-12\">\n      <div\n        aria-hidden\n        className=\"absolute -top-8 left-1/4 size-32 rounded-full bg-chart-4 dark:bg-chart-3\"\n      />\n      <div\n        aria-hidden\n        className=\"absolute right-1/4 -bottom-10 size-32 rounded-full bg-chart-4 dark:bg-chart-3\"\n      />\n      <Link\n        href=\"/docs\"\n        data-glass-host=\"\"\n        className=\"inline-flex h-12 items-center gap-2 rounded-full border border-foreground/10 bg-background/40 px-6 text-sm font-semibold text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring\"\n      >\n        <GlassLayer tint={0.35} />\n        Read the docs\n        <ArrowUpRightIcon className=\"size-4\" />\n      </Link>\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

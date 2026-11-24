@@ -1,6 +1,6 @@
 import { BadgeCheckIcon, ChevronLeftIcon } from "lucide-react"
 
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import {
   AppCard,
   AppCardDescription,
@@ -35,7 +35,7 @@ function Price() {
         </div>
       </div>
       <p className="h-8 text-[10px] leading-[14px]">
-        Take control of your health with a comprehensive Full Body Check-Up designed for early
+        Take control of your health with a comprehensive full body check-up designed for early
         detection and complete peace of mind.
       </p>
     </div>
@@ -50,7 +50,7 @@ export default function BloodTest02() {
         <button type="button" aria-label="Back" className="flex size-6 items-center justify-center">
           <ChevronLeftIcon className="size-6" strokeWidth={1.5} />
         </button>
-        <div className="size-[60px] shrink-0 overflow-hidden rounded-full border border-app-foreground bg-app-pill">
+        <div className="size-[60px] shrink-0 overflow-hidden rounded-full border border-foreground bg-secondary">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/screens/shared/avatar.png"
@@ -64,7 +64,7 @@ export default function BloodTest02() {
         <AppCard className="shrink-0">
           <AppCardHeader>
             <div>
-              <AppCardTitle>Book Your Blood Test</AppCardTitle>
+              <AppCardTitle>Book your blood test</AppCardTitle>
               <AppCardDescription>
                 Get a clearer picture of your health with accurate blood testing and regular
                 health monitoring.
@@ -79,7 +79,7 @@ export default function BloodTest02() {
           />
           <Price />
           <Button variant="app" size="lg" className="w-full text-base">
-            Book Now
+            Book a test
           </Button>
         </AppCard>
 
@@ -87,10 +87,10 @@ export default function BloodTest02() {
           <AppCardHeader>
             <div>
               <AppCardTitle className="whitespace-nowrap">
-                What’s included in your checkup?
+                What’s included in your check-up?
               </AppCardTitle>
               <AppCardDescription>
-                Explore the 72 parameters grouped by health profile.
+                Explore the 40 biomarkers grouped by health profile.
               </AppCardDescription>
             </div>
           </AppCardHeader>
@@ -104,7 +104,7 @@ export default function BloodTest02() {
           </ul>
           <Price />
           <Button variant="app" size="lg" className="w-full text-base">
-            Book Now
+            Book a test
           </Button>
         </AppCard>
       </div>

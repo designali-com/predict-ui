@@ -1,6 +1,6 @@
 import { ArrowUpRightIcon, PlayIcon, UploadIcon } from "lucide-react"
 
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import {
   AppCard,
   AppCardDescription,

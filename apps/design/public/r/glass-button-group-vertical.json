@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-button-group-vertical",
+  "type": "registry:block",
+  "description": "Vertical",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-button-group/glass-button-group-vertical.tsx",
+      "content": "\"use client\"\n\nimport { MinusIcon, PlusIcon } from \"lucide-react\"\n\nimport {\n  GlassButtonGroup,\n  GlassButtonGroupItem,\n  GlassButtonGroupSeparator,\n} from \"@workspace/ui/components/liquid-glass/glass-button-group\"\n\nexport function GlassButtonGroupVertical() {\n  return (\n    <GlassButtonGroup\n      aria-label=\"Zoom\"\n      orientation=\"vertical\"\n      size=\"lg\"\n      className=\"bg-primary text-primary-foreground\"\n    >\n      <GlassButtonGroupItem aria-label=\"Zoom in\" className=\"px-0\">\n        <PlusIcon />\n      </GlassButtonGroupItem>\n      <GlassButtonGroupSeparator />\n      <GlassButtonGroupItem aria-label=\"Zoom out\" className=\"px-0\">\n        <MinusIcon />\n      </GlassButtonGroupItem>\n    </GlassButtonGroup>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

@@ -23,8 +23,8 @@ export function CalendarInPopover() {
         {date ? date.toLocaleDateString(undefined, { dateStyle: "medium" }) : "Pick a test date"}
         <CalendarIcon data-icon="inline-end" />
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="start">
-        <Calendar
+      <PopoverContent className="w-auto" align="center">
+        <Calendar 
           mode="single"
           selected={date}
           onSelect={(next) => {

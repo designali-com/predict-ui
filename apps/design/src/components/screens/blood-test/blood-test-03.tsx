@@ -1,6 +1,11 @@
 import { ChevronLeftIcon, ChevronRightIcon, FileTextIcon } from "lucide-react"
 
-import { Button } from "@workspace/ui/components/button"
+import {
+  AppButton as Button,
+  AppTabs,
+  AppTabsList,
+  AppTabsTrigger,
+} from "@workspace/ui/predict/app/app-glass"
 import {
   Select,
   SelectContent,
@@ -8,7 +13,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@workspace/ui/components/select"
-import { Tabs, TabsList, TabsTrigger } from "@workspace/ui/components/tabs"
 import {
   AppCard,
   AppCardDescription,
@@ -23,9 +27,9 @@ const cities = ["City - Delhi", "City - Mumbai", "City - Bengaluru"]
 const centers = ["South Extension I", "Greater Kailash II", "Connaught Place"]
 
 const selectTrigger =
-  "h-12 w-[321px] rounded-full border-app-border bg-app-field/50 px-6 text-sm leading-5 text-app-foreground data-[size=default]:h-12 [&>svg]:size-6! [&>svg]:text-app-foreground!"
+  "h-12 w-[321px] rounded-full border-border bg-card/50 px-6 text-sm leading-5 text-foreground data-[size=default]:h-12 [&>svg]:size-6! [&>svg]:text-foreground!"
 
-export const title = "Blood test · visit center"
+export const title = "Blood test · visit centre"
 
 // Figma: iPhone 18 Pro - 161 (1739:7412)
 export default function BloodTest03() {
@@ -35,7 +39,7 @@ export default function BloodTest03() {
         <button type="button" aria-label="Back" className="flex size-6 items-center justify-center">
           <ChevronLeftIcon className="size-6" strokeWidth={1.5} />
         </button>
-        <div className="size-[60px] shrink-0 overflow-hidden rounded-full border border-app-foreground bg-app-pill">
+        <div className="size-[60px] shrink-0 overflow-hidden rounded-full border border-foreground bg-secondary">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/screens/shared/avatar.png"
@@ -45,30 +49,30 @@ export default function BloodTest03() {
         </div>
       </header>
 
-      <Tabs defaultValue="center" className="mt-[38px] items-center gap-0">
-        <TabsList
+      <AppTabs defaultValue="center" className="mt-[38px] items-center gap-0">
+        <AppTabsList
           variant="line"
-          className="h-auto gap-1 border-app-border bg-app-field px-1 py-[5px] group-data-horizontal/tabs:h-auto"
+          className="h-auto gap-1 border-border bg-card px-1 py-[5px] group-data-horizontal/tabs:h-auto"
         >
-          <TabsTrigger
+          <AppTabsTrigger
             value="center"
-            className="h-[31px] flex-none px-5 text-sm leading-5 text-app-foreground/60 data-active:bg-app-brand data-active:text-app-brand-foreground"
+            className="h-[31px] flex-none px-5 text-sm leading-5 text-foreground/60 data-active:bg-primary data-active:text-primary-foreground"
           >
-            Visit Center
-          </TabsTrigger>
-          <TabsTrigger
+            Visit centre
+          </AppTabsTrigger>
+          <AppTabsTrigger
             value="home"
-            className="h-[31px] flex-none px-5 text-sm leading-5 text-app-foreground/60 data-active:bg-app-brand data-active:text-app-brand-foreground"
+            className="h-[31px] flex-none px-5 text-sm leading-5 text-foreground/60 data-active:bg-primary data-active:text-primary-foreground"
           >
-            Home Collection
-          </TabsTrigger>
-        </TabsList>
-      </Tabs>
+            Home collection
+          </AppTabsTrigger>
+        </AppTabsList>
+      </AppTabs>
 
       <div className="mt-[13px] flex flex-col gap-[13px] px-[10.5px]">
         <AppCard className="items-center gap-3">
           <div className="h-[66px] w-full">
-            <AppCardTitle>Your Blood Test</AppCardTitle>
+            <AppCardTitle>Your blood test</AppCardTitle>
             <AppCardDescription className="mt-2 max-w-none">
               Get a clearer picture of your health with accurate blood testing and regular
               health monitoring.
@@ -106,13 +110,13 @@ export default function BloodTest03() {
               <span className="text-[36px]">₹10,599</span>
               <span className="text-sm line-through">₹18,899</span>
             </div>
-            <span className="flex h-[23px] w-[66px] items-center justify-center rounded-[40px] bg-app-pill text-xs leading-6">
+            <span className="flex h-[23px] w-[66px] items-center justify-center rounded-[40px] bg-secondary text-xs leading-6">
               50% OFF
             </span>
           </div>
 
           <Button variant="app" size="lg" className="w-[321px] text-base">
-            Book Now
+            Book a test
           </Button>
           <Button variant="app-secondary" size="lg" className="w-[321px] text-sm">
             Request a callback

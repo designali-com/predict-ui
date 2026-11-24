@@ -16,7 +16,7 @@ const columns = [
     links: [
       { name: "Introduction", href: "/docs" },
       { name: "Brand guidelines", href: "/docs/design/logos" },
-      { name: "Colors", href: "/docs/design/colors" },
+      { name: "Colours", href: "/docs/design/colors" },
       { name: "Typography", href: "/docs/design/typography" },
     ],
   },
@@ -165,7 +165,7 @@ export function Footer() {
           </div>
           <div className="flex items-center gap-3">
             <span className="hidden sm:inline">
-              Press <kbd className="rounded border px-1 font-mono text-[10px]">D</kbd> to switch
+              Press <kbd className="rounded border px-1 font-mono text-[10px]">D</kbd> to switch theme
             </span>
             <ThemeSwitcher />
           </div>

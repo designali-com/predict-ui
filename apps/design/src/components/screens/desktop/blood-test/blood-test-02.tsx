@@ -1,4 +1,4 @@
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 
 import { HomeCollectionCard } from "../../blood-test/blood-test-04"
 import { BloodTestDesktopLayout } from "./shared"
@@ -14,10 +14,10 @@ export default function BloodTestDesktop02() {
         actions={
           <div className="flex items-center gap-1.5">
             <Button variant="app-secondary" size="lg" className="w-40 px-0 text-sm leading-5">
-              Pay using Cred UPI
+              Pay using CRED UPI
             </Button>
             <Button variant="app" size="lg" className="w-40 px-0 text-base">
-              Book Now
+              Book a test
             </Button>
           </div>
         }

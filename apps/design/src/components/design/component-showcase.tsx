@@ -116,6 +116,7 @@ import { PredictMascot } from "@workspace/ui/predict/predict-mascot"
 import { AgeCalculator } from "@workspace/ui/tools/age-calculator"
 import { BodyMeasurements } from "@workspace/ui/tools/body-measurements"
 import { ReferenceRange } from "@workspace/ui/tools/reference-range"
+import { HorizonGradient } from "./horizon-gradient"
 
 const markers = [
   "ApoB",
@@ -231,7 +232,7 @@ const components: ShowcaseItem[] = [
         </CardHeader>
         <CardContent>
           <p className="text-2xl font-medium tabular-nums">
-            78 <span className="text-sm text-muted-foreground">mg/dL</span>
+            78 <span className="text-sm text-muted-foreground">mg·dL⁻¹</span>
           </p>
         </CardContent>
       </Card>
@@ -250,10 +251,10 @@ const components: ShowcaseItem[] = [
             <ChevronsUpDownIcon />
           </CollapsibleTrigger>
         </div>
-        <div className="rounded-md border px-3 py-2 text-xs">LDL-C · 142 mg/dL</div>
+        <div className="rounded-md border px-3 py-2 text-xs">LDL-C · 142 mg·dL⁻¹</div>
         <CollapsibleContent className="flex flex-col gap-2">
-          <div className="rounded-md border px-3 py-2 text-xs">HbA1c · 5.9 %</div>
-          <div className="rounded-md border px-3 py-2 text-xs">Vitamin D · 22 ng/mL</div>
+          <div className="rounded-md border px-3 py-2 text-xs">HbA1c · 5.9%</div>
+          <div className="rounded-md border px-3 py-2 text-xs">Vitamin D · 22 ng·mL⁻¹</div>
         </CollapsibleContent>
       </Collapsible>
     ),
@@ -569,12 +570,7 @@ const predictUi: ShowcaseItem[] = [
     href: "/docs/ui/bio-clock",
     className: "md:col-span-2",
     preview: (
-      <BioClock
-        bioAge={51}
-        yearsValue="+4 Years"
-        currentValue={2.4}
-        className="max-w-md"
-      />
+      <BioClock bioAge={37.6} chronologicalAge={44} />
     ),
   },
   {
@@ -675,29 +671,38 @@ function SectionHeading({
 export function ComponentShowcase() {
   return (
     <TooltipProvider>
-      <section className="border-b px-6 py-20 md:px-10 md:py-28">
-        <div className="mb-3 text-xs font-medium tracking-[0.18em] text-muted-foreground uppercase">
-          Design System
-        </div>
-        <h1 className="max-w-3xl text-4xl font-medium tracking-tight md:text-6xl">
-          Components for clear health interfaces
-        </h1>
-        <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground">
-          The shared building blocks behind PREDICT dashboards, reports, and
-          clinical tools. Every component below is live. Try it, then open its
-          docs.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Button nativeButton={false} render={<Link href="/docs/components/accordion" />}>
-            Browse components
-            <ArrowRightIcon data-icon="inline-end" />
-          </Button>
-          <Button variant="outline" nativeButton={false} render={<Link href="/docs" />}>
-            Read the docs
-          </Button>
-        </div>
-      </section>
-
+      <HorizonGradient
+        color="#420080"
+        direction="right"
+        curve={2}
+        reach={0.6}
+        softness={1}
+        speed={1}
+        grain={0.02}
+      >
+        <section className="border-b px-6 py-20 md:px-10 md:py-28">
+          <div className="mb-3 text-xs font-medium tracking-[0.18em] text-muted-foreground uppercase">
+            Design System
+          </div>
+          <h1 className="max-w-3xl text-4xl font-medium tracking-tight md:text-6xl">
+            Components for clear health interfaces
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-7 text-muted-foreground">
+            The shared building blocks behind PREDICT dashboards, reports, and
+            clinical tools. Every component below is live. Try it, then open its
+            docs.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button nativeButton={false} render={<Link href="/docs/components/accordion" />}>
+              Browse components
+              <ArrowRightIcon data-icon="inline-end" />
+            </Button>
+            <Button variant="outline" nativeButton={false} render={<Link href="/docs" />}>
+              Read the docs
+            </Button>
+          </div>
+        </section>
+      </HorizonGradient>
       <SectionHeading
         title="Components"
         description="Inputs, overlays, and layout pieces, built on Base UI."

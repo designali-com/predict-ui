@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import { Switch } from "@workspace/ui/components/switch"
 
 import { Screen } from "../screen"
@@ -29,7 +29,7 @@ export default function Wearables04() {
       <WearablesHeader />
       <WearablesDeviceCard />
 
-      <WearablesSheet title="What Predict reads, and why" className="top-[307px] h-[681px]">
+      <WearablesSheet title="What PREDICT reads, and why" className="top-[307px] h-[681px]">
         {metrics.map((metric) => (
           <label
             key={metric.id}
@@ -46,7 +46,7 @@ export default function Wearables04() {
               onCheckedChange={(checked) =>
                 setEnabled((prev) => ({ ...prev, [metric.id]: checked }))
               }
-              className="data-checked:bg-app-brand data-unchecked:bg-app-track"
+              className="data-checked:bg-primary data-unchecked:bg-input"
             />
           </label>
         ))}

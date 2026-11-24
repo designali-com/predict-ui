@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-button-sizes",
+  "type": "registry:block",
+  "description": "Sizes",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-button/glass-button-sizes.tsx",
+      "content": "\"use client\"\n\nimport { GlassButton } from \"@workspace/ui/components/liquid-glass/glass-button\"\n\nconst sizes = [\"sm\", \"md\", \"lg\", \"xl\"] as const\n\nexport function GlassButtonSizes() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4\">\n      {sizes.map((size) => (\n        <GlassButton\n          key={size}\n          size={size}\n          material=\"tinted\"\n          className=\"bg-primary text-primary-foreground\"\n        >\n          Continue\n        </GlassButton>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

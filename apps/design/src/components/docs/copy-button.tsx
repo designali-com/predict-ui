@@ -54,7 +54,7 @@ export function CopyButton({
       />
 
       <TooltipContent>
-        {isCopied ? "Copied" : "Copy to Clipboard"}
+        {isCopied ? "Copied" : "Copy to clipboard"}
       </TooltipContent>
     </Tooltip>
   );

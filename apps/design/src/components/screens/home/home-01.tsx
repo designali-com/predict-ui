@@ -87,7 +87,7 @@ function MetricCard({
 }
 
 const statPill =
-  "absolute flex h-8 items-center justify-between rounded-full bg-app-pill px-3 text-sm leading-5 whitespace-nowrap text-app-foreground"
+  "absolute flex h-8 items-center justify-between rounded-full bg-secondary px-3 text-sm leading-5 whitespace-nowrap text-foreground"
 
 // Figma: iPhone 18 Pro - 140 (1734:4658)
 export default function Home01() {
@@ -118,7 +118,7 @@ export default function Home01() {
       <div className="absolute top-[137px] left-[-50px] h-[518.75px] w-[503px]">
         <div
           aria-hidden
-          className="absolute top-[-8.4px] left-[1.05px] h-[376.99px] w-[501.95px] bg-gradient-to-b from-app-accent to-app-accent/0"
+          className="absolute top-[-8.4px] left-[1.05px] h-[376.99px] w-[501.95px] bg-gradient-to-b from-primary to-primary/0"
           style={{
             maskImage: "url(/screens/home/home-01-dial-mask.svg)",
             maskPosition: "-2.05px 23.151px",
@@ -145,8 +145,8 @@ export default function Home01() {
                 onClick={() => setDay(d.id)}
                 style={{ rotate: `${d.rotate}deg` }}
                 className={cn(
-                  "flex size-8 items-center justify-center rounded-full text-[10.5px] leading-[21px] text-app-foreground",
-                  day === d.id ? "bg-app-pill" : "border border-app-border bg-app-field"
+                  "flex size-8 items-center justify-center rounded-full text-[10.5px] leading-[21px] text-foreground",
+                  day === d.id ? "bg-secondary" : "border border-border bg-card"
                 )}
               >
                 {d.label}
@@ -159,14 +159,14 @@ export default function Home01() {
       {/* Greeting */}
       <header className="relative flex items-start justify-between px-[47px] pt-[51px]">
         <div className="font-display">
-          <p className="text-base leading-[13px]">Good Morning,</p>
-          <h1 className="text-4xl leading-[44px] font-normal">Rohan</h1>
+          <p className="text-base leading-[13px]">Good morning,</p>
+          <h1 className="text-4xl leading-[44px] font-normal">Arjun</h1>
         </div>
-        <div className="relative size-[60px] shrink-0 overflow-hidden rounded-full bg-app-pill">
+        <div className="relative size-[60px] shrink-0 overflow-hidden rounded-full bg-secondary">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/screens/shared/avatar.png"
-            alt="Rohan"
+            alt="Arjun Vaidya"
             className="absolute top-[-21px] left-[-17.02px] h-[155px] w-[87.04px] max-w-none"
           />
         </div>
@@ -186,11 +186,11 @@ export default function Home01() {
       <AppGlow variant="blob" />
 
       <div className={cn(statPill, "top-[458px] left-[244px] w-[135px]")}>
-        <span>Muscle Age</span>
+        <span>Muscle age</span>
         <span>34</span>
       </div>
       <div className={cn(statPill, "top-[539px] left-[26px] w-[134px]")}>
-        <span>Twin Age</span>
+        <span>Twin age</span>
         <span>56</span>
       </div>
 
@@ -198,7 +198,7 @@ export default function Home01() {
         title="Readiness"
         subtitle="You're well recovered."
         label="Slept"
-        value="7 h 40m"
+        value="7 h 40 min"
         footnote="HRV 62 ms"
         chartClassName="-scale-x-100"
         className="top-[605px] w-[311px] rounded-[24px] p-4"

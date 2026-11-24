@@ -20,15 +20,17 @@ export function MobileTOC() {
   return (
     <div className="fixed right-8 bottom-8 z-50 lg:hidden">
       <Sheet open={open} onOpenChange={setOpen}>
-        <SheetTrigger  >
-          <Button
-            size="icon"
-            className="bg-primary text-primary-foreground size-12 rounded-full shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl"
-            aria-label="Table of contents"
-          >
-            <Menu className="size-5" />
-            <span className="sr-only">Table of contents</span>
-          </Button>
+        <SheetTrigger
+          render={
+            <Button
+              size="icon"
+              className="bg-primary text-primary-foreground size-12 rounded-full shadow-lg transition-all duration-200 hover:scale-105 hover:shadow-xl"
+              aria-label="Table of contents"
+            />
+          }
+        >
+          <Menu className="size-5" />
+          <span className="sr-only">Table of contents</span>
         </SheetTrigger>
         <SheetContent
           side="bottom"

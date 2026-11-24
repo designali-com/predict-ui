@@ -13,7 +13,11 @@ import {
 } from "lucide-react"
 import { cn } from "cn"
 
-import { Button } from "@workspace/ui/components/button"
+import {
+  AppButton as Button,
+  AppGlassBar,
+  AppGlassCircle,
+} from "@workspace/ui/predict/app/app-glass"
 import {
   AppCard,
   AppCardDescription,
@@ -26,9 +30,6 @@ import { PredictMark } from "@workspace/ui/predict/logo"
 import { DesktopScreen } from "../desktop-screen"
 
 export const title = "Home · add a wearable"
-
-const circle =
-  "flex size-[60px] shrink-0 items-center justify-center rounded-full bg-app-field text-app-foreground"
 
 type Tab = "today" | "twin" | "people"
 
@@ -43,11 +44,11 @@ function DesktopNav() {
 
   return (
     <nav className="absolute top-[979px] left-1/2 z-10 flex -translate-x-1/2 items-center gap-1">
-      <button type="button" aria-label="Menu" className={circle}>
+      <AppGlassCircle aria-label="Menu">
         <GripIcon className="size-6" strokeWidth={2} />
-      </button>
+      </AppGlassCircle>
 
-      <div className="flex h-[60px] w-[237px] items-center justify-center gap-[5px] rounded-full bg-app-field py-2.5 pr-3.5 pl-3">
+      <AppGlassBar className="flex h-[60px] w-[237px] items-center justify-center gap-[5px] py-2.5 pr-3.5 pl-3">
         {tabs.map(({ id, label, Icon }) => {
           const on = active === id
           return (
@@ -61,17 +62,17 @@ function DesktopNav() {
             >
               {on && label}
               <Icon
-                className={cn("size-5", on && "fill-app-brand-foreground stroke-app-brand")}
+                className={cn("size-5", on && "fill-primary-foreground stroke-primary")}
                 strokeWidth={on ? 2 : 1}
               />
             </Button>
           )
         })}
-      </div>
+      </AppGlassBar>
 
-      <button type="button" aria-label="PREDICT assistant" className={circle}>
+      <AppGlassCircle aria-label="PREDICT assistant">
         <PredictMark className="h-[20.166px] w-[18px]" />
-      </button>
+      </AppGlassCircle>
     </nav>
   )
 }
@@ -114,20 +115,20 @@ export default function WearablesDesktop01() {
       <AppGlow variant="fade" className="h-[289px]" />
 
       {/* Header: assistant · greeting · avatar */}
-      <button
-        type="button"
+      <AppGlassCircle
+        tone="primary"
         aria-label="PREDICT assistant"
-        className="absolute top-[43px] left-[47px] flex size-[60px] items-center justify-center rounded-full bg-app-brand text-app-brand-foreground"
+        className="absolute top-[43px] left-[47px]"
       >
         <PredictMark className="h-[20.166px] w-[18px]" />
-      </button>
+      </AppGlassCircle>
       <header className="absolute top-[51px] left-1/2 -translate-x-1/2 text-center font-display">
-        <p className="text-base leading-[19px]">Good Morning,</p>
+        <p className="text-base leading-[19px]">Good morning,</p>
         <h1 className="mt-[7px] text-4xl leading-[43px] font-normal whitespace-nowrap">
           Arjun Vaidya
         </h1>
       </header>
-      <div className="absolute top-[43px] left-[1811px] size-[60px] overflow-hidden rounded-full border border-app-foreground bg-app-pill">
+      <div className="absolute top-[43px] left-[1811px] size-[60px] overflow-hidden rounded-full border border-foreground bg-secondary">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/screens/shared/avatar.png"
@@ -137,22 +138,22 @@ export default function WearablesDesktop01() {
       </div>
 
       {/* Timeline + date */}
-      <div aria-hidden className="absolute top-[199px] left-0 h-0.5 w-[959px] bg-app-accent" />
-      <div className="absolute top-[183px] left-[calc(50%+1px)] flex h-8 -translate-x-1/2 items-center rounded-full bg-app-pill px-5 text-[10.5px] leading-[21px] whitespace-nowrap text-app-pill-foreground">
-        Wednesday, 27 December, 2026
+      <div aria-hidden className="absolute top-[199px] left-0 h-0.5 w-[959px] bg-primary" />
+      <div className="absolute top-[183px] left-[calc(50%+1px)] flex h-8 -translate-x-1/2 items-center rounded-full bg-secondary px-5 text-[10.5px] leading-[21px] whitespace-nowrap text-secondary-foreground">
+        Sunday, 27 December 2026
       </div>
 
-      {/* Upload your Blood Report */}
+      {/* Upload your blood report */}
       <AppCard className="absolute top-[265px] left-[47px] h-[484px] w-[401px] items-center px-[30px] py-5">
-        <div aria-hidden className="h-[7px] w-[149px] shrink-0 rounded-[3.5px] bg-app-accent/50" />
+        <div aria-hidden className="h-[7px] w-[149px] shrink-0 rounded-[3.5px] bg-primary/50" />
         <div className="flex h-[60px] flex-col items-center text-center">
-          <AppCardTitle className="leading-5">Upload your Blood Report</AppCardTitle>
+          <AppCardTitle className="leading-5">Upload your blood report</AppCardTitle>
           <AppCardDescription className="w-[243px]">
             Get a clearer picture of your health with accurate blood testing and regular health
             monitoring.
           </AppCardDescription>
         </div>
-        <label className="flex h-[242px] w-full shrink-0 cursor-pointer flex-col items-center justify-center gap-[17px] rounded-[30px] border border-dashed border-app-accent bg-app-field/50">
+        <label className="flex h-[242px] w-full shrink-0 cursor-pointer flex-col items-center justify-center gap-[17px] rounded-[30px] border border-dashed border-primary bg-card/50">
           <input
             type="file"
             accept="application/pdf"
@@ -161,7 +162,7 @@ export default function WearablesDesktop01() {
           />
           <UploadIcon className="size-[49px]" strokeWidth={1} />
           <span className="w-[243px] text-center text-[10px] leading-[14px]">
-            {fileName ?? "upload or drop here your pdf report"}
+            {fileName ?? "Upload or drop your PDF report here"}
           </span>
         </label>
         <Button variant="app" size="lg" className="w-[321px] text-base">
@@ -200,11 +201,11 @@ export default function WearablesDesktop01() {
         </div>
       </AppCard>
 
-      {/* Book Your Blood Test */}
+      {/* Book your blood test */}
       <AppCard className="absolute top-[265px] left-[1188px] w-[381px] items-center">
         <AppCardHeader className="h-[66px] w-full">
           <div>
-            <AppCardTitle className="leading-5">Book Your Blood Test</AppCardTitle>
+            <AppCardTitle className="leading-5">Book your blood test</AppCardTitle>
             <AppCardDescription>
               Get a clearer picture of your health with accurate blood testing and regular health
               monitoring.
@@ -228,12 +229,12 @@ export default function WearablesDesktop01() {
             </p>
           </div>
           <p className="h-8 text-[10px] leading-[14px]">
-            Take control of your health with a comprehensive Full Body Check-Up designed for early
+            Take control of your health with a comprehensive full body check-up designed for early
             detection and complete peace of mind.
           </p>
         </div>
         <Button variant="app" size="lg" className="w-full text-base">
-          Book Now
+          Book a test
         </Button>
       </AppCard>
 

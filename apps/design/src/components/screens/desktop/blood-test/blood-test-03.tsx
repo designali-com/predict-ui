@@ -17,7 +17,7 @@ export default function BloodTestDesktop03() {
     <BloodTestDesktopLayout>
       <AppCard className="absolute top-[289px] left-1/2 h-[433px] w-[381px] -translate-x-1/2 items-center">
         <div className="flex h-[66px] w-[321px] flex-col items-center text-center">
-          <AppCardTitle>Your Blood Test Booked</AppCardTitle>
+          <AppCardTitle>Your blood test is booked</AppCardTitle>
           <AppCardDescription className="w-60">
             Get a clearer picture of your health with accurate blood testing and regular health
             monitoring.
@@ -27,7 +27,7 @@ export default function BloodTestDesktop03() {
         <div className="flex h-[141px] w-full items-center justify-center">
           <BadgeCheckIcon
             aria-label="Booking confirmed"
-            className="size-[104px] fill-app-brand stroke-app-brand-foreground [&>path:first-child]:stroke-transparent"
+            className="size-[104px] fill-primary stroke-primary-foreground [&>path:first-child]:stroke-transparent"
             strokeWidth={0.92}
           />
         </div>

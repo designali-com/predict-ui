@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-badge-speed",
+  "type": "registry:block",
+  "description": "Speed",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-badge/glass-badge-speed.tsx",
+      "content": "\"use client\"\n\nimport { GlassBadge } from \"@workspace/ui/components/liquid-glass/glass-badge\"\n\nconst speeds = [0.2, 0.4, 0.8]\n\nexport function GlassBadgeSpeed() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-8\">\n      {speeds.map((speed) => (\n        <div key={speed} className=\"relative flex flex-col items-center gap-2\">\n          <GlassBadge\n            speed={speed}\n            dotColor=\"var(--status-mild)\"\n            className=\"bg-primary text-primary-foreground\"\n          >\n            Live\n          </GlassBadge>\n          <span className=\"text-xs text-muted-foreground tabular-nums\">\n            {speed}\n          </span>\n        </div>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

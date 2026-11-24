@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import { Switch } from "@workspace/ui/components/switch"
 import { AppCard } from "@workspace/ui/predict/app/app-card"
 import { AppGlow } from "@workspace/ui/predict/app/app-glow"
@@ -13,7 +13,7 @@ import { Screen } from "../screen"
 export const title = "Your choices"
 
 const choices = [
-  { id: "ai-read", label: "Predict AI can read my record", defaultOn: true },
+  { id: "ai-read", label: "PREDICT can read my record", defaultOn: true },
   { id: "whatsapp", label: "WhatsApp reminders", defaultOn: false },
   { id: "research", label: "Research, name removed", defaultOn: false },
   { id: "keep-reports", label: "Keep my reports and guide me", defaultOn: true },
@@ -29,7 +29,7 @@ export default function Registered02() {
     <Screen className="items-center">
       <AppGlow variant="blob" />
 
-      <PredictMark className="relative mt-[82px] h-[72px] w-16 text-app-accent" />
+      <PredictMark className="relative mt-[82px] h-[72px] w-16 text-primary" />
 
       <h1 className="relative mt-[78px] text-center font-display text-[40px] leading-[1.1] font-normal">
         Your choices
@@ -47,7 +47,7 @@ export default function Registered02() {
               onCheckedChange={(checked) =>
                 setEnabled((prev) => ({ ...prev, [choice.id]: checked }))
               }
-              className="data-checked:bg-app-brand data-unchecked:bg-app-track"
+              className="data-checked:bg-primary data-unchecked:bg-input"
             />
           </label>
         ))}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-dropdown-menu-group",
+  "type": "registry:block",
+  "description": "Button group",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-dropdown-menu/glass-dropdown-menu-group.tsx",
+      "content": "\"use client\"\n\nimport { EllipsisIcon } from \"lucide-react\"\n\nimport {\n  GlassButtonGroup,\n  GlassButtonGroupItem,\n  GlassButtonGroupSeparator,\n} from \"@workspace/ui/components/liquid-glass/glass-button-group\"\nimport {\n  GlassDropdownMenu,\n  GlassDropdownMenuContent,\n  GlassDropdownMenuItem,\n  GlassDropdownMenuTrigger,\n} from \"@workspace/ui/components/liquid-glass/glass-dropdown-menu\"\n\nexport function GlassDropdownMenuGroup() {\n  return (\n    <GlassDropdownMenu>\n      <GlassButtonGroup\n        aria-label=\"Reminder\"\n        className=\"bg-primary text-primary-foreground\"\n      >\n        <GlassButtonGroupItem>Snooze</GlassButtonGroupItem>\n        <GlassButtonGroupSeparator />\n        <GlassDropdownMenuTrigger asChild>\n          <GlassButtonGroupItem aria-label=\"More reminder options\">\n            <EllipsisIcon />\n          </GlassButtonGroupItem>\n        </GlassDropdownMenuTrigger>\n      </GlassButtonGroup>\n      <GlassDropdownMenuContent className=\"text-primary-foreground\">\n        <GlassDropdownMenuItem>In an hour</GlassDropdownMenuItem>\n        <GlassDropdownMenuItem>Tomorrow</GlassDropdownMenuItem>\n        <GlassDropdownMenuItem>Next week</GlassDropdownMenuItem>\n      </GlassDropdownMenuContent>\n    </GlassDropdownMenu>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-button-group-demo",
+  "type": "registry:block",
+  "description": "Basic",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-button-group/glass-button-group-demo.tsx",
+      "content": "\"use client\"\n\nimport { EllipsisIcon } from \"lucide-react\"\n\nimport {\n  GlassButtonGroup,\n  GlassButtonGroupItem,\n  GlassButtonGroupSeparator,\n} from \"@workspace/ui/components/liquid-glass/glass-button-group\"\n\nexport function GlassButtonGroupDemo() {\n  return (\n    <GlassButtonGroup\n      aria-label=\"Report\"\n      className=\"bg-primary text-primary-foreground\"\n    >\n      <GlassButtonGroupItem>Download</GlassButtonGroupItem>\n      <GlassButtonGroupItem>Share</GlassButtonGroupItem>\n      <GlassButtonGroupSeparator />\n      <GlassButtonGroupItem aria-label=\"More report actions\">\n        <EllipsisIcon />\n      </GlassButtonGroupItem>\n    </GlassButtonGroup>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

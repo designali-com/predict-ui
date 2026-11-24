@@ -1,0 +1,82 @@
+---
+title: Glass Action Button
+description: "A button for one async action. Its icon is a droplet of glass that melts in while the action runs."
+---
+
+## Demos
+
+Press it: the droplet merges while the test is booked.
+
+<ComponentPreview name="glass-action-button-demo" />
+
+## Usage
+
+Use it for a single action that takes a moment and can succeed or fail, such as booking a test or uploading a report. For an action with no progress to show, use a [Glass Button](/docs/components/glass-button).
+
+Import it from `@workspace/ui/components/liquid-glass/glass-action-button`.
+
+```tsx
+import { GlassActionButton } from "@workspace/ui/components/liquid-glass/glass-action-button"
+```
+
+```tsx
+<GlassActionButton
+  material="tinted"
+  className="bg-primary text-primary-foreground"
+  pendingLabel="Booking"
+  successLabel="Booked"
+  onAction={bookTest}
+>
+  Book test
+</GlassActionButton>
+```
+
+### Anatomy
+
+- **GlassActionButton** — The button, its label, and the droplet. It holds its own idle, pending, and success state.
+
+### Notes
+
+- Return a promise from `onAction`. The button stays pending until it settles and ignores further presses.
+- If the action throws, the droplet splits off again and `onActionError` is called. Show the error next to the button.
+- Without WebGL2 it is a plain button with a divider.
+
+## Examples
+
+### Sizes
+
+`sm`, `md`, and `lg`.
+
+<ComponentPreview name="glass-action-button-sizes" />
+
+### Icon
+
+Clear glass with your own droplet icon.
+
+<ComponentPreview name="glass-action-button-icon" />
+
+### Error
+
+A failed action returns the button to idle.
+
+<ComponentPreview name="glass-action-button-error" />
+
+## Props
+
+These are the props you set most often. Unlisted props pass through to the underlying element.
+
+### GlassActionButton
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `ReactNode` | — | Idle label, and the accessible name. |
+| `onAction` | `() => unknown` | — | Runs on press. Return a promise to stay pending. |
+| `onActionError` | `(error) => void` | — | Called when the action throws or rejects. |
+| `pendingLabel` | `ReactNode` | the idle label | Label while the action runs. |
+| `successLabel` | `ReactNode` | the idle label | Label after it succeeds. |
+| `resetAfter` | `number` | `0` | Milliseconds before a success returns to idle. `0` stays merged. |
+| `icon` | `ReactNode` | an arrow | Idle icon in the droplet. |
+| `material` | `"clear" or "tinted"` | `clear` | Clear glass, or the colour of its own `bg-*` class. |
+| `size` | `"sm", "md", or "lg"` | `md` | Height: 32, 40, or 48 px. |
+| `tint` | `number` | `1` | Clear glass: how much tint covers the backdrop, 0 to 1. |
+| `disabled` | `boolean` | `false` | Blocks input and dims the button. |

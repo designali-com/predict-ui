@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-tabs-color",
+  "type": "registry:block",
+  "description": "Colour",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-tabs/glass-tabs-color.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { GlassTabs } from \"@workspace/ui/components/liquid-glass/glass-tabs\"\n\nconst options = [\n  { value: \"metric\", label: \"Metric\" },\n  { value: \"imperial\", label: \"Imperial\" },\n]\n\nexport function GlassTabsColor() {\n  const [units, setUnits] = useState(\"metric\")\n\n  return (\n    <GlassTabs\n      aria-label=\"Units\"\n      size=\"lg\"\n      value={units}\n      onValueChange={setUnits}\n      options={options}\n      highlightClassName=\"bg-secondary\"\n    />\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

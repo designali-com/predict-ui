@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-button-disabled",
+  "type": "registry:block",
+  "description": "Disabled",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-button/glass-button-disabled.tsx",
+      "content": "\"use client\"\n\nimport { GlassButton } from \"@workspace/ui/components/liquid-glass/glass-button\"\n\nexport function GlassButtonDisabled() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4\">\n      <GlassButton\n        disabled\n        material=\"tinted\"\n        className=\"bg-primary text-primary-foreground\"\n      >\n        Book test\n      </GlassButton>\n      <GlassButton disabled>View report</GlassButton>\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

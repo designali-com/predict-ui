@@ -17,9 +17,9 @@ export function CardDemo() {
       </CardHeader>
       <CardContent>
         <p className="text-2xl font-medium tabular-nums">
-          78 <span className="text-sm text-muted-foreground">mg/dL</span>
+          78 <span className="text-sm text-muted-foreground">mg·dL⁻¹</span>
         </p>
-        <p className="text-muted-foreground">Optimal range is below 90 mg/dL.</p>
+        <p className="text-muted-foreground">Optimal range is below 90 mg·dL⁻¹.</p>
       </CardContent>
     </Card>
   )

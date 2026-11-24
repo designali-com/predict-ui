@@ -19,7 +19,7 @@ const ASSETS = "/screens/desktop/home"
 export const title = "Home"
 
 const statPill =
-  "absolute flex h-10 items-center justify-between rounded-full bg-app-pill px-5 text-sm leading-5 whitespace-nowrap text-app-pill-foreground"
+  "absolute flex h-10 items-center justify-between rounded-full bg-secondary px-5 text-sm leading-5 whitespace-nowrap text-secondary-foreground"
 
 /** 20 vertical bars, the first `filled` in brand colour (58 of 61 in range). */
 function RangeBars({ filled, total = 20 }: { filled: number; total?: number }) {
@@ -28,7 +28,7 @@ function RangeBars({ filled, total = 20 }: { filled: number; total?: number }) {
       {Array.from({ length: total }, (_, i) => (
         <span
           key={i}
-          className={cn("h-9 w-[7px] shrink-0 rounded-[20px]", i < filled ? "bg-app-brand" : "bg-app-pill/50")}
+          className={cn("h-9 w-[7px] shrink-0 rounded-[20px]", i < filled ? "bg-primary" : "bg-secondary/50")}
         />
       ))}
     </div>
@@ -55,27 +55,27 @@ function Unit({ value, unit }: { value: string; unit: string }) {
 }
 
 const goals = [
-  { label: "Walk", value: "40 Min" },
-  { label: "Snack", value: "Roasted\nChana" },
-  { label: "Walk", value: "40 Min" },
+  { label: "Walk", value: "40 min" },
+  { label: "Snack", value: "Roasted\nchana" },
+  { label: "Walk", value: "40 min" },
 ]
 
 function DailyGoalsRing() {
   return (
     <div className="relative h-[204px] w-[158px] shrink-0">
-      <div className="absolute top-[55.5px] left-1/2 size-24 -translate-x-1/2 rounded-full bg-app-pill shadow-[inset_0_10px_20px_rgba(255,255,255,0.25)]" />
-      <div className="absolute top-[24.5px] left-1/2 size-[158px] -translate-x-1/2 rounded-full border-10 border-dashed border-app-pill" />
-      <div className="absolute top-[42.5px] left-1/2 size-[122px] -translate-x-1/2 rounded-full border-[15px] border-app-pill" />
+      <div className="absolute top-[55.5px] left-1/2 size-24 -translate-x-1/2 rounded-full bg-secondary shadow-[inset_0_10px_20px_rgba(255,255,255,0.25)]" />
+      <div className="absolute top-[24.5px] left-1/2 size-[158px] -translate-x-1/2 rounded-full border-10 border-dashed border-secondary" />
+      <div className="absolute top-[42.5px] left-1/2 size-[122px] -translate-x-1/2 rounded-full border-[15px] border-secondary" />
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`${ASSETS}/home-01-goals-arc.svg`}
         alt=""
         className="absolute top-[35px] left-[10.5px] h-[76px] w-[137px] max-w-none"
       />
-      <p className="absolute top-[86.5px] left-[calc(50%+0.5px)] -translate-x-1/2 text-4xl leading-5 text-app-accent">
+      <p className="absolute top-[86.5px] left-[calc(50%+0.5px)] -translate-x-1/2 text-4xl leading-5 text-primary">
         25
       </p>
-      <p className="absolute top-[109.5px] left-1/2 -translate-x-1/2 text-xs leading-5 text-app-accent">/100</p>
+      <p className="absolute top-[109.5px] left-1/2 -translate-x-1/2 text-xs leading-5 text-primary">/100</p>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`${ASSETS}/home-01-goals-ticks.svg`}
@@ -117,17 +117,17 @@ export default function HomeDesktop01() {
       <DateStrip />
 
       <div className={cn(statPill, "top-[699px] left-[984px] min-w-[135px] gap-3")}>
-        <span>Muscle Age</span>
+        <span>Muscle age</span>
         <span>34</span>
       </div>
       <div className={cn(statPill, "top-[796px] left-[740px] min-w-[134px] gap-3")}>
-        <span>Twin Age</span>
+        <span>Twin age</span>
         <span>56</span>
       </div>
 
       {/* Daily goals */}
       <DashCard className={cn(goalsCard, "left-[467px]")}>
-        <p className="h-5 text-sm leading-5">Daily Goals</p>
+        <p className="h-5 text-sm leading-5">Daily goals</p>
         <DailyGoalsRing />
         <div className="flex items-start gap-6 whitespace-nowrap">
           {goals.map((g, i) => (
@@ -148,7 +148,7 @@ export default function HomeDesktop01() {
 
       {/* Sleep quality */}
       <DashCard className={cn(goalsCard, "left-[1190px]")}>
-        <p className="h-5 text-sm leading-5">Daily Goals</p>
+        <p className="h-5 text-sm leading-5">Daily goals</p>
         <div className="flex h-[272px] w-40 flex-col items-center justify-center gap-[19px]">
           <div className="relative size-40">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -166,8 +166,8 @@ export default function HomeDesktop01() {
           <BigStat value="58" caption="of 61 in range" width={99} />
           <RangeBars filled={16} />
         </div>
-        <MetricRow title="Vitamin D" description="Below range, 30 to 100" value={<Unit value="18" unit="ng/mL" />} />
-        <MetricRow title="hs-CRP" description="Above range, under 3" value={<Unit value="3.4" unit="mg/L" />} />
+        <MetricRow title="Vitamin D" description="Below range, 30–100" value={<Unit value="18" unit="ng·mL⁻¹" />} />
+        <MetricRow title="hs-CRP" description="Above range, under 3" value={<Unit value="3.4" unit="mg·L⁻¹" />} />
         <MetricRow title="HbA1c" description="Above range, under 5.7" value="5.9%" />
       </DashCard>
 
@@ -185,9 +185,9 @@ export default function HomeDesktop01() {
             />
           </div>
         </div>
-        <MetricRow title="RFF" description="Renal Filtration Factor" value={<b>2.96</b>} />
-        <MetricRow title="CF" description="Cardiometabolic Function" value={<b>2.72</b>} />
-        <MetricRow title="MHF" description="Musculoskeletal Health Factotor" value={<b>5.78</b>} />
+        <MetricRow title="RFF" description="Renal filtration factor" value={<b>2.96</b>} />
+        <MetricRow title="CMF" description="Cardiometabolic function" value={<b>2.72</b>} />
+        <MetricRow title="MHF" description="Musculoskeletal health factor" value={<b>5.78</b>} />
       </DashCard>
 
       <DesktopNav defaultTab="today" />

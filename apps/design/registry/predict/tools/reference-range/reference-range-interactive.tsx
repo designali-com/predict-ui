@@ -23,7 +23,7 @@ export function ReferenceRangeInteractive() {
         step={0.1}
         format={{ minimumFractionDigits: 1, maximumFractionDigits: 1 }}
       >
-        <NumberFieldScrubArea label="Potassium (mmol/L)" />
+        <NumberFieldScrubArea label="Potassium (mmol·L⁻¹)" />
         <NumberFieldGroup>
           <NumberFieldDecrement />
           <NumberFieldInput />
@@ -33,7 +33,7 @@ export function ReferenceRangeInteractive() {
       <ReferenceRange
         name="Potassium"
         value={value ?? Number.NaN}
-        unit="mmol/L"
+        unit="mmol·L⁻¹"
         decimals={1}
         range={{ low: 3.5, high: 5.1, criticalLow: 2.8, criticalHigh: 6.2 }}
       />

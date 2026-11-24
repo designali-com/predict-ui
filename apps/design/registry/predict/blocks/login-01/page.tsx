@@ -32,7 +32,7 @@ export default function Page() {
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
                 <Label htmlFor="login-password">Password</Label>
-                <a href="#" className="text-xs text-muted-foreground underline-offset-4 hover:underline">
+                <a href="/forgot-password" className="text-xs text-muted-foreground underline-offset-4 hover:underline">
                   Forgot password?
                 </a>
               </div>
@@ -53,7 +53,7 @@ export default function Page() {
 
             <p className="text-center text-xs text-muted-foreground">
               New to PREDICT?{" "}
-              <a href="#" className="text-foreground underline underline-offset-4">
+              <a href="/book" className="text-foreground underline underline-offset-4">
                 Book your first test
               </a>
             </p>

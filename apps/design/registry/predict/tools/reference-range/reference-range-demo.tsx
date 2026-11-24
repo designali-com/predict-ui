@@ -8,7 +8,7 @@ export function ReferenceRangeDemo() {
       <ReferenceRange
         name="Glucose, fasting"
         value={92}
-        unit="mg/dL"
+        unit="mg·dL⁻¹"
         range={{ low: 70, high: 99 }}
       />
     </div>

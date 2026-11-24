@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import { AppGlow } from "@workspace/ui/predict/app/app-glow"
 import { Logo } from "@workspace/ui/predict/logo"
 
@@ -12,13 +12,13 @@ export const title = "Verify OTP"
 
 const LENGTH = 6
 
-/** Violet pill header with the PREDICT wordmark and a "Get Started" action. */
+/** Violet pill header with the PREDICT wordmark and a "Get started" action. */
 function AuthHeader() {
   return (
-    <header className="absolute top-[43px] left-[47px] flex h-[60px] w-[1816px] items-center justify-between rounded-full bg-app-brand pr-1.5 pl-[30px]">
-      <Logo aria-label="PREDICT" className="h-[22px] w-[142px] text-app-brand-foreground" />
+    <header className="absolute top-[43px] left-[47px] flex h-[60px] w-[1816px] items-center justify-between rounded-full bg-primary pr-1.5 pl-[30px]">
+      <Logo aria-label="PREDICT" className="h-[22px] w-[142px] text-primary-foreground" />
       <Button variant="app-secondary" size="lg" className="px-6 text-sm">
-        Get Started
+        Get started
       </Button>
     </header>
   )
@@ -49,9 +49,9 @@ export default function AuthDesktop06() {
       <div className="relative mt-[259px] flex w-[290px] flex-col items-center text-center">
         <h1 className="font-display text-[40px] leading-[52px] font-normal">Enter OTP</h1>
         <p className="text-base">
-          We have you an email at sent
+          We sent a code to
           <br />
-          ali@preditc.fit
+          you@example.com
         </p>
 
         <div className="mt-[64px] flex" role="group" aria-label="One-time password">
@@ -69,7 +69,7 @@ export default function AuthDesktop06() {
               maxLength={1}
               placeholder="0"
               aria-label={`Digit ${i + 1}`}
-              className="size-12 rounded-full border border-app-border bg-app-field text-center text-sm text-app-foreground outline-none placeholder:text-app-foreground focus-visible:border-app-accent focus-visible:ring-2 focus-visible:ring-app-accent/20"
+              className="size-12 rounded-full border border-border bg-card text-center text-sm text-foreground outline-none placeholder:text-foreground focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20"
             />
           ))}
         </div>
@@ -79,12 +79,12 @@ export default function AuthDesktop06() {
             Submit
           </Button>
           <Button variant="app-secondary" size="lg" className="w-[290px] px-6 text-sm">
-            Use different number
+            Use a different number
           </Button>
         </div>
 
         <a href="#" className="mt-[35px] text-base underline">
-          resend otp?
+          Resend code
         </a>
       </div>
     </DesktopScreen>

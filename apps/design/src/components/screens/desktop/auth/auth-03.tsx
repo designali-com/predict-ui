@@ -2,7 +2,7 @@
 
 import * as React from "react"
 
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 
 import { AuthDesktopLayout } from "./auth-01"
 
@@ -31,7 +31,7 @@ export default function AuthDesktop03() {
     <AuthDesktopLayout top={259}>
       <h1 className="font-display text-[40px] leading-[52px] font-normal">Enter OTP</h1>
       <p className="text-base">
-        We have you an email at sent
+        We sent a code to
         <br />
         +91 95679 48473
       </p>
@@ -51,7 +51,7 @@ export default function AuthDesktop03() {
             maxLength={1}
             placeholder="0"
             aria-label={`Digit ${i + 1}`}
-            className="size-12 rounded-full border border-app-border bg-app-field text-center text-sm text-app-foreground outline-none placeholder:text-app-foreground focus-visible:border-app-accent focus-visible:ring-2 focus-visible:ring-app-accent/20"
+            className="size-12 rounded-full border border-border bg-card text-center text-sm text-foreground outline-none placeholder:text-foreground focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20"
           />
         ))}
       </div>
@@ -61,12 +61,12 @@ export default function AuthDesktop03() {
           Submit
         </Button>
         <Button variant="app-secondary" size="lg" className="w-[290px] px-6 text-sm">
-          Use different number
+          Use a different number
         </Button>
       </div>
 
       <a href="#" className="mt-[35px] text-base underline">
-        resend otp?
+        Resend code
       </a>
     </AuthDesktopLayout>
   )

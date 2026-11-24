@@ -8,27 +8,27 @@ export function ReferenceRangeFlags() {
       <ReferenceRange
         name="Haemoglobin"
         value={11.2}
-        unit="g/dL"
+        unit="g·dL⁻¹"
         decimals={1}
         range={{ low: 12, high: 15.5 }}
       />
       <ReferenceRange
         name="Total cholesterol"
         value={232}
-        unit="mg/dL"
+        unit="mg·dL⁻¹"
         range={{ high: 200 }}
       />
       <ReferenceRange
         name="Potassium"
         value={6.8}
-        unit="mmol/L"
+        unit="mmol·L⁻¹"
         decimals={1}
         range={{ low: 3.5, high: 5.1, criticalLow: 2.8, criticalHigh: 6.2 }}
       />
       <ReferenceRange
         name="Vitamin D"
         value={34}
-        unit="ng/mL"
+        unit="ng·mL⁻¹"
         range={{ low: 30 }}
       />
       <ReferenceRange

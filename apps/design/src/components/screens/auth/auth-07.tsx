@@ -1,65 +1,69 @@
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import { Input } from "@workspace/ui/components/input"
 import { AppGlow } from "@workspace/ui/predict/app/app-glow"
-import { PredictMark } from "@workspace/ui/predict/logo"
 
 import { Screen } from "../screen"
+import { At, AuthHeading, AuthMark, primaryButtonClass } from "./auth-parts"
 
 export const title = "Create account"
 
 const fields = [
-  { name: "name", placeholder: "Name", type: "text", autoComplete: "name" },
-  { name: "email", placeholder: "Email", type: "email", autoComplete: "email" },
-  { name: "phone", placeholder: "Phone number", type: "tel", autoComplete: "tel" },
-  { name: "password", placeholder: "Password", type: "password", autoComplete: "new-password" },
+  { name: "name", placeholder: "Name", type: "text", autoComplete: "name", top: 353 },
+  { name: "email", placeholder: "Email", type: "email", autoComplete: "email", top: 410 },
+  { name: "phone", placeholder: "Phone number", type: "tel", autoComplete: "tel", top: 467 },
+  { name: "password", placeholder: "Password", type: "password", autoComplete: "new-password", top: 523 },
 ]
 
 // Figma: iPhone 18 Pro - 123 (1733:1964)
 export default function Auth07() {
   return (
-    <Screen className="items-center">
+    <Screen className="bg-card">
       <AppGlow variant="blob" />
+      <AuthMark />
 
-      <PredictMark className="relative mt-[82px] h-[72px] w-16 text-app-accent" />
+      <At top={228}>
+        <AuthHeading>Get started</AuthHeading>
+      </At>
+      <At top={280} className="text-base leading-[19px] whitespace-nowrap">
+        Your journey starts here
+      </At>
 
-      <h1 className="relative mt-[74px] font-display text-[40px] leading-[52px] font-normal">
-        Get started
-      </h1>
-      <p className="relative text-base leading-[19px]">Your journey starts with here</p>
-
-      <form className="relative mt-14 flex w-[290px] flex-col gap-2">
-        {fields.map((field) => (
-          <Input
-            key={field.name}
-            size="lg"
-            aria-label={field.placeholder}
-            {...field}
-            className="border-app-border bg-transparent text-app-foreground placeholder:text-app-foreground/40"
-          />
+      <form>
+        {fields.map(({ top, ...field }) => (
+          <At key={field.name} top={top}>
+            <Input
+              size="lg"
+              aria-label={field.placeholder}
+              {...field}
+              className="w-[290px] border-border bg-card leading-5 text-foreground placeholder:text-foreground/40"
+            />
+          </At>
         ))}
-        <Button type="button" variant="app" size="lg" className="w-full text-base">
-          Create account
-        </Button>
+        <At top={579}>
+          <Button type="button" variant="app" className={primaryButtonClass}>
+            Create account
+          </Button>
+        </At>
       </form>
 
-      <p className="relative mt-[95px] flex gap-1.5 text-base leading-[19px] text-white">
+      <At top={722} className="flex gap-1.5 text-base leading-[19px] whitespace-nowrap text-white">
         Already have an account?
         <a href="#" className="underline">
-          login
+          Log in
         </a>
-      </p>
+      </At>
 
-      <p className="relative mt-[54px] w-[290px] text-center text-base leading-[19px] text-white">
+      <At top={795} className="w-[290px] text-center text-base leading-[19px] text-white">
         By continuing, you agree to our
         <br />
         <a href="#" className="underline">
-          Terms of Service
+          Terms of service
         </a>{" "}
         and{" "}
         <a href="#" className="underline">
-          Privacy Policy.
+          Privacy policy.
         </a>
-      </p>
+      </At>
     </Screen>
   )
 }

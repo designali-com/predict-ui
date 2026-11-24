@@ -1,0 +1,89 @@
+---
+title: Glass Dropdown Menu
+description: "A menu that swells out of the control that opens it."
+---
+
+## Demos
+
+Actions on a report.
+
+<ComponentPreview name="glass-dropdown-menu-demo" />
+
+## Usage
+
+Use it for actions that do not need to be on screen all the time. To pick a value, use a [Glass Select](/docs/components/glass-select). For submenus, checkboxes, or shortcuts, use a [Dropdown Menu](/docs/components/dropdown-menu).
+
+Import it from `@workspace/ui/components/liquid-glass/glass-dropdown-menu`.
+
+```tsx
+import {
+  GlassDropdownMenu,
+  GlassDropdownMenuContent,
+  GlassDropdownMenuItem,
+  GlassDropdownMenuSeparator,
+  GlassDropdownMenuTrigger,
+} from "@workspace/ui/components/liquid-glass/glass-dropdown-menu"
+```
+
+```tsx
+<GlassDropdownMenu>
+  <GlassDropdownMenuTrigger>Options</GlassDropdownMenuTrigger>
+  <GlassDropdownMenuContent>
+    <GlassDropdownMenuItem onSelect={rename}>Rename</GlassDropdownMenuItem>
+    <GlassDropdownMenuSeparator />
+    <GlassDropdownMenuItem destructive onSelect={remove}>Delete</GlassDropdownMenuItem>
+  </GlassDropdownMenuContent>
+</GlassDropdownMenu>
+```
+
+### Anatomy
+
+- **GlassDropdownMenu** — Holds the open state.
+- **GlassDropdownMenuTrigger** — Opens the menu. Use `asChild` inside a button group.
+- **GlassDropdownMenuContent** — The list.
+- **GlassDropdownMenuItem** — An action. Runs `onSelect` and closes the menu.
+- **GlassDropdownMenuSeparator** — A line between items.
+
+### Notes
+
+- Arrow keys move, typing jumps to an item, and Escape closes the menu.
+- Without WebGL2 the list is a plain frosted panel.
+
+## Examples
+
+### Button group
+
+The whole group becomes the anchor.
+
+<ComponentPreview name="glass-dropdown-menu-group" />
+
+### Alignment
+
+`start`, `center`, and `end`, with a disabled item.
+
+<ComponentPreview name="glass-dropdown-menu-align" />
+
+## Props
+
+These are the props you set most often. Unlisted props pass through to the underlying element.
+
+### GlassDropdownMenuTrigger
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `asChild` | `boolean` | `false` | Put the trigger on the single child element. |
+
+### GlassDropdownMenuContent
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `align` | `"start", "center", or "end"` | `center` | Alignment to the control. |
+| `sideOffset` | `number` | `12` | Distance from the control, in px. |
+
+### GlassDropdownMenuItem
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `onSelect` | `(event) => unknown` | — | Runs when the item is chosen. |
+| `destructive` | `boolean` | `false` | Paints the item red. |
+| `disabled` | `boolean` | `false` | Blocks input and dims the item. |

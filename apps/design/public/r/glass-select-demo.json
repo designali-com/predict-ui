@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-select-demo",
+  "type": "registry:block",
+  "description": "Basic",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-select/glass-select-demo.tsx",
+      "content": "\"use client\"\n\nimport { GlassSelect } from \"@workspace/ui/components/liquid-glass/glass-select\"\n\nconst options = [\n  { value: \"full-body\", label: \"Full body\" },\n  { value: \"cardiac\", label: \"Cardiac\" },\n  { value: \"metabolic\", label: \"Metabolic\" },\n  { value: \"thyroid\", label: \"Thyroid\" },\n]\n\nexport function GlassSelectDemo() {\n  return (\n    <GlassSelect\n      label=\"Test panel\"\n      placeholder=\"Choose a panel\"\n      options={options}\n    />\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

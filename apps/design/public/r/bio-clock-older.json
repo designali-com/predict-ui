@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bio-clock-older",
+  "type": "registry:block",
+  "description": "Older than calendar age",
+  "files": [
+    {
+      "path": "registry/predict/ui/bio-clock/bio-clock-older.tsx",
+      "content": "\"use client\"\n\nimport { BioClock } from \"@workspace/ui/predict/bio-clock\"\n\nexport function BioClockOlder() {\n  return (\n    <div className=\"mx-auto flex flex-wrap items-center justify-center gap-3\">\n      <BioClock bioAge={51.4} chronologicalAge={47} />\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

@@ -10,7 +10,7 @@ export default function AuthDesktop04() {
   return (
     <DesktopScreen className="items-center justify-center">
       <AppGlow variant="fade" className="h-[289px] mix-blend-multiply dark:mix-blend-normal" />
-      <PredictMark aria-label="PREDICT" className="relative h-[107.5px] w-24 text-app-accent" />
+      <PredictMark aria-label="PREDICT" className="relative h-[107.5px] w-24 text-primary" />
     </DesktopScreen>
   )
 }

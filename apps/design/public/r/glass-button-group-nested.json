@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-button-group-nested",
+  "type": "registry:block",
+  "description": "Nested",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-button-group/glass-button-group-nested.tsx",
+      "content": "\"use client\"\n\nimport { ArrowLeftIcon } from \"lucide-react\"\n\nimport {\n  GlassButtonGroup,\n  GlassButtonGroupItem,\n} from \"@workspace/ui/components/liquid-glass/glass-button-group\"\n\nconst look = \"bg-secondary text-secondary-foreground\"\n\nexport function GlassButtonGroupNested() {\n  return (\n    <GlassButtonGroup aria-label=\"Message\">\n      <GlassButtonGroup aria-label=\"Navigation\" className={look}>\n        <GlassButtonGroupItem aria-label=\"Back\">\n          <ArrowLeftIcon />\n        </GlassButtonGroupItem>\n      </GlassButtonGroup>\n      <GlassButtonGroup aria-label=\"Actions\" className={look}>\n        <GlassButtonGroupItem>Archive</GlassButtonGroupItem>\n        <GlassButtonGroupItem>Report</GlassButtonGroupItem>\n      </GlassButtonGroup>\n    </GlassButtonGroup>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

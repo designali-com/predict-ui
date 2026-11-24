@@ -1,0 +1,78 @@
+---
+title: Glass Tabs
+description: "A segmented control whose selection slides as a glass lens."
+---
+
+## Demos
+
+Choose a date range. You can also drag the lens.
+
+<ComponentPreview name="glass-tabs-demo" />
+
+## Usage
+
+Use it to switch between two to five short options, such as a range or a unit. To switch between panels of content, use [Tabs](/docs/components/tabs).
+
+Import it from `@workspace/ui/components/liquid-glass/glass-tabs`.
+
+```tsx
+import { GlassTabs } from "@workspace/ui/components/liquid-glass/glass-tabs"
+```
+
+```tsx
+<GlassTabs
+  aria-label="Date range"
+  value={range}
+  onValueChange={setRange}
+  options={[
+    { value: "week", label: "Week" },
+    { value: "month", label: "Month" },
+  ]}
+/>
+```
+
+### Anatomy
+
+- **GlassTabs** — The container, the options, and the lens.
+
+### Notes
+
+- It is a radio group: one tab stop, and arrow keys move the selection.
+- Options without a visible label need an `aria-label`.
+- With reduced motion the highlight jumps.
+
+## Examples
+
+### Icons
+
+Icons with labels, and icons only.
+
+<ComponentPreview name="glass-tabs-icons" />
+
+### Sizes
+
+`sm`, `md`, and `lg`.
+
+<ComponentPreview name="glass-tabs-sizes" />
+
+### Colour
+
+Set the lens colour with `highlightClassName`.
+
+<ComponentPreview name="glass-tabs-color" />
+
+## Props
+
+These are the props you set most often.
+
+### GlassTabs
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `options` | `GlassTabOption[]` | — | Each has `value`, `label`, and an optional `icon` and `aria-label`. |
+| `value` | `string or null` | — | Selected value. |
+| `onValueChange` | `(value) => void` | — | Called when the selection changes. |
+| `aria-label` | `string` | — | Name of the group. |
+| `name` | `string` | — | Field name for form submission. |
+| `size` | `"sm", "md", or "lg"` | `md` | Size of the options. |
+| `highlightClassName` | `string` | `bg-white dark:bg-neutral-700` | Classes of the selected pill. |

@@ -1,0 +1,85 @@
+---
+title: Glass Button Group
+description: "Related actions that share one body of glass."
+---
+
+## Demos
+
+Report actions, with a separator before the menu item.
+
+<ComponentPreview name="glass-button-group-demo" />
+
+## Usage
+
+Use it for a few short actions on the same thing, such as a toolbar. Keep groups to two to four items.
+
+Import it from `@workspace/ui/components/liquid-glass/glass-button-group`.
+
+```tsx
+import {
+  GlassButtonGroup,
+  GlassButtonGroupItem,
+  GlassButtonGroupSeparator,
+  GlassButtonGroupText,
+} from "@workspace/ui/components/liquid-glass/glass-button-group"
+```
+
+```tsx
+<GlassButtonGroup aria-label="Report" className="bg-primary text-primary-foreground">
+  <GlassButtonGroupItem>Download</GlassButtonGroupItem>
+  <GlassButtonGroupItem>Share</GlassButtonGroupItem>
+</GlassButtonGroup>
+```
+
+### Anatomy
+
+- **GlassButtonGroup** — The shared glass. Nest groups to keep some actions apart.
+- **GlassButtonGroupItem** — One action. Use `asChild` for a link.
+- **GlassButtonGroupSeparator** — A line between items.
+- **GlassButtonGroupText** — Text that is not a button, such as a count.
+
+### Notes
+
+- Give every group an `aria-label`.
+- Items are plain buttons. Do not put a Glass Button inside.
+- The glass is tinted white until you add a `bg-*` class.
+
+## Examples
+
+### Nested
+
+The outer group only adds space between the inner ones.
+
+<ComponentPreview name="glass-button-group-nested" />
+
+### Vertical
+
+`orientation="vertical"`.
+
+<ComponentPreview name="glass-button-group-vertical" />
+
+### With text
+
+A counter on clear glass.
+
+<ComponentPreview name="glass-button-group-text" />
+
+## Props
+
+These are the props you set most often. Unlisted props pass through to the underlying element.
+
+### GlassButtonGroup
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `orientation` | `"horizontal" or "vertical"` | `horizontal` | Side by side or stacked. |
+| `size` | `"sm", "md", or "lg"` | `md` | Height of a horizontal group: 32, 40, or 48 px. |
+| `material` | `"clear" or "tinted"` | `tinted` | Tinted white or your `bg-*` colour, or clear. |
+| `tint` | `number` | `1` | Clear glass: how much tint covers the backdrop, 0 to 1. |
+
+### GlassButtonGroupItem
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `asChild` | `boolean` | `false` | Render the item on the single child element. |
+| `disabled` | `boolean` | `false` | Blocks input and dims the item. |

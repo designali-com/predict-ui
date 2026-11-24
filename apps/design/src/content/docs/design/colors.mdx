@@ -1,5 +1,5 @@
 ---
-title: Colors
+title: Colours
 description: "The colour tokens behind every PREDICT screen: surfaces, text, brand, status, charts, and their contrast."
 ---
 
@@ -20,7 +20,7 @@ PREDICT uses a small set of colour tokens. Components never use raw colours; the
 
 ## Brand palette
 
-Mostly black and white, with **Predict Purple** (`#8504FE`) as the one brand colour and lilac as its soft partner. Use purple for the main action and brand moments, not large areas. See [Brand Guidelines](/docs/design/logos) for proportions and logo colours.
+Mostly black and white, with **Predict Purple** (`oklch(0.3247 0.1762 297.04)`, `#420080`) as the one brand colour and lavender (`#EBE6FE`) as its soft partner. In dark mode the two swap roles: `primary` becomes lavender, with Predict Purple text on it. Use purple for the main action and brand moments, not large areas. See [Brand Guidelines](/docs/design/logos) for proportions and logo colours.
 
 ## Tokens
 
@@ -50,7 +50,7 @@ Five colours show how far a biomarker result is from healthy. They follow the Z-
 
 <StatusColors />
 
-These are the thresholds used by [Reference Range](/docs/tools/reference-range) and the [Bio Clock](/docs/ui/bio-clock) severity scale. A low value on the harmless side of a directional range, such as a low hs-CRP, is not a concern and shows in neutral grey.
+These are the thresholds used by [Reference Range](/docs/tools/reference-range). A low value on the harmless side of a directional range, such as a low hs-CRP, is not a concern and shows in neutral grey.
 
 - **Always pair colour with a word or icon.** About one in twelve men has some colour blindness, and green and orange are easy to confuse. Show "High" or "Normal" next to the colour.
 - **Use the tint pattern for text.** On white, the status colours are too light for body text (see the contrast table). Use a tinted badge, `bg-status-mild/15 text-status-mild`, or a solid fill with a label beside it.
@@ -58,7 +58,7 @@ These are the thresholds used by [Reference Range](/docs/tools/reference-range) 
 
 ## Chart colours
 
-A sequential purple scale for charts, from `chart-1` (lowest) to `chart-5` (highest). In dark mode the scale gets darker so the light end doesn't glare.
+A sequential purple scale for charts, from `chart-1` (lowest) to `chart-5` (highest). In light mode `chart-5` is the primary itself. In dark mode the low end turns near-black so it doesn't glare, and `chart-5` is a lighter purple at the primary's hue, because the primary itself would vanish on black.
 
 <ChartColors />
 
@@ -75,9 +75,25 @@ WCAG asks for a contrast of **4.5:1** for body text and **3:1** for large text (
 What this means in practice:
 
 - `foreground`, `muted-foreground`, `secondary-foreground`, and `accent-foreground` pass for any text size, in both modes.
-- White on `primary` passes for body text (6.1:1). `primary` as text on white also passes; on black it only passes for large text (3.5:1).
+- Light mode: white on `primary` (`#420080`) passes easily (13.6:1), and so does `primary` as text on white.
+- Dark mode: `primary` is lavender (`#EBE6FE`). It passes as text on black (17.3:1), and `primary-foreground` (`#420080`) on it passes too (11.2:1). Always pair `bg-primary` with `text-primary-foreground`, never `text-white`.
 - `destructive` as text passes on white (4.8:1) but only for large text on black (4.4:1). In dark mode, pair it with an icon or use it as a fill.
 - On white, **no status colour passes for body text**, and `normal`, `mild`, and `severe` are below 3:1 even for icons. Use them as fills and tints with a label, as above. On black, all five pass.
+
+## Surfaces
+
+Two surfaces from the Figma app design, as tokens. Use them instead of writing shadows by hand.
+
+| Surface | Classes | Looks like |
+| --- | --- | --- |
+| Card | `bg-card shadow-card rounded-[24px]` (or `<Card>`) | Solid fill with a soft inner shadow at the base. The default for content. |
+| Glass | `glass rounded-[24px]` (or `<Card variant="glass">`) | 90% white, a soft drop shadow, a white top highlight, and a blur. For rows and nav that float over the violet glow. |
+| Primary button | `bg-primary text-primary-foreground shadow-button` | The white inner highlight on filled buttons, tabs, and chips. |
+| Secondary button | `bg-secondary text-secondary-foreground shadow-button-soft` | Lavender with the soft inner shadow. |
+| Screen | `bg-canvas` | The grey (`#EFEFEF`) app canvas behind cards. |
+| Glow | `bg-glow blur-[100px]` | The violet glow at the bottom of app screens. Stays `#420080` in both modes. |
+
+Each token has a dark-mode value in `globals.css`, so the same classes work in both themes.
 
 ## Using colours in code
 

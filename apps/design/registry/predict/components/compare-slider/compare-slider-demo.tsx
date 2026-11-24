@@ -22,7 +22,7 @@ function Panel({
     >
       <span className="text-sm opacity-80">{title}</span>
       <span className="text-5xl font-semibold tabular-nums">{value}</span>
-      <span className="text-sm opacity-80">Vitamin D, ng/mL</span>
+      <span className="text-sm opacity-80">Vitamin D, ng·mL⁻¹</span>
     </div>
   )
 }

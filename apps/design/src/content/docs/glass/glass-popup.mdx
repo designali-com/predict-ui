@@ -1,0 +1,65 @@
+---
+title: Glass Popup
+description: "The popup glass, for your own popovers and menus."
+---
+
+## Demos
+
+A popover that swells out of its button.
+
+<ComponentPreview name="glass-popup-demo" />
+
+## Usage
+
+Use it for a popup the other glass components do not cover. For a menu or a list of values, use [Glass Dropdown Menu](/docs/components/glass-dropdown-menu) or [Glass Select](/docs/components/glass-select).
+
+Import it from `@workspace/ui/components/liquid-glass/glass-popup`.
+
+```tsx
+import {
+  GlassPopupAnchor,
+  GlassPopupSurface,
+  useGlassPopup,
+} from "@workspace/ui/components/liquid-glass/glass-popup"
+```
+
+```tsx
+const popup = useGlassPopup()
+
+<PopoverTrigger data-glass-host="">
+  <GlassPopupAnchor popup={popup} />
+  Open
+</PopoverTrigger>
+<PopoverContent data-glass-popup="" data-glass-skip="">
+  <GlassPopupSurface popup={popup} />
+  <div data-glass-list="">…</div>
+</PopoverContent>
+```
+
+### Anatomy
+
+- **useGlassPopup** — Creates the shared glass.
+- **GlassPopupAnchor** — First child of the control.
+- **GlassPopupSurface** — First child of the popup.
+- **`data-glass-list`** and **`data-glass-item`** — Mark the content that fades in.
+
+### Notes
+
+- Use it with popups from `@ui-sdk/react`. They set the state attributes the glass needs and wait for its exit.
+- Set `--glass-i` on an item to its place in the queue, so items arrive one after another.
+
+## Props
+
+These are the props you set most often.
+
+### useGlassPopup
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `matchWidth` | `boolean` | `false` | Keep the popup as wide as its control. |
+
+### GlassPopupAnchor and GlassPopupSurface
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `popup` | `GlassPopup` | — | The result of `useGlassPopup`. |

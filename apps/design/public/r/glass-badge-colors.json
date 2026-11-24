@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-badge-colors",
+  "type": "registry:block",
+  "description": "Colours",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-badge/glass-badge-colors.tsx",
+      "content": "\"use client\"\n\nimport { GlassBadge } from \"@workspace/ui/components/liquid-glass/glass-badge\"\n\nconst badges = [\n  { label: \"Normal\", className: \"w-20 bg-status-normal text-black\" },\n  { label: \"Mild\", className: \"w-20 bg-status-mild text-black\" },\n  { label: \"Severe\", className: \"w-20 bg-status-severe text-black\" },\n  { label: \"Extreme\", className: \"w-20 bg-status-extreme text-black\" },\n]\n\nexport function GlassBadgeColors() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4\">\n      {badges.map((badge) => (\n        <span key={badge.label} className=\"relative inline-flex\">\n          <GlassBadge className={badge.className}>{badge.label}</GlassBadge>\n        </span>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

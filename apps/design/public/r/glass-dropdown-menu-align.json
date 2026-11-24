@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-dropdown-menu-align",
+  "type": "registry:block",
+  "description": "Alignment",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-dropdown-menu/glass-dropdown-menu-align.tsx",
+      "content": "\"use client\"\n\nimport {\n  GlassDropdownMenu,\n  GlassDropdownMenuContent,\n  GlassDropdownMenuItem,\n  GlassDropdownMenuTrigger,\n} from \"@workspace/ui/components/liquid-glass/glass-dropdown-menu\"\n\nconst alignments = [\"start\", \"center\", \"end\"] as const\n\nexport function GlassDropdownMenuAlign() {\n  return (\n    <div className=\"flex flex-wrap justify-center gap-4\">\n      {alignments.map((align) => (\n        <GlassDropdownMenu key={align}>\n          <GlassDropdownMenuTrigger>Align {align}</GlassDropdownMenuTrigger>\n          <GlassDropdownMenuContent align={align}>\n            <GlassDropdownMenuItem>Profile</GlassDropdownMenuItem>\n            <GlassDropdownMenuItem>Settings</GlassDropdownMenuItem>\n            <GlassDropdownMenuItem disabled>Billing</GlassDropdownMenuItem>\n          </GlassDropdownMenuContent>\n        </GlassDropdownMenu>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

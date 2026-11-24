@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-tabs-icons",
+  "type": "registry:block",
+  "description": "Icons",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-tabs/glass-tabs-icons.tsx",
+      "content": "\"use client\"\n\nimport { ActivityIcon, DropletIcon, HeartPulseIcon } from \"lucide-react\"\nimport { useState } from \"react\"\n\nimport { GlassTabs } from \"@workspace/ui/components/liquid-glass/glass-tabs\"\n\nconst options = [\n  { value: \"heart\", label: \"Heart\", icon: <HeartPulseIcon /> },\n  { value: \"blood\", label: \"Blood\", icon: <DropletIcon /> },\n  { value: \"muscle\", label: \"Muscle\", icon: <ActivityIcon /> },\n]\n\nexport function GlassTabsIcons() {\n  const [area, setArea] = useState(\"heart\")\n  const [view, setView] = useState(\"heart\")\n\n  return (\n    <div className=\"flex flex-col items-center gap-6\">\n      <GlassTabs\n        aria-label=\"Health area\"\n        value={area}\n        onValueChange={setArea}\n        options={options}\n      />\n      <GlassTabs\n        aria-label=\"Health area, icons only\"\n        value={view}\n        onValueChange={setView}\n        options={options.map(({ value, label, icon }) => ({\n          value,\n          icon,\n          label: null,\n          \"aria-label\": label,\n        }))}\n      />\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

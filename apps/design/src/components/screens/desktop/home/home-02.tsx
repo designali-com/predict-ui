@@ -89,8 +89,8 @@ function AgeClock() {
       />
 
       <p className="absolute top-[329.71px] left-[236.68px] -translate-x-1/2 text-[21.751px] whitespace-nowrap">38/44</p>
-      <div className="absolute top-[360.98px] left-[calc(50%+0.52px)] flex -translate-x-1/2 items-center justify-center rounded-full bg-app-brand px-[10.43px] py-[6.258px]">
-        <p className="text-[10.663px] font-medium whitespace-nowrap text-app-brand-foreground">-7 YEARS</p>
+      <div className="absolute top-[360.98px] left-[calc(50%+0.52px)] flex -translate-x-1/2 items-center justify-center rounded-full bg-primary px-[10.43px] py-[6.258px]">
+        <p className="text-[10.663px] font-medium whitespace-nowrap text-primary-foreground">+6 years</p>
       </div>
       <p className="absolute top-[449.34px] left-[237.42px] -translate-x-1/2 text-[43.502px] whitespace-nowrap">76.8%</p>
     </div>
@@ -110,17 +110,17 @@ export default function HomeDesktop02() {
       <AgeCard label="Biological age" value="44" className="top-[351px] left-[331px] w-[264px]" />
 
       <DashCard className="top-[519px] left-[48px] h-[398px] w-[547px] gap-0">
-        <DashCardHeader title="My Appointments" link />
+        <DashCardHeader title="My appointments" link />
       </DashCard>
 
       <AgeClock />
 
       <p className="absolute top-[871px] left-[calc(50%-8px)] w-[410px] -translate-x-1/2 text-center text-xl">
-        Your biological age is 7 years older than your actual age - 38 against 44.
+        Your biological age is 6 years older than your actual age: 44 against 38.
       </p>
 
       <DashCard className="top-[354px] left-[1327px] h-[558px] w-[547px] gap-0">
-        <DashCardHeader title="My Appointments" link />
+        <DashCardHeader title="My appointments" link />
       </DashCard>
 
       <DesktopNav defaultTab="twin" />

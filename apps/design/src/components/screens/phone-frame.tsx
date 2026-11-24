@@ -1,5 +1,6 @@
 import * as React from "react"
 import { ArrowUpRightIcon } from "lucide-react"
+import { AppScaledProvider } from "@workspace/ui/predict/app/app-glass"
 import { cn } from "@workspace/ui/lib/utils"
 
 import { figmaNodeUrl, screenSizes, type ScreenEntry } from "./types"
@@ -40,14 +41,16 @@ export function PhoneFrame({
     <figure className={cn("flex shrink-0 flex-col gap-3", className)} {...props}>
       <div
         className={cn(
-          "overflow-hidden bg-app-background shadow-xl ring-1 ring-foreground/10",
-          desktop ? "rounded-xl" : "rounded-[34px]",
+          "overflow-hidden bg-canvas shadow-xl ring-1 ring-foreground/10",
+          desktop ? "rounded-xl" : "rounded-[35px]",
           appThemeClass(theme)
         )}
         style={{ width: width * scale, height: height * scale }}
       >
         <div style={{ zoom: scale }}>
-          <Component />
+          <AppScaledProvider scaled={scale !== 1}>
+            <Component />
+          </AppScaledProvider>
         </div>
       </div>
       <figcaption className="flex items-center justify-between gap-2 px-2 text-xs">

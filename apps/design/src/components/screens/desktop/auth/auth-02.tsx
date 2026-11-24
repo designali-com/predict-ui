@@ -1,4 +1,4 @@
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import { Input } from "@workspace/ui/components/input"
 
 import { AuthDesktopLayout } from "./auth-01"
@@ -19,7 +19,7 @@ export default function AuthDesktop02() {
         size="lg"
         placeholder="Phone number"
         aria-label="Phone number"
-        className="mt-[77px] w-[290px] border-app-border bg-app-field text-sm text-app-foreground placeholder:text-app-foreground/40"
+        className="mt-[77px] w-[290px] border-border bg-card text-sm text-foreground placeholder:text-foreground/40"
       />
 
       <div className="mt-[118px] flex flex-col gap-3">
@@ -27,12 +27,12 @@ export default function AuthDesktop02() {
           Submit
         </Button>
         <Button variant="app-secondary" size="lg" className="w-[290px] px-6 text-sm">
-          Use different number
+          Use a different number
         </Button>
       </div>
 
       <a href="#" className="mt-[35px] text-base underline">
-        resend otp?
+        Resend code
       </a>
     </AuthDesktopLayout>
   )

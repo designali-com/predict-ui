@@ -26,13 +26,13 @@ function AppointmentsGrid() {
     <div className="grid h-[158px] w-[626.344px] self-center grid-cols-[44px_repeat(5,110.87px)] grid-rows-[18px_repeat(4,28px)] gap-1 pt-1 pl-1">
       <div />
       {weekdays.map((d) => (
-        <p key={d} className="pb-0.5 text-center text-xs leading-4 text-app-foreground/60">
+        <p key={d} className="pb-0.5 text-center text-xs leading-4 text-foreground/60">
           {d}
         </p>
       ))}
       {schedule.map((row) => (
         <div key={row.time} className="contents">
-          <p className="flex items-center text-[11px] leading-[16.5px] text-app-foreground/60">{row.time}</p>
+          <p className="flex items-center text-[11px] leading-[16.5px] text-foreground/60">{row.time}</p>
           {row.slots.map((slot, i) =>
             slot === null ? (
               <div key={i} />
@@ -44,8 +44,8 @@ function AppointmentsGrid() {
                 className={cn(
                   "flex h-7 items-center justify-center rounded-[64px] text-[11px] leading-[11px] font-medium",
                   slot
-                    ? "bg-app-brand text-app-brand-foreground"
-                    : "border border-app-foreground/8 bg-app-pill"
+                    ? "bg-primary text-primary-foreground"
+                    : "border border-foreground/8 bg-secondary"
                 )}
               >
                 {slot}
@@ -59,21 +59,21 @@ function AppointmentsGrid() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Patient Risk Analysis                                                      */
+/* Patient risk analysis                                                      */
 /* -------------------------------------------------------------------------- */
 
 const riskFactors = [
-  { code: "RFF", name: "Renal Filtration Factor", value: "2.96" },
-  { code: "CF", name: "Cardiometabolic Function", value: "2.72" },
-  { code: "MHF", name: "Musculoskeletal Health Factotor", value: "5.78" },
-  { code: "MHF", name: "Musculoskeletal Health Factotor", value: "5.78" },
-  { code: "MHF", name: "Musculoskeletal Health Factotor", value: "5.78" },
+  { code: "RFF", name: "Renal filtration factor", value: "2.96" },
+  { code: "CMF", name: "Cardiometabolic function", value: "2.72" },
+  { code: "MHF", name: "Musculoskeletal health factor", value: "5.78" },
+  { code: "IFR", name: "Inflammation and fibrosis risk", value: "3.41" },
+  { code: "VAF", name: "Vascular ageing and function", value: "4.12" },
 ]
 
 function RiskCard() {
   return (
     <DashCard
-      title="Patient Risk Analysis"
+      title="Patient risk analysis"
       className="top-[calc(50%+106px)] left-[calc(50%-0.5px)] h-[596px] w-[381px] -translate-x-1/2 -translate-y-1/2"
     >
       <div className="flex flex-col gap-6">
@@ -104,7 +104,7 @@ function RiskCard() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* My Reports / Event Groups                                                  */
+/* My reports / Event groups                                                  */
 /* -------------------------------------------------------------------------- */
 
 const reports = ["Rajeev Verma", "Rekha Malhotra", "Ritu Verma"]
@@ -112,7 +112,7 @@ const reports = ["Rajeev Verma", "Rekha Malhotra", "Ritu Verma"]
 function ReportsCard() {
   return (
     <DashCard
-      title="My Reoprts"
+      title="My reports"
       className="top-[calc(50%+250px)] left-[calc(50%+389px)] h-[310px] w-[330px] -translate-x-1/2 -translate-y-1/2"
     >
       {reports.map((name) => (
@@ -136,7 +136,7 @@ const eventAvatars = ["doctor-01-event-1.jpg", "doctor-01-event-2.jpg", "doctor-
 function EventGroupsCard() {
   return (
     <DashCard
-      title="Event Groups"
+      title="Event groups"
       className="top-[calc(50%+333.5px)] left-[calc(50%+747.5px)] w-[333px] -translate-x-1/2 -translate-y-1/2"
     >
       <div className="flex h-[35px] items-start">
@@ -149,7 +149,7 @@ function EventGroupsCard() {
             className={cn("size-8 shrink-0 rounded-full object-cover", i > 0 && "-ml-[9.6px]")}
           />
         ))}
-        <span className="-ml-[9.6px] flex size-8 shrink-0 items-center justify-center rounded-full bg-app-foreground/8 pl-[6.96px] text-xs leading-3 font-medium text-app-foreground/60 backdrop-blur-sm">
+        <span className="-ml-[9.6px] flex size-8 shrink-0 items-center justify-center rounded-full bg-foreground/8 pl-[6.96px] text-xs leading-3 font-medium text-foreground/60 backdrop-blur-sm">
           +2
         </span>
       </div>
@@ -162,12 +162,12 @@ export default function DoctorDesktop01() {
   return (
     <DoctorShell>
       <StatCard
-        title="Total Appointments"
+        title="Total appointments"
         value="56"
         className="top-[calc(50%-117.5px)] left-[calc(50%-748px)] w-[330px] -translate-x-1/2 -translate-y-1/2"
       />
       <StatCard
-        title="Total Reports"
+        title="Total reports"
         value="88"
         className="top-[calc(50%-117.75px)] left-[calc(50%-389.5px)] w-[333px] -translate-x-1/2 -translate-y-1/2"
       />
@@ -176,7 +176,7 @@ export default function DoctorDesktop01() {
       <RiskCard />
 
       <DashCard
-        title="My Appointments"
+        title="My appointments"
         className="top-[calc(50%-63.5px)] left-[calc(50%+568.5px)] h-[257px] w-[691px] -translate-x-1/2 -translate-y-1/2"
       >
         <AppointmentsGrid />
@@ -184,7 +184,7 @@ export default function DoctorDesktop01() {
 
       <ReportsCard />
       <StatCard
-        title="Nutrition & Diet"
+        title="Nutrition and diet"
         value="12"
         className="top-[calc(50%+166.5px)] left-[calc(50%+747.5px)] w-[333px] -translate-x-1/2 -translate-y-1/2"
       />

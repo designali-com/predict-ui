@@ -1,0 +1,49 @@
+---
+title: Glass Lens
+description: "The sliding lens, for your own tabs or segmented control."
+---
+
+## Demos
+
+Tabs with a rounded lens. Switch tabs, or drag the lens.
+
+<ComponentPreview name="glass-lens-demo" />
+
+## Usage
+
+Use it to put the lens on tabs you already have. For a ready-made control, use [Glass Tabs](/docs/components/glass-tabs).
+
+Import it from `@workspace/ui/components/liquid-glass/glass-lens`.
+
+```tsx
+import { GlassLens } from "@workspace/ui/components/liquid-glass/glass-lens"
+```
+
+```tsx
+<TabsList data-glass-host="" className="relative isolate">
+  <GlassLens value={value} />
+  {/* tabs */}
+</TabsList>
+```
+
+### Anatomy
+
+- **GlassLens** — The lens. It must be the first child of the container.
+- **`data-glass-highlight`** — Marks the flat highlight inside the selected option. Its colour and corners become those of the lens.
+
+### Notes
+
+- Options need `role="tab"` or `role="radio"`, which tab and radio components set for you.
+- Hide the highlight while the lens moves with `[[data-glass-moving]_&]:opacity-0`.
+- Without WebGL2, or with reduced motion, the highlight jumps.
+
+## Props
+
+These are the props you set most often.
+
+### GlassLens
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `string, number, or null` | — | The selected value. A change slides the lens. |
+| `disabled` | `boolean` | `false` | Turn the lens off. |

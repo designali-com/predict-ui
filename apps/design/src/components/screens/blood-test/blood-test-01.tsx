@@ -1,6 +1,6 @@
 import { ArrowUpRightIcon, BadgeCheckIcon, PlayIcon, PlusIcon } from "lucide-react"
 
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import {
   AppCard,
   AppCardDescription,
@@ -15,8 +15,8 @@ import { Screen } from "../screen"
 
 const perks = [
   "Earliest collection in 60 minutes",
-  "Reports Within 6 hours",
-  "Reports verified by Doctors",
+  "Reports within 6 hours",
+  "Reports verified by doctors",
 ]
 
 export const title = "Home · book a blood test"
@@ -31,7 +31,7 @@ export default function BloodTest01() {
         <AppCard className="h-[315px]">
           <AppCardHeader>
             <div>
-              <AppCardTitle>Book Your Blood Test</AppCardTitle>
+              <AppCardTitle>Book your blood test</AppCardTitle>
               <AppCardDescription>
                 Get a clearer picture of your health with accurate blood testing and regular
                 health monitoring.
@@ -47,7 +47,7 @@ export default function BloodTest01() {
             ))}
           </ul>
           <Button variant="app" size="lg" className="w-full text-base">
-            Book Now
+            Book a test
           </Button>
         </AppCard>
 

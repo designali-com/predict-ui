@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-button-pending",
+  "type": "registry:block",
+  "description": "Pending",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-button/glass-button-pending.tsx",
+      "content": "\"use client\"\n\nimport { useState } from \"react\"\n\nimport { GlassButton } from \"@workspace/ui/components/liquid-glass/glass-button\"\n\nexport function GlassButtonPending() {\n  const [saves, setSaves] = useState(0)\n\n  return (\n    <div className=\"flex flex-col items-center gap-4\">\n      <GlassButton\n        material=\"tinted\"\n        className=\"bg-primary text-primary-foreground data-pending:opacity-60\"\n        onClick={async () => {\n          await new Promise((resolve) => setTimeout(resolve, 1500))\n          setSaves((count) => count + 1)\n        }}\n      >\n        Save results\n      </GlassButton>\n      <p className=\"text-sm text-muted-foreground tabular-nums\">\n        Saved {saves} times\n      </p>\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

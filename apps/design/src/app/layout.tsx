@@ -1,15 +1,9 @@
-import { Geist_Mono } from "next/font/google"
 import type { Metadata } from "next"
 
 import "@workspace/ui/globals.css"
 import { ThemeProvider } from "@/src/components/theme-provider"
 import { cn } from "@workspace/ui/lib/utils";
 import { fontSans } from "@/src/lib/fonts"
-
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
 
 export const metadata: Metadata = {
   title: {
@@ -22,10 +16,12 @@ export const metadata: Metadata = {
   ),
 
   description:
-    "PREDICT uses advanced biomarkers and personalised health insights to help you understand your biological age, muscle health, and long-term health risks.",
+    "The design system behind PREDICT: components, blocks, and guidelines for clear health interfaces.",
 
   keywords: [
     "PREDICT",
+    "design system",
+    "health UI",
     "biological age",
     "muscle age",
     "biomarkers",
@@ -48,15 +44,15 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_GB",
     url: process.env.NEXT_PUBLIC_APP_URL || "https://predict.fit",
-    title: "PREDICT | Understand Your Biology",
+    title: "PREDICT design system",
     description:
-      "Discover what your biomarkers reveal about your biological age, muscle health, and long-term health.",
+      "The design system behind PREDICT: components, blocks, and guidelines for clear health interfaces.",
     siteName: "PREDICT",
     images: [
       {
-        url: `${process.env.NEXT_PUBLIC_APP_URL || "https://predict.fit"}/opengraph-image.png`,
+        url: `${process.env.NEXT_PUBLIC_APP_URL || "https://predict.fit"}/opengraph-image.jpg`,
         width: 1200,
         height: 630,
         alt: "PREDICT",
@@ -66,9 +62,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "PREDICT | Understand Your Biology",
+    title: "PREDICT design system",
     description:
-      "Advanced biomarker insights for personalised health, muscle health, and longevity.",
+      "The design system behind PREDICT: components, blocks, and guidelines for clear health interfaces.",
     images: [
       `${process.env.NEXT_PUBLIC_APP_URL || "https://predict.fit"}/opengraph-image.jpg`,
     ],
@@ -92,7 +88,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", fontSans.variable)}
+      className={cn("antialiased font-sans", fontSans.variable)}
     >
       <body>
         <ThemeProvider>

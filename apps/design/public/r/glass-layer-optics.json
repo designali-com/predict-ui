@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-layer-optics",
+  "type": "registry:block",
+  "description": "Optics",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-layer/glass-layer-optics.tsx",
+      "content": "\"use client\"\n\nimport { useId, useMemo, useState } from \"react\"\n\nimport { GlassLayer } from \"@workspace/ui/components/liquid-glass/glass-layer\"\nimport { Slider } from \"@workspace/ui/components/slider\"\n\nexport function GlassLayerOptics() {\n  const id = useId()\n  const [refraction, setRefraction] = useState(1)\n  const [blur, setBlur] = useState(0)\n  const optics = useMemo(() => ({ refraction }), [refraction])\n\n  return (\n    <div className=\"flex w-full max-w-md flex-col gap-6\">\n      <div className=\"relative flex h-56 items-center justify-center overflow-hidden rounded-2xl bg-chart-2\">\n        <span\n          aria-hidden\n          className=\"absolute text-7xl font-semibold text-primary\"\n        >\n          PREDICT\n        </span>\n        <div data-glass-host=\"\" className=\"h-28 w-56 rounded-3xl\">\n          <GlassLayer tint={0.1} blur={blur} swell={false} optics={optics} />\n        </div>\n      </div>\n      <div className=\"grid gap-4 text-sm\">\n        <div className=\"grid gap-2\">\n          <span id={`${id}-refraction`} className=\"tabular-nums\">\n            Refraction: {refraction}\n          </span>\n          <Slider\n            aria-labelledby={`${id}-refraction`}\n            value={[refraction]}\n            min={0}\n            max={3}\n            step={0.1}\n            onValueChange={(next) =>\n              setRefraction(Array.isArray(next) ? (next[0] ?? 0) : Number(next))\n            }\n          />\n        </div>\n        <div className=\"grid gap-2\">\n          <span id={`${id}-blur`} className=\"tabular-nums\">\n            Blur: {blur} px\n          </span>\n          <Slider\n            aria-labelledby={`${id}-blur`}\n            value={[blur]}\n            min={0}\n            max={16}\n            step={1}\n            onValueChange={(next) =>\n              setBlur(Array.isArray(next) ? (next[0] ?? 0) : Number(next))\n            }\n          />\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

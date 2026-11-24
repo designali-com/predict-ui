@@ -2,7 +2,7 @@ import * as React from "react"
 import { ChevronLeftIcon, PlusIcon } from "lucide-react"
 import { cn } from "@workspace/ui/lib/utils"
 
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import {
   AppCard,
   AppCardDescription,
@@ -22,7 +22,7 @@ export function AppleMark({ className }: { className?: string }) {
     <span
       aria-hidden
       className={cn(
-        "size-[15px] shrink-0 bg-app-foreground [mask:url(/screens/shared/apple.svg)_center/contain_no-repeat]",
+        "size-[15px] shrink-0 bg-foreground [mask:url(/screens/shared/apple.svg)_center/contain_no-repeat]",
         className
       )}
     />
@@ -40,7 +40,7 @@ export function WearablesHeader() {
       >
         <ChevronLeftIcon className="size-6" strokeWidth={1.5} />
       </button>
-      <div className="size-[60px] shrink-0 overflow-hidden rounded-full border border-app-foreground bg-app-pill">
+      <div className="size-[60px] shrink-0 overflow-hidden rounded-full border border-foreground bg-secondary">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/screens/shared/avatar.png"
@@ -101,11 +101,11 @@ export function WearablesSheet({
       role="dialog"
       aria-label={title}
       className={cn(
-        "absolute left-1/2 z-20 w-[401px] -translate-x-1/2 items-center bg-app-surface px-[30px] py-5",
+        "absolute left-1/2 z-20 w-[401px] -translate-x-1/2 items-center bg-card px-[30px] py-5",
         className
       )}
     >
-      <div className="h-[7px] w-[149px] shrink-0 rounded-[3.5px] bg-app-brand opacity-50" />
+      <div className="h-[7px] w-[149px] shrink-0 rounded-[3.5px] bg-primary opacity-50" />
       <div className="flex w-full flex-col items-center text-center">
         <AppCardTitle>{title}</AppCardTitle>
         <AppCardDescription className="w-[165px]">

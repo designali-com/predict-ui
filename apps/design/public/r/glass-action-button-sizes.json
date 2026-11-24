@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-action-button-sizes",
+  "type": "registry:block",
+  "description": "Sizes",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-action-button/glass-action-button-sizes.tsx",
+      "content": "\"use client\"\n\nimport { GlassActionButton } from \"@workspace/ui/components/liquid-glass/glass-action-button\"\n\nconst sizes = [\"sm\", \"md\", \"lg\"] as const\nconst wait = () => new Promise((resolve) => setTimeout(resolve, 1500))\n\nexport function GlassActionButtonSizes() {\n  return (\n    <div className=\"flex flex-wrap items-center justify-center gap-4\">\n      {sizes.map((size) => (\n        <GlassActionButton\n          key={size}\n          size={size}\n          material=\"tinted\"\n          className=\"bg-primary text-primary-foreground\"\n          resetAfter={2000}\n          onAction={wait}\n        >\n          Continue\n        </GlassActionButton>\n      ))}\n    </div>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

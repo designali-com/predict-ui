@@ -6,7 +6,7 @@
   "files": [
     {
       "path": "registry/predict/ui/mascot/mascot-static.tsx",
-      "content": "\"use client\"\n\nimport { PredictMascut } from \"@workspace/ui/predict/logo\"\n\nexport function MascotStatic() {\n  return <PredictMascut role=\"img\" aria-label=\"PREDICT mascot\" className=\"size-30\" />\n}\n",
+      "content": "\"use client\"\n\nimport { PredictMascotMark } from \"@workspace/ui/predict/logo\"\n\nexport function MascotStatic() {\n  return <PredictMascotMark role=\"img\" aria-label=\"PREDICT mascot\" className=\"size-30\" />\n}\n",
       "type": "registry:block"
     }
   ]

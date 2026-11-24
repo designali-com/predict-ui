@@ -7,36 +7,39 @@ import {
   UsersIcon,
 } from "lucide-react"
 
-import { Button } from "@workspace/ui/components/button"
-import { Tabs, TabsList, TabsTrigger } from "@workspace/ui/components/tabs"
+import {
+  AppButton as Button,
+  AppGlassBar,
+  AppGlassCircle,
+  AppTabs,
+  AppTabsList,
+  AppTabsTrigger,
+} from "@workspace/ui/predict/app/app-glass"
 import { AppGlow } from "@workspace/ui/predict/app/app-glow"
 import { PredictMark } from "@workspace/ui/predict/logo"
 
 import { DesktopScreen } from "../desktop-screen"
 
-const circle =
-  "flex size-[60px] shrink-0 items-center justify-center rounded-full bg-app-field text-app-foreground"
-
 /** Brand mark (left), centred greeting and avatar (right) along the top edge. */
 function DesktopGreetingHeader() {
   return (
     <>
-      <button
-        type="button"
+      <AppGlassCircle
+        tone="primary"
         aria-label="PREDICT"
-        className="absolute top-[43px] left-[47px] flex size-[60px] items-center justify-center rounded-full bg-app-brand text-app-brand-foreground"
+        className="absolute top-[43px] left-[47px]"
       >
         <PredictMark className="h-[20px] w-[18px]" />
-      </button>
+      </AppGlassCircle>
 
       <div className="absolute top-[51px] left-1/2 flex -translate-x-1/2 flex-col items-center whitespace-nowrap">
-        <p className="font-display text-base leading-[19px]">Good Morning,</p>
+        <p className="font-display text-base leading-[19px]">Good morning,</p>
         <h1 className="mt-[7px] font-display text-[36px] leading-[43px] font-normal">
           Arjun Vaidya
         </h1>
       </div>
 
-      <div className="absolute top-[43px] left-[1811px] size-[60px] overflow-hidden rounded-full border border-app-foreground bg-app-pill">
+      <div className="absolute top-[43px] left-[1811px] size-[60px] overflow-hidden rounded-full border border-foreground bg-secondary">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/screens/shared/avatar.png"
@@ -49,37 +52,37 @@ function DesktopGreetingHeader() {
 }
 
 const tabTrigger =
-  "h-[31px] flex-none px-5 text-sm leading-5 text-app-foreground/60 hover:text-app-foreground data-active:bg-app-brand data-active:text-app-brand-foreground data-active:hover:text-app-brand-foreground data-active:hover:dark:text-app-brand-foreground"
+  "h-[31px] flex-none px-5 text-sm leading-5 text-foreground/60 hover:text-foreground data-active:bg-primary data-active:text-primary-foreground data-active:hover:text-primary-foreground data-active:hover:dark:text-primary-foreground"
 
-/** Progress line with the back button on the left and the Visit Center | Home Collection tabs. */
+/** Progress line with the back button on the left and the Visit centre | Home collection tabs. */
 function DesktopBookingBar({ tab = "center" }: { tab?: "center" | "home" }) {
   return (
     <>
-      <div aria-hidden className="absolute top-[198px] left-0 h-0.5 w-[959px] bg-app-accent" />
+      <div aria-hidden className="absolute top-[198px] left-0 h-0.5 w-[959px] bg-primary" />
       <button
         type="button"
         aria-label="Back"
-        className="absolute top-[183px] left-[59px] flex size-8 items-center justify-center rounded-full bg-app-pill text-app-pill-foreground"
+        className="absolute top-[183px] left-[59px] flex size-8 items-center justify-center rounded-full bg-secondary text-secondary-foreground"
       >
         <ChevronLeftIcon className="size-4" strokeWidth={1} />
       </button>
 
-      <Tabs
+      <AppTabs
         defaultValue={tab}
         className="absolute top-[177px] left-1/2 -translate-x-1/2 items-center gap-0"
       >
-        <TabsList
+        <AppTabsList
           variant="line"
-          className="h-auto gap-1 border-app-track bg-app-field px-1 py-[5px] group-data-horizontal/tabs:h-auto"
+          className="h-auto gap-1 border-input bg-card px-1 py-[5px] group-data-horizontal/tabs:h-auto"
         >
-          <TabsTrigger value="center" className={tabTrigger}>
-            Visit Center
-          </TabsTrigger>
-          <TabsTrigger value="home" className={tabTrigger}>
-            Home Collection
-          </TabsTrigger>
-        </TabsList>
-      </Tabs>
+          <AppTabsTrigger value="center" className={tabTrigger}>
+            Visit centre
+          </AppTabsTrigger>
+          <AppTabsTrigger value="home" className={tabTrigger}>
+            Home collection
+          </AppTabsTrigger>
+        </AppTabsList>
+      </AppTabs>
     </>
   )
 }
@@ -88,35 +91,35 @@ function DesktopBookingBar({ tab = "center" }: { tab?: "center" | "home" }) {
 function DesktopBottomNav() {
   return (
     <nav className="absolute top-[979px] left-1/2 z-10 flex -translate-x-1/2 items-center gap-1 px-px">
-      <button type="button" aria-label="Menu" className={circle}>
+      <AppGlassCircle aria-label="Menu">
         <GripIcon className="size-6" strokeWidth={2} />
-      </button>
+      </AppGlassCircle>
 
-      <div className="flex h-[60px] w-[237px] items-center justify-center gap-[5px] rounded-[30px] bg-app-field py-2.5 pr-3.5 pl-3">
+      <AppGlassBar className="flex h-[60px] w-[237px] items-center justify-center gap-[5px] rounded-[30px] py-2.5 pr-3.5 pl-3">
         <Button variant="app" className="h-12 gap-1 px-[18px] text-base leading-6">
           Today
           <ClockIcon
-            className="size-5 fill-app-brand-foreground stroke-app-brand"
+            className="size-5 fill-primary-foreground stroke-primary"
             strokeWidth={2}
           />
         </Button>
-        <Button variant="ghost" aria-label="Twin" className="h-10 px-4 text-app-foreground">
+        <Button variant="ghost" aria-label="Twin" className="h-10 px-4 text-foreground">
           <CircleDashedIcon className="size-5" strokeWidth={1.5} />
         </Button>
-        <Button variant="ghost" aria-label="People" className="h-10 px-4 text-app-foreground">
+        <Button variant="ghost" aria-label="People" className="h-10 px-4 text-foreground">
           <UsersIcon className="size-5" strokeWidth={1.5} />
         </Button>
-      </div>
+      </AppGlassBar>
 
-      <button type="button" aria-label="PREDICT assistant" className={circle}>
+      <AppGlassCircle aria-label="PREDICT assistant">
         <PredictMark className="h-[20px] w-[18px]" />
-      </button>
+      </AppGlassCircle>
     </nav>
   )
 }
 
 /**
- * Shared chrome of the desktop "Book Blood Test" flow: greeting header,
+ * Shared chrome of the desktop "Book blood test" flow: greeting header,
  * booking bar with tabs, violet bottom fade and floating nav. Screen content
  * goes in `children` (absolutely positioned on the 1920 × 1080 canvas).
  */

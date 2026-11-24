@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-slide-to-confirm-bare",
+  "type": "registry:block",
+  "description": "Bare track",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-slide-to-confirm/glass-slide-to-confirm-bare.tsx",
+      "content": "\"use client\"\n\nimport { Trash2Icon } from \"lucide-react\"\n\nimport { GlassSlideToConfirm } from \"@workspace/ui/components/liquid-glass/glass-slide-to-confirm\"\n\nconst wait = () => new Promise((resolve) => setTimeout(resolve, 1500))\n\nexport function GlassSlideToConfirmBare() {\n  return (\n    <GlassSlideToConfirm\n      className=\"max-w-xs\"\n      fill={false}\n      hint={false}\n      icon={<Trash2Icon />}\n      fillClassName=\"bg-destructive text-white\"\n      pendingLabel=\"Deleting\"\n      successLabel=\"Deleted\"\n      resetAfter={2500}\n      onConfirm={wait}\n    >\n      Slide to delete report\n    </GlassSlideToConfirm>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

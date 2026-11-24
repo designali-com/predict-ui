@@ -1,4 +1,4 @@
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import { AppCard } from "@workspace/ui/predict/app/app-card"
 import { AppGlow } from "@workspace/ui/predict/app/app-glow"
 
@@ -19,7 +19,7 @@ export default function RegisteredDesktop01() {
         <p className="mt-[11px] text-base leading-[19px]">From your lab booking.</p>
 
         <AppCard className="mt-[43px] h-[274px] w-[247px] items-center">
-          <div className="relative size-[133px] shrink-0 overflow-hidden rounded-full border-[2.2px] border-app-foreground bg-app-pill">
+          <div className="relative size-[133px] shrink-0 overflow-hidden rounded-full border-[2.2px] border-foreground bg-secondary">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/screens/shared/avatar.png"

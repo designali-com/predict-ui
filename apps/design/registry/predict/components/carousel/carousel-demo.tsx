@@ -10,11 +10,11 @@ import {
 } from "@workspace/ui/components/carousel"
 
 const markers = [
-  { name: "Vitamin D", value: "32", unit: "ng/mL" },
-  { name: "Ferritin", value: "86", unit: "ng/mL" },
+  { name: "Vitamin D", value: "32", unit: "ng·mL⁻¹" },
+  { name: "Ferritin", value: "86", unit: "ng·mL⁻¹" },
   { name: "HbA1c", value: "5.2", unit: "%" },
-  { name: "LDL", value: "104", unit: "mg/dL" },
-  { name: "hs-CRP", value: "0.8", unit: "mg/L" },
+  { name: "LDL", value: "104", unit: "mg·dL⁻¹" },
+  { name: "hs-CRP", value: "0.8", unit: "mg·L⁻¹" },
 ]
 
 export function CarouselDemo() {

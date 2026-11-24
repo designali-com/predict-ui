@@ -1,4 +1,4 @@
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import { Input } from "@workspace/ui/components/input"
 import { AppGlow } from "@workspace/ui/predict/app/app-glow"
 import { Logo } from "@workspace/ui/predict/logo"
@@ -7,13 +7,13 @@ import { DesktopScreen } from "../desktop-screen"
 
 export const title = "Create account"
 
-/** Violet pill header with the PREDICT wordmark and a "Get Started" action. */
+/** Violet pill header with the PREDICT wordmark and a "Get started" action. */
 function AuthHeader() {
   return (
-    <header className="absolute top-[43px] left-[47px] flex h-[60px] w-[1816px] items-center justify-between rounded-full bg-app-brand pr-1.5 pl-[30px]">
-      <Logo aria-label="PREDICT" className="h-[22px] w-[142px] text-app-brand-foreground" />
+    <header className="absolute top-[43px] left-[47px] flex h-[60px] w-[1816px] items-center justify-between rounded-full bg-primary pr-1.5 pl-[30px]">
+      <Logo aria-label="PREDICT" className="h-[22px] w-[142px] text-primary-foreground" />
       <Button variant="app-secondary" size="lg" className="px-6 text-sm">
-        Get Started
+        Get started
       </Button>
     </header>
   )
@@ -35,7 +35,7 @@ export default function AuthDesktop05() {
 
       <div className="relative mt-[228px] flex w-[290px] flex-col items-center text-center">
         <h1 className="font-display text-[40px] leading-[52px] font-normal">Get started</h1>
-        <p className="text-base">Your journey starts with here</p>
+        <p className="text-base">Your journey starts here</p>
 
         <form className="mt-[54px] flex w-full flex-col gap-[9px]">
           {fields.map((field) => (
@@ -47,7 +47,7 @@ export default function AuthDesktop05() {
               size="lg"
               placeholder={field.placeholder}
               aria-label={field.placeholder}
-              className="border-app-border bg-app-field text-sm text-app-foreground placeholder:text-app-foreground/40"
+              className="border-border bg-card text-sm text-foreground placeholder:text-foreground/40"
             />
           ))}
           <Button type="submit" variant="app" size="lg" className="mt-px w-full px-7 text-base">
@@ -58,7 +58,7 @@ export default function AuthDesktop05() {
         <p className="mt-[95px] text-base">
           Already have an account?{" "}
           <a href="#" className="ml-1 underline">
-            login
+            Log in
           </a>
         </p>
 
@@ -66,11 +66,11 @@ export default function AuthDesktop05() {
           By continuing, you agree to our
           <br />
           <a href="#" className="underline">
-            Terms of Service
+            Terms of service
           </a>{" "}
           and{" "}
           <a href="#" className="underline">
-            Privacy Policy.
+            Privacy policy.
           </a>
         </p>
       </div>

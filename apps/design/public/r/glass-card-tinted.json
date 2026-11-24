@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-card-tinted",
+  "type": "registry:block",
+  "description": "Tinted",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-card/glass-card-tinted.tsx",
+      "content": "\"use client\"\n\nimport { GlassCard } from \"@workspace/ui/components/liquid-glass/glass-card\"\n\nexport function GlassCardTinted() {\n  return (\n    <GlassCard\n      material=\"tinted\"\n      className=\"w-64 bg-primary p-5 text-primary-foreground\"\n    >\n      <p className=\"text-sm text-inherit opacity-80\">Vitamin D</p>\n      <p className=\"text-3xl font-medium text-inherit tabular-nums\">\n        42 <span className=\"text-sm\">ng·mL⁻¹</span>\n      </p>\n      <p className=\"text-sm text-inherit opacity-80\">\n        Within the optimal range.\n      </p>\n    </GlassCard>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

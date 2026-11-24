@@ -11,7 +11,7 @@ export default function OnboardingDesktop03() {
   const [answer, setAnswer] = React.useState<"yes" | "no" | null>(null)
 
   return (
-    <OnboardingDesktopShell step={2} className="pt-[123px]">
+    <OnboardingDesktopShell step={2}>
       <ChronicConditionsQuestion answer={answer} onAnswer={setAnswer} />
     </OnboardingDesktopShell>
   )

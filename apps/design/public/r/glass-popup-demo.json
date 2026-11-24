@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-popup-demo",
+  "type": "registry:block",
+  "description": "Basic",
+  "files": [
+    {
+      "path": "registry/predict/components/glass-popup/glass-popup-demo.tsx",
+      "content": "\"use client\"\n\nimport {\n  Popover,\n  PopoverContent,\n  PopoverDescription,\n  PopoverTitle,\n  PopoverTrigger,\n} from \"@ui-sdk/react/popover\"\n\nimport {\n  GlassPopupAnchor,\n  GlassPopupSurface,\n  useGlassPopup,\n} from \"@workspace/ui/components/liquid-glass/glass-popup\"\n\nexport function GlassPopupDemo() {\n  const popup = useGlassPopup()\n\n  return (\n    <Popover>\n      <PopoverTrigger\n        data-glass-host=\"\"\n        className=\"inline-flex h-10 cursor-pointer items-center rounded-full border border-black/10 bg-white/60 px-5 text-sm font-semibold text-neutral-900 outline-none focus-visible:ring-2 focus-visible:ring-ring data-[glass-tone=dark]:text-white data-[glass-tone=light]:text-neutral-900 dark:border-white/15 dark:bg-white/10 dark:text-white\"\n      >\n        <GlassPopupAnchor popup={popup} />\n        <span>What is ApoB?</span>\n      </PopoverTrigger>\n      <PopoverContent\n        data-glass-popup=\"\"\n        data-glass-skip=\"\"\n        sideOffset={12}\n        className=\"w-64 rounded-3xl p-5 text-neutral-900 outline-none data-[glass-tone=dark]:text-white data-[glass-tone=light]:text-neutral-900 dark:text-white\"\n      >\n        <GlassPopupSurface popup={popup} />\n        <div data-glass-list=\"\" className=\"flex flex-col gap-1\">\n          <PopoverTitle data-glass-item=\"\" className=\"text-base font-semibold\">\n            Apolipoprotein B\n          </PopoverTitle>\n          <PopoverDescription\n            data-glass-item=\"\"\n            className=\"text-sm text-inherit\"\n          >\n            Counts the particles that carry cholesterol into artery walls.\n          </PopoverDescription>\n        </div>\n      </PopoverContent>\n    </Popover>\n  )\n}\n",
+      "type": "registry:block"
+    }
+  ]
+}

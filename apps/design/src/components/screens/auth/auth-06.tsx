@@ -1,44 +1,51 @@
-import { PhoneIcon } from "lucide-react"
-
-import { Button } from "@workspace/ui/components/button"
+import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import { AppGlow } from "@workspace/ui/predict/app/app-glow"
-import { PredictMark } from "@workspace/ui/predict/logo"
 
 import { Screen } from "../screen"
+import {
+  At,
+  AuthHeading,
+  AuthMark,
+  MaskIcon,
+  primaryButtonClass,
+  secondaryButtonClass,
+} from "./auth-parts"
 
 export const title = "Welcome"
 
 // Figma: iPhone 18 Pro - 122 (1733:1947)
 export default function Auth06() {
   return (
-    <Screen className="items-center">
+    <Screen className="bg-card">
       <AppGlow variant="blob" />
+      <AuthMark />
 
-      <PredictMark className="relative mt-[82px] h-[72px] w-16 text-app-accent" />
+      <At top={460}>
+        <AuthHeading>Welcome</AuthHeading>
+      </At>
+      <At top={512} className="text-base leading-[19px] whitespace-nowrap">
+        Your journey starts here
+      </At>
 
-      <h1 className="relative mt-[306px] font-display text-[40px] leading-[52px] font-normal">
-        Welcome
-      </h1>
-      <p className="relative text-base leading-[19px]">Your journey starts with here</p>
-
-      <div className="relative mt-12 flex flex-col gap-3">
-        <Button variant="app" size="lg" className="w-[290px] gap-1 text-base">
-          Continue with Phone
-          <PhoneIcon className="size-[13px] fill-current" strokeWidth={0} />
+      <At top={579}>
+        <Button variant="app" className={primaryButtonClass}>
+          Continue with phone
+          <MaskIcon src="/screens/auth/phone.svg" className="size-[13px]" />
         </Button>
-        <Button variant="app-secondary" size="lg" className="w-[290px] gap-1 px-6 text-sm">
+      </At>
+      <At top={639}>
+        <Button variant="app-secondary" className={secondaryButtonClass}>
           Continue with Apple
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/screens/shared/apple.svg" alt="" className="size-3.5" />
+          <MaskIcon src="/screens/shared/apple.svg" className="size-3.5" />
         </Button>
-      </div>
+      </At>
 
-      <p className="relative mt-[35px] flex gap-1.5 text-base leading-[19px] text-white">
+      <At top={722} className="flex gap-1.5 text-base leading-[19px] whitespace-nowrap text-white">
         Already have an account?
         <a href="#" className="underline">
-          login
+          Log in
         </a>
-      </p>
+      </At>
     </Screen>
   )
 }

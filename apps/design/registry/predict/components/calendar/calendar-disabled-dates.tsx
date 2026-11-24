@@ -13,7 +13,7 @@ export function CalendarDisabledDates() {
       selected={date}
       onSelect={setDate}
       disabled={[{ before: new Date() }, { dayOfWeek: [0] }]}
-      className="rounded-lg border"
+      className="rounded-lg border p-3"
     />
   )
 }

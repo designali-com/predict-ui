@@ -1,0 +1,65 @@
+---
+title: Glass Badge
+description: "A small drop of tinted glass with text flowing through it."
+---
+
+## Demos
+
+A badge on the corner of a card. Hover the card to speed up the text.
+
+<ComponentPreview name="glass-badge-demo" />
+
+## Usage
+
+Use it to draw the eye to something new or live. The text moves, so use one at a time, and use a [Badge](/docs/components/badge) for ordinary labels.
+
+Import it from `@workspace/ui/components/liquid-glass/glass-badge`.
+
+```tsx
+import { GlassBadge } from "@workspace/ui/components/liquid-glass/glass-badge"
+```
+
+```tsx
+<div className="relative">
+  <Card />
+  <GlassBadge className="absolute -top-2.5 -right-3">New</GlassBadge>
+</div>
+```
+
+### Anatomy
+
+- **GlassBadge** — The glass and its text. Put it in a positioned parent; hovering that parent speeds up the text.
+
+### Notes
+
+- Keep the text to one short word. It repeats as it flows.
+- Colour comes from its own `bg-*` and `text-*` classes.
+- With reduced motion the text is still and centred.
+
+## Examples
+
+### Colours
+
+Status colours, each with its name written on it.
+
+<ComponentPreview name="glass-badge-colors" />
+
+### Speed
+
+`speed` in loops per second, and a separator colour.
+
+<ComponentPreview name="glass-badge-speed" />
+
+## Props
+
+These are the props you set most often.
+
+### GlassBadge
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `children` | `string` | — | The text. |
+| `speed` | `number` | `0.4` | Loops per second at rest. |
+| `dotColor` | `string` | the text colour | Separator colour, any CSS colour. |
+| `tint` | `number` | `0.82` | Opacity of the tint over the backdrop, 0 to 1. |
+| `className` | `string` | — | Position, size, and colour. |

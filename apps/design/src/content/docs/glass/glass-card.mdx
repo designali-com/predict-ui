@@ -1,0 +1,68 @@
+---
+title: Glass Card
+description: "A card of glass that frosts what lies behind it, so its text stays readable."
+---
+
+## Demos
+
+Frosted glass over a gradient.
+
+<ComponentPreview name="glass-card-demo" />
+
+## Usage
+
+Use it for content that sits on an image or a coloured surface. On plain surfaces use a [Card](/docs/components/card).
+
+Import it from `@workspace/ui/components/liquid-glass/glass-card`.
+
+```tsx
+import { GlassCard } from "@workspace/ui/components/liquid-glass/glass-card"
+```
+
+```tsx
+<GlassCard className="w-64 p-5">…</GlassCard>
+```
+
+### Anatomy
+
+- **GlassCard** — The glass. Size and padding are yours.
+
+### Notes
+
+- Paragraphs inside take the muted text colour. Add `text-inherit` so they follow the glass.
+- Lowering `tint` or `blur` lowers contrast. Check the text against what is behind it.
+- `live` repaints every frame while on screen. Use it only when something moves behind the card.
+
+## Examples
+
+### Clear
+
+No frost and little tint.
+
+<ComponentPreview name="glass-card-clear" />
+
+### Tinted
+
+Glass in a theme colour.
+
+<ComponentPreview name="glass-card-tinted" />
+
+### Live
+
+Follows content that moves behind the card.
+
+<ComponentPreview name="glass-card-live" />
+
+## Props
+
+These are the props you set most often. Unlisted props pass through to the underlying element.
+
+### GlassCard
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `material` | `"clear" or "tinted"` | `clear` | Frosted glass, or the colour of its own `bg-*` class. |
+| `tint` | `number` | `0.7` | Clear glass: how much tint covers the backdrop, 0 to 1. |
+| `blur` | `number` | `5` | Clear glass: frost in px. `0` is sharp. |
+| `live` | `boolean` | `false` | Repaint the backdrop every frame. |
+| `optics` | `GlassOptics` | — | Fine-tuning. See [Glass Layer](/docs/components/glass-layer). |
