@@ -8,19 +8,17 @@ import {
   PlayIcon,
   PlusIcon,
   WatchIcon,
-  XIcon,
 } from "lucide-react"
 
-import { AppButton as Button } from "@workspace/ui/predict/app/app-glass"
 import {
-  Drawer,
-  DrawerTrigger,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerDescription,
-  DrawerClose,
-} from "@workspace/ui/components/drawer"
+  AppButton as Button,
+  AppPopover,
+  AppPopoverContent,
+  AppPopoverDescription,
+  AppPopoverItem,
+  AppPopoverTitle,
+  AppPopoverTrigger,
+} from "@workspace/ui/predict/app/app-glass"
 
 import {
   AppCard,
@@ -103,88 +101,42 @@ function Wearables01Content() {
             </div>
           </AppCardHeader>
 
-          <Drawer>
-            <DrawerTrigger
-              render={
-                <Button
-                  variant="app"
-                  size="lg"
-                  className="w-full text-base"
-                />
-              }
-            >
+          <AppPopover>
+            <AppPopoverTrigger size="lg" className="w-full text-base">
               <PlusIcon className="size-[18px]" />
               Connect
-            </DrawerTrigger>
+            </AppPopoverTrigger>
 
-            <DrawerContent container={screenContainer} className="rounded-t-[28px]">
-              <DrawerHeader className="px-5 pt-6">
-                <DrawerTitle className="text-lg">
-                  Connect your wearable
-                </DrawerTitle>
-
-                <DrawerDescription>
-                  Connect a device to start tracking your sleep and
-                  health data.
-                </DrawerDescription>
-              </DrawerHeader>
-
-              <div className="flex flex-col gap-3 p-5">
-                <button
-                  type="button"
-                  className="flex items-center gap-3 rounded-2xl border p-4 text-left transition-colors hover:bg-muted"
-                >
-                  <div className="flex size-11 items-center justify-center rounded-xl bg-muted">
-                    <WatchIcon className="size-5" />
-                  </div>
-
-                  <div className="flex-1">
-                    <p className="text-sm font-medium">
-                      Apple Health
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      Sync data from your Apple Watch
-                    </p>
-                  </div>
-
-                  <ArrowUpRightIcon className="size-5" />
-                </button>
-
-                <button
-                  type="button"
-                  className="flex items-center gap-3 rounded-2xl border p-4 text-left transition-colors hover:bg-muted"
-                >
-                  <div className="flex size-11 items-center justify-center rounded-xl bg-muted">
-                    <WatchIcon className="size-5" />
-                  </div>
-
-                  <div className="flex-1">
-                    <p className="text-sm font-medium">
-                      Other wearables
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      Connect another supported device
-                    </p>
-                  </div>
-
-                  <ArrowUpRightIcon className="size-5" />
-                </button>
-              </div>
-
-              <div className="mt-auto p-5 pt-0">
-                <DrawerClose
-                  render={
-                    <Button
-                      variant="outline"
-                      className="w-full"
-                    />
-                  }
-                >
-                  Cancel
-                </DrawerClose>
-              </div>
-            </DrawerContent>
-          </Drawer>
+            <AppPopoverContent>
+              <AppPopoverTitle>Connect your wearable</AppPopoverTitle>
+              <AppPopoverDescription>
+                Connect a device to start tracking your sleep and health data.
+              </AppPopoverDescription>
+              <AppPopoverItem>
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-current/10">
+                  <WatchIcon className="size-5" />
+                </span>
+                <span className="flex-1">
+                  <span className="block text-sm font-medium">Apple Health</span>
+                  <span className="block text-xs">Sync data from your Apple Watch</span>
+                </span>
+                <ArrowUpRightIcon className="size-5 shrink-0" />
+              </AppPopoverItem>
+              <AppPopoverItem>
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-current/10">
+                  <WatchIcon className="size-5" />
+                </span>
+                <span className="flex-1">
+                  <span className="block text-sm font-medium">Other wearables</span>
+                  <span className="block text-xs">Connect another supported device</span>
+                </span>
+                <ArrowUpRightIcon className="size-5 shrink-0" />
+              </AppPopoverItem>
+              <AppPopoverItem className="justify-center border border-current/25 text-sm">
+                Cancel
+              </AppPopoverItem>
+            </AppPopoverContent>
+          </AppPopover>
         </AppCard>
 
         {/* Product Video Card */}
@@ -213,8 +165,9 @@ function Wearables01Content() {
         </AppCard>
       </div>
 
-      <AppGlow variant="fade" />
+      
       <AppBottomNav />
+      <AppGlow variant="fade" />
     </>
   )
 }

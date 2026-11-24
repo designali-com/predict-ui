@@ -4,6 +4,7 @@ import { AppGlow } from "@workspace/ui/predict/app/app-glow"
 import { PredictMark } from "@workspace/ui/predict/logo"
 
 import { Screen } from "../screen"
+import GlassCard from "@workspace/ui/components/liquid-glass/glass-card"
 
 export const title = "Is this you?"
 
@@ -20,7 +21,7 @@ export default function Registered01() {
       </h1>
       <p className="relative mt-[11px] text-base leading-[19px]">From your lab booking.</p>
 
-      <AppCard className="mt-[43px] h-[274px] w-[247px] items-center">
+      <GlassCard className="max-h-70 mt-10 gap-3 h-full w-[247px] flex flex-col justify-center items-center">
         <div className="relative size-[133px] shrink-0 overflow-hidden rounded-full bg-secondary">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -33,7 +34,7 @@ export default function Registered01() {
           <p className="font-display text-2xl leading-7">Arjun Vaidya</p>
           <p className="text-sm leading-4">Apollo Diagnostics · 12 Nov</p>
         </div>
-      </AppCard>
+      </GlassCard>
 
       <div className="relative mt-[42px] flex flex-col gap-3">
         <Button variant="app" size="lg" className="w-[290px] text-base">

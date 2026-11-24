@@ -9,6 +9,7 @@ import { AppGlow } from "@workspace/ui/predict/app/app-glow"
 import { PredictMark } from "@workspace/ui/predict/logo"
 
 import { Screen } from "../screen"
+import GlassCard from "@workspace/ui/components/liquid-glass/glass-card"
 
 export const title = "Your choices"
 
@@ -38,7 +39,7 @@ export default function Registered02() {
         Change any time in You.
       </p>
 
-      <AppCard className="mt-10 h-[280px] w-[245px] justify-between gap-0">
+      <GlassCard className="max-h-70 mt-10 gap-3 space-y-3 h-full w-[247px] flex flex-col justify-center items-center">
         {choices.map((choice) => (
           <label key={choice.id} className="flex min-h-[26px] items-center justify-between gap-3">
             <span className="w-[109px] text-xs leading-[14px]">{choice.label}</span>
@@ -51,7 +52,7 @@ export default function Registered02() {
             />
           </label>
         ))}
-      </AppCard>
+      </GlassCard>
 
       <Button variant="app" size="lg" className="relative mt-[39px] w-[290px] text-base">
         Agree and continue

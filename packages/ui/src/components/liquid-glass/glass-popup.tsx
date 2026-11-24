@@ -220,8 +220,17 @@ function createMorph(matchWidth: boolean) {
     last[name] = value
     el.style.setProperty(name, value)
   }
+  // Under CSS `zoom` (a scaled preview) the browser measures in viewport px while the canvases are
+  // laid out in the zoomed element's own px: everything below works in the latter.
+  let zoom = 1
+  const rectOf = (el: Element) => {
+    const r = el.getBoundingClientRect()
+    return zoom === 1 ? r : new DOMRect(r.left / zoom, r.top / zoom, r.width / zoom, r.height / zoom)
+  }
+  /** What the glass sees: the page, or the ancestor the control names in `data-glass-backdrop`. */
+  const backdropOf = () => (host?.dataset.glassBackdrop && host.closest(host.dataset.glassBackdrop)) || document.body
   const panelRect = () => {
-    const c = content?.getBoundingClientRect()
+    const c = content && rectOf(content)
     return c && c.width > 2 && c.height > 2 ? c : null
   }
   const dirty = () => {
@@ -237,14 +246,15 @@ function createMorph(matchWidth: boolean) {
    * the control (the one that closes the surface) lights the control alone.
    */
   const light = (x?: number, y?: number, gain = 1, inList = false, wide = !inList && !isOpen()) => {
-    if (!host) return
-    const r = host.getBoundingClientRect()
+    // `data-glass-glow="off"` on the control: a saturated fill would flare under the light.
+    if (!host || host.dataset.glassGlow === 'off') return
+    const r = rectOf(host)
     // A light that is still bright keeps spreading from where it is: only a fresh one starts small.
     if (glow.x < 0.08) glowSpread.x = glowSpread.v = 0
     // A press on the control stays in its box; a choice in the list lands where it is.
     const reach = inList ? Infinity : 0.5
-    glowAt.x = x === undefined ? 0 : clamp(x - (r.left + r.width / 2), -r.width * reach, r.width * reach)
-    glowAt.y = y === undefined ? 0 : clamp(y - (r.top + r.height / 2), -r.height * reach, r.height * reach)
+    glowAt.x = x === undefined ? 0 : clamp(x / zoom - (r.left + r.width / 2), -r.width * reach, r.width * reach)
+    glowAt.y = y === undefined ? 0 : clamp(y / zoom - (r.top + r.height / 2), -r.height * reach, r.height * reach)
     glowSmall = smallness(host.offsetWidth, host.offsetHeight)
     const tune = glowTune()
     glowLevel = Math.min(Math.max(glow.x, 0) + gain * (inList ? tune.select : 1), tune.stack)
@@ -296,11 +306,12 @@ function createMorph(matchWidth: boolean) {
     return a || b || c || d || e || greeting
   }
 
-  /** Everything both canvases need, in viewport px. */
+  /** Everything both canvases need, in viewport px (÷ zoom). */
   const measure = () => {
     if (!host) return null
+    zoom = host.currentCSSZoom || 1
     // The control itself is scaled while it swells: measure it unscaled, as its canvas is.
-    const r = host.getBoundingClientRect()
+    const r = rectOf(host)
     const sc = Math.max(0.5, swScale.x)
     const a = sc === 1 ? r : new DOMRect(r.left + (r.width - host.offsetWidth) / 2, r.top + (r.height - host.offsetHeight) / 2, host.offsetWidth, host.offsetHeight)
     if (a.width < 2 || a.height < 2) return null
@@ -479,9 +490,10 @@ function createMorph(matchWidth: boolean) {
             page.ctx.setTransform(1, 0, 0, 1, 0, 0)
             page.ctx.clearRect(0, 0, target.width, target.height)
             page.ctx.setTransform(back.getTransform())
-            drawDom(page.ctx, document.body, {
-              origin: { left: box.L, top: box.T },
-              region: { left: box.L, top: box.T, right: box.L + box.W, bottom: box.T + box.H },
+            page.ctx.scale(1 / zoom, 1 / zoom)
+            drawDom(page.ctx, backdropOf(), {
+              origin: { left: box.L * zoom, top: box.T * zoom },
+              region: { left: box.L * zoom, top: box.T * zoom, right: (box.L + box.W) * zoom, bottom: (box.T + box.H) * zoom },
               skip: (el) => el === host || el === content || el.hasAttribute('data-glass-skip'),
               onStale: () => {
                 page.stale = true
@@ -505,8 +517,8 @@ function createMorph(matchWidth: boolean) {
         frost: lerp(cover, cardCover, card),
         blur: CARD.blur * card,
       },
-      screenX: s.body.cx,
-      screenY: s.body.cy,
+      screenX: s.body.cx * zoom,
+      screenY: s.body.cy * zoom,
     }
   }
 
@@ -687,7 +699,8 @@ function createMorph(matchWidth: boolean) {
           reflection: {
             height: a.height,
             paint: (around, reach) => {
-              drawAround(around, document.body, { left: box.L, top: box.T, width: box.W, height: box.H }, reach, {
+              around.scale(1 / zoom, 1 / zoom)
+              drawAround(around, backdropOf(), { left: box.L * zoom, top: box.T * zoom, width: box.W * zoom, height: box.H * zoom }, reach * zoom, {
                 skip: (el) => el === host || el === content || el.hasAttribute('data-glass-skip'),
                 onStale: dirty,
               })
@@ -947,8 +960,7 @@ export function GlassPopupAnchor({ popup }: { popup: GlassPopup }) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   useEffect(() => popup.setTrigger(canvasRef.current), [popup])
   return (
-    <>
-      <GlassStyles />
+    <> 
       <style href="liquid-glass-popup" precedence="default">
         {CSS}
       </style>

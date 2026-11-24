@@ -83,7 +83,7 @@ export function GlassDropdownMenuContent({ children, className = '', sideOffset 
       data-glass-skip=""
       sideOffset={sideOffset}
       align={align}
-      className={`group/glass min-w-44 rounded-3xl p-1.5 text-[15px] text-neutral-900 outline-none data-[glass-tone=dark]:text-white data-[glass-tone=light]:text-neutral-900 ${className}`}
+      className={`group/glass min-w-44 rounded-2xl p-2 text-[15px] text-neutral-900 outline-none data-[glass-tone=dark]:text-white data-[glass-tone=light]:text-neutral-900 ${className}`}
       {...rest}
     >
       {popup && <GlassPopupSurface popup={popup} />}

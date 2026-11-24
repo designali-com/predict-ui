@@ -464,6 +464,9 @@ function paintBackgrounds(ctx: CanvasRenderingContext2D, style: CSSStyleDeclarat
 
 // ── Text and backdrop blur ───────────────────────────────────────────────────
 
+/** CSS `zoom` on an element: its boxes are measured zoomed, its computed lengths are not. */
+const zoomOf = (element: Element | null) => element?.currentCSSZoom || 1
+
 /** Draws one text node line by line, where the page laid it out and in its own font. */
 function drawText(
   ctx: CanvasRenderingContext2D,
@@ -488,8 +491,9 @@ function drawText(
   else if (transform === 'lowercase') text = text.toLocaleLowerCase(lang)
   else if (transform === 'capitalize') text = text.replace(/(^|\s)(\S)/g, (_, gap: string, letter: string) => gap + letter.toUpperCase())
   const rtl = style.direction === 'rtl'
-  ctx.font = `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`
-  if ('letterSpacing' in ctx) ctx.letterSpacing = style.letterSpacing === 'normal' ? '0px' : style.letterSpacing
+  const zoom = zoomOf(node.parentElement)
+  ctx.font = `${style.fontStyle} ${style.fontWeight} ${parseFloat(style.fontSize) * zoom}px ${style.fontFamily}`
+  if ('letterSpacing' in ctx) ctx.letterSpacing = style.letterSpacing === 'normal' ? '0px' : `${parseFloat(style.letterSpacing) * zoom}px`
   ctx.direction = rtl ? 'rtl' : 'ltr'
   ctx.textAlign = 'left'
   ctx.fillStyle = style.color
@@ -706,11 +710,12 @@ export function drawDom(ctx: CanvasRenderingContext2D, root: Element, options: D
     }
   }
   const paintBox = (element: Element, style: CSSStyleDeclaration, rect: DOMRect, box: Box, opacity: number, drawChildren: () => void) => {
-    const radius = Math.min(parseFloat(style.borderTopLeftRadius) || 0, rect.width / 2, rect.height / 2)
+    const zoom = zoomOf(element)
+    const radius = Math.min((parseFloat(style.borderTopLeftRadius) || 0) * zoom, rect.width / 2, rect.height / 2)
     // Frosted veil (backdrop-filter: blur): blur what is already painted beneath it first,
     // otherwise text behind a translucent veil shows up sharp in the glass.
     const backdropBlur = /blur\(([\d.]+)px\)/.exec(style.backdropFilter)
-    if (backdropBlur) blurBackdrop(ctx, box, radius, Number(backdropBlur[1]))
+    if (backdropBlur) blurBackdrop(ctx, box, radius, Number(backdropBlur[1]) * zoom)
     ctx.globalAlpha = opacity
     // `background-clip: text` paints the background inside the letters only: no box.
     const hasBox = style.backgroundClip !== 'text'
@@ -738,7 +743,7 @@ export function drawDom(ctx: CanvasRenderingContext2D, root: Element, options: D
       paintBackgrounds(ctx, style, area, bounds, onStale)
       ctx.restore()
     }
-    const borderWidth = parseFloat(style.borderTopWidth) || 0
+    const borderWidth = (parseFloat(style.borderTopWidth) || 0) * zoom
     if (borderWidth > 0 && style.borderTopStyle !== 'none' && isVisibleColor(style.borderTopColor)) {
       ctx.beginPath()
       ctx.roundRect(box.x + borderWidth / 2, box.y + borderWidth / 2, box.w - borderWidth, box.h - borderWidth, Math.max(0, radius - borderWidth / 2))

@@ -1,14 +1,35 @@
 "use client"
 
 import * as React from "react"
+import { MenuTrigger } from "@ui-sdk/react/menu"
+import {
+  Popover,
+  PopoverClose,
+  PopoverContent,
+  PopoverDescription,
+  PopoverTitle,
+  PopoverTrigger,
+} from "@ui-sdk/react/popover"
+import type { VariantProps } from "class-variance-authority"
 import { cn } from "cn"
 
-import { Button } from "@workspace/ui/components/button"
+import { Button, buttonVariants } from "@workspace/ui/components/button"
+import {
+  GlassDropdownMenu,
+  GlassDropdownMenuContent,
+  GlassDropdownMenuItem,
+} from "@workspace/ui/components/liquid-glass/glass-dropdown-menu"
 import {
   GlassLayer,
   type GlassOptics,
 } from "@workspace/ui/components/liquid-glass/glass-layer"
 import { GlassLens } from "@workspace/ui/components/liquid-glass/glass-lens"
+import {
+  GlassPopupAnchor,
+  GlassPopupContext,
+  GlassPopupSurface,
+  useGlassPopup,
+} from "@workspace/ui/components/liquid-glass/glass-popup"
 import { Tabs, TabsList, TabsTrigger } from "@workspace/ui/components/tabs"
 
 /**
@@ -92,7 +113,7 @@ const surfaceOptics: GlassOptics = {
   inner: 0.2,
   fresnel: 0.4,
   shadow: 0.5,
-  dark: { tint: 0.7, borderAlpha: 0.2 },
+  dark: { tint: 0.5, borderAlpha: 0.25 },
 }
 
 const surfaceTint =
@@ -113,8 +134,8 @@ function AppGlassBar({
       {...props}
     >
       <GlassLayer
-        tint={0.86}
-        blur={5}
+        tint={0.5}
+        blur={3}
         swell={false}
         backdrop={SCREEN}
         optics={surfaceOptics}
@@ -154,8 +175,8 @@ function AppGlassCircle({
         <GlassLayer material="tinted" />
       ) : (
         <GlassLayer
-          tint={0.86}
-          blur={5}
+          tint={0.5}
+          blur={3}
           backdrop={SCREEN}
           optics={surfaceOptics}
           disabled={scaled}
@@ -215,37 +236,72 @@ function AppLens({ value }: { value: string | number | null }) {
   return <GlassLens value={value} disabled={scaled} />
 }
 
-/** The flat pill the lens leaves from and settles into. */
-function AppLensHighlight({ className }: { className?: string }) {
+/** Tinted glass that fills its positioned parent, in that parent's corners. */
+function AppGlassFill({ className }: { className?: string }) {
+  return (
+    <span
+      aria-hidden
+      data-glass-host=""
+      className={cn("absolute! inset-0 -z-10 rounded-full", className)}
+    >
+      <GlassLayer material="tinted" swell={false} />
+    </span>
+  )
+}
+
+type AppTabTone = "primary" | "secondary"
+
+/**
+ * The pill the lens leaves from and settles into. The lens reads the outer
+ * colour, so the glass is drawn on a child.
+ */
+function AppLensHighlight({
+  tone = "primary",
+  className,
+}: {
+  tone?: AppTabTone
+  className?: string
+}) {
+  const fill = tone === "primary" ? "bg-primary" : "bg-secondary"
   return (
     <span
       aria-hidden
       data-glass-highlight=""
       className={cn(
-        "absolute inset-0 rounded-full bg-primary shadow-button [[data-glass-moving]_&]:opacity-0",
+        "absolute inset-0 isolate rounded-full [[data-glass-moving]_&]:opacity-0",
+        fill,
         className
       )}
-    />
+    >
+      <AppGlassFill className={fill} />
+    </span>
   )
 }
 
 function AppTabsTrigger({
   value,
+  tone = "primary",
   className,
   children,
   ...props
-}: React.ComponentProps<typeof TabsTrigger>) {
+}: React.ComponentProps<typeof TabsTrigger> & {
+  /** Colour of the selected pill. */
+  tone?: AppTabTone
+}) {
   const selected = React.useContext(AppTabsContext) === value
   return (
     <TabsTrigger
       value={value}
       className={cn(
         className,
-        "data-active:bg-transparent data-active:shadow-none data-active:hover:text-primary-foreground data-active:hover:dark:text-primary-foreground [[data-glass-traveling]_&]:text-foreground!"
+        "data-active:bg-transparent data-active:shadow-none [[data-glass-traveling]_&]:text-foreground!",
+        tone === "primary"
+          ? "data-active:hover:text-primary-foreground data-active:hover:dark:text-primary-foreground"
+          : "data-active:text-secondary-foreground data-active:hover:text-secondary-foreground data-active:hover:dark:text-secondary-foreground"
       )}
       {...props}
     >
-      {selected && <AppLensHighlight />}
+      {selected && <AppLensHighlight tone={tone} />}
       <span className="relative z-20 inline-flex items-center gap-[inherit]">
         {children}
       </span>
@@ -253,14 +309,242 @@ function AppTabsTrigger({
   )
 }
 
+interface AppMenuItem {
+  label: string
+  icon?: React.ReactNode
+  onSelect?: () => void
+  destructive?: boolean
+}
+
+/** Round glass button of the floating navigation that opens a menu above itself. */
+function AppGlassMenu({
+  label,
+  items,
+  align = "start",
+  open,
+  onOpenChange,
+  children,
+}: {
+  label: string
+  items: AppMenuItem[]
+  /** Edge of the button the menu lines up with. */
+  align?: "start" | "end"
+  open: boolean
+  onOpenChange: (open: boolean) => void
+  children: React.ReactNode
+}) {
+  return (
+    <GlassDropdownMenu open={open} onOpenChange={onOpenChange} modal={false}>
+      <AppGlassMenuTrigger label={label} open={open}>
+        {children}
+      </AppGlassMenuTrigger>
+      <GlassDropdownMenuContent
+        side="top"
+        align={align}
+        className="w-72 text-foreground"
+      >
+        {items.map((item) => (
+          <GlassDropdownMenuItem
+            key={item.label}
+            destructive={item.destructive}
+            onSelect={() => item.onSelect?.()}
+          >
+            {item.icon}
+            {item.label}
+          </GlassDropdownMenuItem>
+        ))}
+      </GlassDropdownMenuContent>
+    </GlassDropdownMenu>
+  )
+}
+
+function AppGlassMenuTrigger({
+  label,
+  open,
+  children,
+}: {
+  label: string
+  open: boolean
+  children: React.ReactNode
+}) {
+  const popup = React.useContext(GlassPopupContext)
+  return (
+    <MenuTrigger
+      aria-label={label}
+      data-glass-host=""
+      data-glass-backdrop={SCREEN}
+      className={cn(
+        "flex size-[60px] shrink-0 cursor-pointer items-center justify-center rounded-full glass text-foreground outline-none select-none focus-visible:ring-2 focus-visible:ring-ring"
+      )}
+    >
+      {popup && <GlassPopupAnchor popup={popup} />}
+      <span
+        className={cn(
+          "relative isolate flex size-12 items-center justify-center rounded-full transition-colors duration-200",
+          open && "text-primary-foreground"
+        )}
+      >
+        {open && <AppGlassFill className="bg-primary" />}
+        {children}
+      </span>
+    </MenuTrigger>
+  )
+}
+
+/** A popover that swells out of its button as one body of glass. */
+function AppPopover({
+  children,
+  ...props
+}: React.ComponentProps<typeof Popover>) {
+  const popup = useGlassPopup({ matchWidth: true })
+  return (
+    <Popover {...props}>
+      <GlassPopupContext.Provider value={popup}>
+        {children}
+      </GlassPopupContext.Provider>
+    </Popover>
+  )
+}
+
+function AppPopoverTrigger({
+  variant = "app",
+  size,
+  className,
+  children,
+  ...props
+}: Omit<
+  React.ComponentProps<typeof PopoverTrigger>,
+  "children" | "className" | "render"
+> &
+  VariantProps<typeof buttonVariants> & {
+    children?: React.ReactNode
+    className?: string
+  }) {
+  const popup = React.useContext(GlassPopupContext)
+  return (
+    <PopoverTrigger
+      data-glass-host=""
+      // The popup's glass takes the button's own colour.
+      data-glass-fill=""
+      data-glass-glow="off"
+      data-glass-backdrop={SCREEN}
+      className={cn(
+        buttonVariants({ variant, size }),
+        // The glass reads this fill as it opens; a transition would hand it a half-way colour.
+        "cursor-pointer transition-none",
+        className
+      )}
+      {...props}
+    >
+      {popup && <GlassPopupAnchor popup={popup} />}
+      <span className="inline-flex items-center gap-[inherit]">{children}</span>
+    </PopoverTrigger>
+  )
+}
+
+/** The popup. It opens above its button; its children arrive one after another. */
+function AppPopoverContent({
+  className,
+  children,
+  ...props
+}: Omit<
+  React.ComponentProps<typeof PopoverContent>,
+  "children" | "className" | "render"
+> & {
+  children?: React.ReactNode
+  className?: string
+}) {
+  const popup = React.useContext(GlassPopupContext)
+  return (
+    <PopoverContent
+      data-glass-popup=""
+      data-glass-skip=""
+      side="top"
+      sideOffset={12}
+      className={cn(
+        "rounded-[28px] p-2 text-primary-foreground outline-none data-glass-off:bg-primary",
+        className
+      )}
+      {...props}
+    >
+      {popup && <GlassPopupSurface popup={popup} />}
+      <div data-glass-list="" className="flex flex-col gap-1">
+        {React.Children.toArray(children).map((child, i) => (
+          <div
+            key={React.isValidElement(child) ? child.key : i}
+            data-glass-item=""
+            style={{ "--glass-i": i } as React.CSSProperties}
+          >
+            {child}
+          </div>
+        ))}
+      </div>
+    </PopoverContent>
+  )
+}
+
+function AppPopoverTitle({
+  className,
+  ...props
+}: Omit<React.ComponentProps<typeof PopoverTitle>, "className"> & {
+  className?: string
+}) {
+  return (
+    <PopoverTitle
+      className={cn("px-3 pt-3 text-lg font-medium text-inherit", className)}
+      {...props}
+    />
+  )
+}
+
+function AppPopoverDescription({
+  className,
+  ...props
+}: Omit<React.ComponentProps<typeof PopoverDescription>, "className"> & {
+  className?: string
+}) {
+  return (
+    <PopoverDescription
+      className={cn("px-3 pb-2 text-xs text-inherit", className)}
+      {...props}
+    />
+  )
+}
+
+/** A row of the popup. Pressing it closes the popup. */
+function AppPopoverItem({
+  className,
+  ...props
+}: Omit<React.ComponentProps<typeof PopoverClose>, "className"> & {
+  className?: string
+}) {
+  return (
+    <PopoverClose
+      className={cn(
+        "flex w-full cursor-pointer items-center gap-3 rounded-[20px] p-3 text-left transition-colors outline-none hover:bg-current/10 focus-visible:ring-2 focus-visible:ring-current",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
 export {
   AppButton,
   AppGlassBar,
   AppGlassCircle,
+  AppGlassMenu,
   AppLens,
   AppLensHighlight,
+  AppPopover,
+  AppPopoverContent,
+  AppPopoverDescription,
+  AppPopoverItem,
+  AppPopoverTitle,
+  AppPopoverTrigger,
   AppScaledProvider,
   AppTabs,
   AppTabsList,
   AppTabsTrigger,
+  type AppMenuItem,
 }
