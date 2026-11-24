@@ -4,7 +4,11 @@ import * as React from "react"
 import { CircleDashedIcon, ClockIcon, GripIcon } from "lucide-react"
 import { cn } from "cn"
 
-import { Button } from "@workspace/ui/components/button"
+import {
+  AppButton as Button,
+  AppGlassBar,
+  AppGlassCircle,
+} from "@workspace/ui/predict/app/app-glass"
 import { PredictMark } from "@workspace/ui/predict/logo"
 
 type AppTab = "today" | "explore"
@@ -13,9 +17,6 @@ interface AppBottomNavProps extends React.ComponentProps<"nav"> {
   active?: AppTab
   onTabChange?: (tab: AppTab) => void
 }
-
-const circle =
-  "flex size-[60px] shrink-0 items-center justify-center rounded-full bg-app-field text-app-foreground"
 
 /**
  * Floating bottom navigation of the PREDICT mobile app:
@@ -43,12 +44,12 @@ function AppBottomNav({
       )}
       {...props}
     >
-      <button type="button" aria-label="Menu" className={circle}>
+      <AppGlassCircle aria-label="Menu">
         <GripIcon className="size-6" strokeWidth={2} />
-      </button>
+      </AppGlassCircle>
 
 
-      <div className="flex h-[60px] w-full items-center justify-center rounded-full bg-app-field p-1.5">
+      <AppGlassBar className="flex h-[60px] w-full items-center justify-center p-1.5">
         <div className="inline-flex h-full items-center justify-center gap-1">
           <Button
             variant={active === "today" ? "app" : "ghost"}
@@ -64,7 +65,7 @@ function AppBottomNav({
               className={cn(
                 "size-5 shrink-0",
                 active === "today" &&
-                "fill-app-brand-foreground stroke-app-brand"
+                "fill-primary-foreground stroke-primary"
               )}
               strokeWidth={2}
             />
@@ -83,12 +84,12 @@ function AppBottomNav({
             <CircleDashedIcon className="size-5 shrink-0" />
           </Button>
         </div>
-      </div>
+      </AppGlassBar>
 
 
-      <button type="button" aria-label="PREDICT assistant" className={circle}>
+      <AppGlassCircle aria-label="PREDICT assistant">
         <PredictMark className="h-[20px]" />
-      </button>
+      </AppGlassCircle>
     </nav>
   )
 }

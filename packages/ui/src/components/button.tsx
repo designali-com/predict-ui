@@ -7,28 +7,29 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/80 shadow-[inset_0_4px_6px_rgba(255,255,255,0.4),inset_0_-1px_8px_rgba(255,255,255,0.2)]",
+        default: "bg-primary text-primary-foreground hover:bg-primary/80 shadow-button",
         outline:
           "border-border hover:bg-border/20 hover:dark:bg-border/50 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground",
         outlineglass:
-          "border-border hover:bg-border/20 hover:dark:bg-border/50 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:shadow-[inset_0_-1px_8px_rgba(255,255,255,0.2)] shadow-[inset_0_-1px_8px_rgba(0,0,0,0.1)]",
+          "border-border hover:bg-border/20 hover:dark:bg-border/50 hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground shadow-button-soft",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground dark:shadow-[inset_0_-1px_8px_rgba(255,255,255,0.2)] shadow-[inset_0_-1px_8px_rgba(0,0,0,0.1)]",
+          "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground shadow-button-soft",
         ghost:
-          "hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground hover:bg-border/50 hover:dark:shadow-[inset_0_-1px_8px_rgba(255,255,255,0.2)] hover:shadow-[inset_0_-1px_8px_rgba(0,0,0,0.1)]",
+          "hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground hover:bg-border/50 hover:shadow-button-soft",
         destructive:
-          "bg-destructive text-primary-foreground hover:bg-destructive/80 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 shadow-[inset_0_4px_6px_rgba(255,255,255,0.2),inset_0_-1px_8px_rgba(255,255,255,0.2)]",
-        brand:
-          "bg-violet-dark text-white hover:bg-violet-dark/90 shadow-[inset_0_4px_6px_rgba(255,255,255,0.4),inset_0_-1px_8px_rgba(255,255,255,0.2)]",
+          "bg-destructive text-white hover:bg-destructive/80 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 shadow-[inset_0_4px_6px_rgba(255,255,255,0.2),inset_0_-1px_8px_rgba(255,255,255,0.2)]",
+        /** Alias of `default`, kept for older code. */
+        brand: "bg-primary text-primary-foreground hover:bg-primary/80 shadow-button",
+        /** Alias of `secondary`, kept for older code. */
         lavender:
-          "bg-lavender text-[#030303] hover:bg-[color-mix(in_oklch,var(--lavender),black_4%)] shadow-[inset_0_-1px_8px_rgba(0,0,0,0.1)]",
-        /* Mobile app screens: follow the --app-* theme (light = brand / lavender). */
+          "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] shadow-button-soft",
+        /* Aliases of `default` / `secondary` used by the app screens. */
         app:
-          "bg-app-brand text-app-brand-foreground hover:bg-app-brand/90 shadow-[inset_0_4px_6px_rgba(255,255,255,0.4),inset_0_-1px_8px_rgba(255,255,255,0.2)]",
+          "bg-primary text-primary-foreground hover:bg-primary/90 shadow-button",
         "app-secondary":
-          "bg-app-pill text-app-pill-foreground hover:bg-[color-mix(in_oklch,var(--app-pill),var(--app-foreground)_4%)] shadow-[inset_0_-1px_8px_rgba(0,0,0,0.1)]",
+          "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_4%)] shadow-button-soft",
         link: "text-foreground underline-offset-4 hover:underline",
-        invert: "bg-foreground text-background hover:bg-foreground/80 shadow-[inset_0_4px_6px_rgba(255,255,255,0.4),inset_0_-1px_8px_rgba(255,255,255,0.2)] dark:shadow-[inset_0_4px_6px_rgba(0,0,0,0.4),inset_0_-1px_8px_rgba(0,0,0,0.2)]",
+        invert: "bg-foreground text-background hover:bg-foreground/80 shadow-button dark:shadow-[inset_0_4px_6px_rgba(0,0,0,0.4),inset_0_-1px_8px_rgba(0,0,0,0.2)]",
       },
       size: {
         sm: "h-8 gap-1 px-5 text-xs has-data-[icon=inline-end]:pe-4 has-data-[icon=inline-start]:ps-4 [&_svg:not([class*='size-'])]:size-3",

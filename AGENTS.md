@@ -7,3 +7,11 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+# ui-sdk
+
+`@ui-sdk/react` and `@ui-sdk/core` are dependencies of `packages/ui`, so paths below are relative to `packages/ui`. With pnpm, an app that imports them directly must add them to its own `package.json` at the same version.
+
+- Before using ui-sdk, follow the `ui-sdk` skill if it's installed, and read `node_modules/@ui-sdk/react/docs/llms.txt`.
+- To build a new component, also search `node_modules/@ui-sdk/react/docs/core.md` by heading, and read `rendering.md` next to it.
+- `@ui-sdk/core/web.css` is deliberately not imported: it selects on `data-slot` names the `packages/ui` components already use, and on bare `a`, `hr`, `code` and `kbd`. Style ui-sdk parts with Tailwind and the theme tokens instead.

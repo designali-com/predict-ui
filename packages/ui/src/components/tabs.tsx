@@ -27,7 +27,7 @@ const tabsListVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-border",
+        default: "border border-border bg-card",
         line: "gap-1 bg-transparent border",
       },
     },
@@ -58,7 +58,7 @@ function TabsTrigger({ className, ...props }: TabsPrimitive.Tab.Props) {
       data-slot="tabs-trigger"
       className={cn(
         "relative inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center gap-1.5 rounded-full px-5 py-3 text-sm whitespace-nowrap text-foreground/60 transition-all group-data-vertical/tabs:w-full group-data-vertical/tabs:justify-start group-data-vertical/tabs:py-[calc(--spacing(2))] hover:text-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-1 focus-visible:outline-ring disabled:pointer-events-none disabled:opacity-50 has-data-[icon=inline-end]:pe-1 has-data-[icon=inline-start]:ps-1 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5",
-        "data-active:bg-primary data-active:text-primary-foreground data-active:hover:text-background data-active:hover:dark:text-foreground data-active:shadow-[inset_0_4px_6px_rgba(255,255,255,0.4),inset_0_-1px_8px_rgba(255,255,255,0.2)]",
+        "data-active:bg-primary data-active:text-primary-foreground data-active:hover:text-background data-active:hover:dark:text-foreground data-active:shadow-button",
         className
       )}
       {...props}

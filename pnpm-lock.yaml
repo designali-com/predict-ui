@@ -35,6 +35,12 @@ importers:
       '@shikijs/transformers':
         specifier: ^3.15.0
         version: 3.23.0
+      '@ui-sdk/core':
+        specifier: 0.1.0-beta.13
+        version: 0.1.0-beta.13
+      '@ui-sdk/react':
+        specifier: 0.1.0-beta.13
+        version: 0.1.0-beta.13(@types/react@19.3.0)(@ui-sdk/core@0.1.0-beta.13)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@vercel/analytics':
         specifier: ^2.0.1
         version: 2.0.1(next@16.4.2(@babel/core@7.29.7)(@types/node@20.19.43)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)
@@ -225,6 +231,12 @@ importers:
       '@base-ui/utils':
         specifier: ^0.5.0
         version: 0.5.0(@types/react@19.3.0)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      '@ui-sdk/core':
+        specifier: 0.1.0-beta.13
+        version: 0.1.0-beta.13
+      '@ui-sdk/react':
+        specifier: 0.1.0-beta.13
+        version: 0.1.0-beta.13(@types/react@19.3.0)(@ui-sdk/core@0.1.0-beta.13)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -2136,6 +2148,20 @@ packages:
 
   '@types/validate-npm-package-name@4.0.2':
     resolution: {integrity: sha512-lrpDziQipxCEeK5kWxvljWYhUvOiB2A9izZd9B2AFarYAkqZshb4lPbRs7zKEic6eGtH8V/2qJW+dPp9OtF6bw==}
+
+  '@ui-sdk/core@0.1.0-beta.13':
+    resolution: {integrity: sha512-URjk9hqdc/cZKDtw6Gb9NqjY48U8l0EgoP4d5ghlooa3av+GrR0iSmsav133UU4oelcuKIO1ZPJ4j7gIPMr1Vg==}
+
+  '@ui-sdk/react@0.1.0-beta.13':
+    resolution: {integrity: sha512-Gz85tAcPJHwnv90WMIAtED3fDamqVD3F3FF3uKsA/TsL+KbaeHSgX1gGdIpNcnzkmDO8YZk9aZBKgCFgpaCcHA==}
+    peerDependencies:
+      '@types/react': '>=19.2.10'
+      '@ui-sdk/core': ^0.1.0-beta.13
+      react: '>=19'
+      react-dom: '>=19'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   '@ungap/structured-clone@1.4.0':
     resolution: {integrity: sha512-1mEZtMKPM09vDmQt5y7YvmN2+DFTP7Tg0EWXdic8/C6VRnpb33e4ghisCIE3WZjsE2N8mf+QV1Zqh7ZFYLWInQ==}
@@ -4531,6 +4557,7 @@ packages:
 
   tldts-core@7.4.20:
     resolution: {integrity: sha512-C630TWXZCZmLq0F2bW4QqwnaaxCQ/svpAqvJwnC4JvgEM5ohhBnGsEzTLSOXcN+xjz+kEaHS5uoWIw2klnqd0A==}
+    deprecated: Partial release, see https://github.com/remusao/tldts/issues/2735. Use >=7.4.22.
 
   tldts@7.4.19:
     resolution: {integrity: sha512-48dH6aSpQnpbzDUc4vIQZ1VjB8tkK+e8c1yx05/SZK+rkssgjEOlxDd/yU8/a4vGYQ9vRgJr9dwMq9TJ0b3X2Q==}
@@ -6529,6 +6556,16 @@ snapshots:
   '@types/use-sync-external-store@0.0.6': {}
 
   '@types/validate-npm-package-name@4.0.2': {}
+
+  '@ui-sdk/core@0.1.0-beta.13': {}
+
+  '@ui-sdk/react@0.1.0-beta.13(@types/react@19.3.0)(@ui-sdk/core@0.1.0-beta.13)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)':
+    dependencies:
+      '@ui-sdk/core': 0.1.0-beta.13
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
+    optionalDependencies:
+      '@types/react': 19.3.0
 
   '@ungap/structured-clone@1.4.0': {}
 

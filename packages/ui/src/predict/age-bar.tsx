@@ -150,7 +150,7 @@ export function AgeBar({
           }}
         />
 
-        {/* Aging Badge */}
+        {/* Ageing badge */}
 
         <motion.div
           className="absolute bottom-13 z-30 flex -translate-x-1/2 flex-col items-center whitespace-nowrap"
@@ -175,7 +175,7 @@ export function AgeBar({
           <Badge variant={"outline"}>
             {isFaster || isSlower ? (
               <>
-                Aging{" "}
+                Ageing{" "}
                 <span
                   className={
                     isFaster
@@ -183,12 +183,12 @@ export function AgeBar({
                       : "font-bold text-status-normal"
                   }
                 >
-                  {formattedMultiplier}x
+                  {formattedMultiplier}×
                 </span>{" "}
                 {isFaster ? "faster" : "slower"}
               </>
             ) : (
-              "Aging on pace"
+              "Ageing on pace"
             )}
           </Badge>
         </motion.div>
@@ -219,7 +219,7 @@ export function AgeBar({
             </span>
 
             <span className="text-xs font-medium text-muted-foreground">
-              Biological Age
+              Biological age
             </span>
           </div>
 
@@ -266,7 +266,7 @@ export function AgeBar({
             </span>
 
             <span className="text-xs text-muted-foreground">
-              Chronological Age
+              Chronological age
             </span>
           </div>
 

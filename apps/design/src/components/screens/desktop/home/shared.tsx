@@ -162,7 +162,7 @@ export function DesktopNav({ defaultTab = "today" }: { defaultTab?: HomeTab }) {
 
 /** Violet fade along the bottom edge (multiplied over the content). */
 export function BottomGlow() {
-  return <AppGlow variant="fade" className="h-[289px] mix-blend-multiply" />
+  return <AppGlow data-glass-skip="" variant="fade" className="h-[289px] mix-blend-multiply" />
 }
 
 /* ------------------------------------------------------------------ */

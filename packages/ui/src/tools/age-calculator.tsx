@@ -200,7 +200,7 @@ function AgeCalculator({
     return (
         <Card className={cn("w-full max-w-xl", className)} {...props}>
             <CardHeader>
-                <CardTitle className="text-sm">Age Calculator</CardTitle>
+                <CardTitle className="text-sm">Age calculator</CardTitle>
                 <CardDescription>
                     Age on the day of a measurement, corrected for prematurity.
                 </CardDescription>

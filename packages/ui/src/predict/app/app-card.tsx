@@ -2,15 +2,15 @@ import * as React from "react"
 import { cn } from "cn"
 
 /**
- * Frosted lavender card used throughout the PREDICT mobile app
- * ("Container (Card | PREDICT)" in Figma).
+ * Card used throughout the PREDICT mobile app ("PREDICT / Surface / Card" in
+ * Figma): a white surface, 24px corners, and a soft inner shadow at the base.
  */
 function AppCard({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="app-card"
       className={cn(
-        "relative flex w-full flex-col gap-6 overflow-hidden rounded-[40px] bg-app-pill/20 backdrop-blur-md p-[30px] text-app-foreground shadow-(--app-card-shadow)",
+        "relative flex w-full flex-col gap-4 overflow-hidden rounded-[30px] backdrop-blur-md bg-secondary/20 p-8 text-foreground dark:shadow-[inset_0_-1px_8px_rgba(255,255,255,0.2)] shadow-[inset_0_-1px_8px_rgba(0,0,0,0.1)]",
         className
       )}
       {...props}
@@ -33,7 +33,7 @@ function AppCardTitle({ className, ...props }: React.ComponentProps<"h3">) {
     <h3
       data-slot="app-card-title"
       className={cn(
-        "font-display text-[21px] leading-6 font-normal text-app-foreground",
+        "text-xl leading-6 font-medium tracking-tight text-foreground",
         className
       )}
       {...props}
@@ -48,7 +48,7 @@ function AppCardDescription({
   return (
     <p
       data-slot="app-card-description"
-      className={cn("mt-3 max-w-60 text-[10px] leading-[14px] text-app-foreground", className)}
+      className={cn("mt-3 max-w-60 text-[10px] leading-[14px] text-foreground", className)}
       {...props}
     />
   )

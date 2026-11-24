@@ -112,7 +112,7 @@ function BodyMeasurements({
   return (
     <Card className={cn("w-full max-w-xl", className)} {...props}>
       <CardHeader>
-        <CardTitle className="text-sm">Body Measurements</CardTitle>
+        <CardTitle className="text-sm">Body measurements</CardTitle>
         <CardDescription>
           Body mass index and body surface area from weight and height.
         </CardDescription>

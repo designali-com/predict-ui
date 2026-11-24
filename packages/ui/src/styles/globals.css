@@ -1,3 +1,5 @@
+@layer ui-sdk;
+
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -11,27 +13,23 @@
 @import "./typo.css";
 
 @theme inline {
+  /* Inter is the only typeface. Every font utility resolves to it, so
+     `font-mono`, `font-display` and `font-serif` render Inter too. */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  /* Display face: Inter as well, so the whole project uses one typeface. */
   --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-
-  /* Mobile app theme (see the --app-* tokens below) */
-  --color-app-background: var(--app-background);
-  --color-app-foreground: var(--app-foreground);
-  --color-app-surface: var(--app-surface);
-  --color-app-field: var(--app-field);
-  --color-app-border: var(--app-border);
-  --color-app-track: var(--app-track);
-  --color-app-pill: var(--app-pill);
-  --color-app-pill-foreground: var(--app-pill-foreground);
-  --color-app-brand: var(--app-brand);
-  --color-app-brand-foreground: var(--app-brand-foreground);
-  --color-app-accent: var(--app-accent);
-  --color-app-glow: var(--app-glow);
-
-  /* Brand violet used across the mobile app designs */
-  --color-violet-dark: var(--violet-dark);
-  --color-lavender: var(--lavender);
+  --font-serif: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+ 
+  /* One theme for the site and the app screens. Figma surfaces become
+     `shadow-card`, `shadow-glass`, `shadow-button`, `shadow-button-soft`,
+     `bg-glass` (or the `glass` utility), `bg-canvas`, and `bg-glow`. */
+  --color-canvas: var(--canvas);
+  --color-glow: var(--glow);
+  --color-glass: var(--glass);
+  --shadow-card: var(--card-shadow);
+  --shadow-glass: var(--glass-shadow);
+  --shadow-button: var(--button-shadow);
+  --shadow-button-soft: var(--button-soft-shadow);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -88,17 +86,18 @@
   --animate-marquee-down: marquee-down var(--marquee-duration) linear var(--marquee-loop-count);
 }
 
-:root {
+:root,
+.app-light {
   --background: oklch(1 0 0);
   --foreground: oklch(0 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0 0 0);
-  --primary: oklch(0.536 0.2917 295.68);
+  --primary: oklch(0.3247 0.1762 297.04); /* #420080 */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(96.1% 0.0343 295.7);
-  --secondary-foreground: oklch(0.1 0 0);
+  --secondary: oklch(0.936 0.0326 295.31); /* #EBE6FE lavender */
+  --secondary-foreground: oklch(0.2002 0 0); /* #161616 */
   --muted: oklch(0.8 0 0);
   --muted-foreground: oklch(0.2 0 0);
   --accent: oklch(0.7 0 0);
@@ -106,12 +105,12 @@
   --destructive: oklch(0.58 0.22 27);
   --border: oklch(0.9 0 0);
   --input: oklch(0.9 0 0);
-  --ring: oklch(0.7 0 0);
-  --chart-1: oklch(99.2% 0.0052 295.7);
-  --chart-2: oklch(96.1% 0.0343 295.7);
-  --chart-3: oklch(90.2% 0.0897 295.7);
-  --chart-4: oklch(80.5% 0.1475 295.7);
-  --chart-5: oklch(53.6% 0.2917 295.7);
+  --ring: oklch(0.3247 0.1762 297.04);
+  --chart-1: oklch(99.2% 0.0052 297.04);
+  --chart-2: oklch(0.936 0.0326 295.31);
+  --chart-3: oklch(90.2% 0.0897 297.04);
+  --chart-4: oklch(80.5% 0.1475 297.04);
+  --chart-5: oklch(0.3247 0.1762 297.04); /* primary */
   --radius: 1rem;
   --sidebar: oklch(0.9 0 0);
   --sidebar-foreground: oklch(0.1 0 0);
@@ -122,33 +121,34 @@
   --sidebar-border: oklch(0.9 0 0);
   --sidebar-ring: oklch(0.7 0 0);
 
-  /* Severity Colors */
-  --status-normal: oklch(72.3% 0.219 149.579);
-  /* #00C950 */
-  --status-mild: oklch(79.5% 0.184 86.047);
-  /* #F0B100 */
-  --status-moderate: oklch(62.3% 0.214 259.815);
-  /* #2B7FFF */
-  --status-severe: oklch(70.5% 0.213 47.604);
-  /* #FF6900 */
-  --status-extreme: oklch(63.7% 0.237 25.331);
-  /* #FB2C36 */
+  /* Severity colours */
+  --status-normal: oklch(72.3% 0.219 149.579); /* #00C950 */
+  --status-mild: oklch(79.5% 0.184 86.047); /* #F0B100 */
+  --status-moderate: oklch(62.3% 0.214 259.815); /* #2B7FFF */
+  --status-severe: oklch(70.5% 0.213 47.604); /* #FF6900 */
+  --status-extreme: oklch(63.7% 0.237 25.331); /* #FB2C36 */
 
-  /* Mobile app brand */
-  --violet-dark: #420080;
-  --lavender: #ebe6fe;
+  /* Figma surfaces */
+  --canvas: oklch(0.9521 0 0); /* #EFEFEF screen background */
+  --glow: oklch(0.3247 0.1762 297.04); /* violet glow, #420080 in both modes */
+  --card-shadow: inset 0 -1px 8px rgb(0 0 0 / 0.1);
+  --glass: rgb(255 255 255 / 0.9);
+  --glass-shadow: 0 4px 8px rgb(0 0 0 / 0.06), inset 0 1px 2px rgb(255 255 255);
+  --button-shadow: inset 0 4px 6px rgb(255 255 255 / 0.4), inset 0 -1px 8px rgb(255 255 255 / 0.2);
+  --button-soft-shadow: inset 0 -1px 8px rgb(0 0 0 / 0.1);
 }
 
-.dark {
+.dark,
+.app-dark {
   --background: oklch(0 0 0);
   --foreground: oklch(1 0 0);
   --card: oklch(0 0 0);
   --card-foreground: oklch(1 0 0);
   --popover: oklch(0 0 0);
   --popover-foreground: oklch(1 0 0);
-  --primary: oklch(0.536 0.2917 295.68);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(25.3% 0.1037 295.7);
+  --primary: oklch(0.936 0.0326 295.31); /* #EBE6FE */
+  --primary-foreground: oklch(0.3247 0.1762 297.04); /* #420080 */
+  --secondary: oklch(25.3% 0.1037 297.04);
   --secondary-foreground: oklch(0.9 0 0);
   --muted: oklch(0.2 0 0);
   --muted-foreground: oklch(0.8 0 0);
@@ -157,12 +157,12 @@
   --destructive: oklch(0.58 0.22 27);
   --border: oklch(0.3 0 0);
   --input: oklch(0.3 0 0);
-  --ring: oklch(0.4 0 0);
-  --chart-1: oklch(0% 0.0389 295.7);
-  --chart-2: oklch(25.3% 0.1037 295.7);
-  --chart-3: oklch(34.2% 0.154 295.7);
-  --chart-4: oklch(44.6% 0.1771 295.7);
-  --chart-5: oklch(53.6% 0.2917 295.7);
+  --ring: oklch(0.936 0.0326 295.31);
+  --chart-1: oklch(0% 0.0389 297.04);
+  --chart-2: oklch(25.3% 0.1037 297.04);
+  --chart-3: oklch(44.6% 0.1771 297.04);
+  --chart-4: oklch(70% 0.11 297.04);
+  --chart-5: oklch(0.936 0.0326 295.31); /* dark primary */
   --sidebar: oklch(0.1 0 0);
   --sidebar-foreground: oklch(0.9 0 0);
   --sidebar-primary: oklch(0.9 0 0);
@@ -172,78 +172,23 @@
   --sidebar-border: oklch(0.3 0 0);
   --sidebar-ring: oklch(0.4 0 0);
 
-  /* Severity Colors */
+  /* Severity colours */
   --status-normal: oklch(72.3% 0.219 149.579);
-  /* #00C950 */
   --status-mild: oklch(79.5% 0.184 86.047);
-  /* #F0B100 */
   --status-moderate: oklch(62.3% 0.214 259.815);
-  /* #2B7FFF */
   --status-severe: oklch(70.5% 0.213 47.604);
-  /* #FF6900 */
   --status-extreme: oklch(63.7% 0.237 25.331);
-  /* #FB2C36 */
 
-  /* Mobile app brand */
-  --violet-dark: #420080;
-  --lavender: #ebe6fe;
+  /* Figma surfaces, dark */
+  --canvas: oklch(0.13 0.02 297.04); /* violet-black screen background */
+  --glow: oklch(0.3247 0.1762 297.04);
+  --card-shadow: inset 0 -1px 8px rgb(255 255 255 / 0.1);
+  --glass: rgb(255 255 255 / 0.08);
+  --glass-shadow: 0 4px 12px rgb(0 0 0 / 0.4), inset 0 1px 1px rgb(255 255 255 / 0.15);
+  --button-shadow: inset 0 4px 6px rgb(255 255 255 / 0.6), inset 0 -1px 8px rgb(66 0 128 / 0.15);
+  --button-soft-shadow: inset 0 -1px 8px rgb(255 255 255 / 0.1);
 }
-
-/*
- * Mobile app theme. Light values are the Figma "App Design" colours; dark is
- * the same violet brand on a violet-black canvas. Follows the site theme by
- * default; `.app-light` / `.app-dark` force one theme on a subtree.
- */
-:root,
-.app-light {
-  --app-background: #ffffff;
-  --app-foreground: #030303;
-  --app-surface: #fbfaff; /* bottom sheets */
-  --app-field: #ffffff; /* inputs, segmented controls */
-  --app-border: #e2e2e2;
-  --app-track: #dedede; /* switch off */
-  --app-pill: #ebe6fe; /* lavender chips, secondary buttons */
-  --app-pill-foreground: #030303;
-  --app-brand: #420080; /* filled: primary buttons, progress, glow */
-  --app-brand-foreground: #ffffff;
-  --app-accent: #420080; /* marks, dashed outlines, focus */
-  --app-glow: #420080;
-  --app-card-shadow: inset 0 0 30px rgb(66 0 128 / 0.2);
-}
-
-.dark,
-.app-dark {
-  --app-background: #0b0612;
-  --app-foreground: #f4f1fb;
-  --app-surface: #150c22;
-  --app-field: #140b20;
-  --app-border: #2e2440;
-  --app-track: #3a3049;
-  --app-pill: #2a1a48;
-  --app-pill-foreground: #ebe6fe;
-  --app-brand: #6a1fd0;
-  --app-brand-foreground: #ffffff;
-  --app-accent: #b996ff;
-  --app-glow: #5414a8;
-  --app-card-shadow: inset 0 0 30px rgb(185 150 255 / 0.16);
-}
-
-/* Inside an app or desktop screen, the shared primitives (Input, Select,
-   Switch, Tabs…) read the app theme instead of the site theme. */
-[data-slot="app-screen"],
-[data-slot="desktop-screen"] {
-  --background: var(--app-background);
-  --foreground: var(--app-foreground);
-  --border: var(--app-border);
-  --input: var(--app-border);
-  --ring: var(--app-accent);
-  --primary: var(--app-brand);
-  --primary-foreground: var(--app-brand-foreground);
-  --muted: var(--app-pill);
-  /* typo.css paints every <p> with muted-foreground; app body copy is full-strength. */
-  --muted-foreground: var(--app-foreground);
-}
-
+  
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -257,12 +202,24 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+ 
+  /* `font-mono` is Inter too; tabular figures keep codes and numbers aligned. */
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
 
   html {
     @apply font-sans;
     scroll-behavior: smooth;
     scroll-padding-top: 8rem
   }
+}
+
+/* Figma "glass" surface: translucent fill, soft drop shadow, top highlight, blur. */
+@utility glass {
+  background-color: var(--glass);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(16px);
 }
 
 .lucide { 

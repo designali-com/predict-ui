@@ -15,12 +15,14 @@ function AppGlow({ variant = "blob", className, ...props }: AppGlowProps) {
     <div
       aria-hidden
       data-slot="app-glow"
+      // Clear glass cannot draw `filter: blur()`: it would show the orb as a hard-edged disc.
+      data-glass-skip={variant === "blob" ? "" : undefined}
       className={cn(
         "pointer-events-none absolute",
         variant === "blob" &&
-          "-bottom-[438px] -left-[95px] size-[593px] rounded-full bg-app-glow blur-[100px]",
+          "-bottom-[438px] -left-[95px] size-[593px] rounded-full bg-glow blur-[100px]",
         variant === "fade" &&
-          "inset-x-0 bottom-0 h-[100px] bg-gradient-to-t from-app-glow to-app-glow/0 blur-[0.5px]",
+          "inset-x-0 bottom-0 h-[100px] bg-gradient-to-t from-glow to-glow/0 blur-[0.5px]",
         className
       )}
       {...props}
